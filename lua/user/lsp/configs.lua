@@ -9,40 +9,40 @@ local util = require('lspconfig.util')
 local configs = require('lspconfig.configs')
 
 -- tjs-language-server
-local tjs_bin_name = 'tjs-language-server'
-local cmd = { tjs_bin_name }
-
-local custom_attach = function(client)
-  print("Tjs langauge server LSP started.");
-end
-
-if not configs.tjs_langauge_server then
-  configs.tjs_langauge_server = {
-    default_config = {
-      cmd = cmd,
-      filetypes = {
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-      },
-      root_dir = function(fname)
-        return util.find_package_json_ancestor(fname)
-            or util.find_node_modules_ancestor(fname)
-            or util.find_git_ancestor(fname)
-      end,
-      single_file_support = true,
-      settings = {}
-    },
-  }
-else
-  print("The tjs_langauge_server is found in official config")
-end
-
-lspconfig.tjs_langauge_server.setup {
-  on_attach = custom_attach,
-  capabilities = require("user.lsp.handlers").capabilities,
-}
+-- local tjs_bin_name = 'tjs-language-server'
+-- local cmd = { tjs_bin_name }
+--
+-- local custom_attach = function(client)
+--   print("Tjs langauge server LSP started.");
+-- end
+--
+-- if not configs.tjs_langauge_server then
+--   configs.tjs_langauge_server = {
+--     default_config = {
+--       cmd = cmd,
+--       filetypes = {
+--         'javascript',
+--         'javascriptreact',
+--         'typescript',
+--         'typescriptreact',
+--       },
+--       root_dir = function(fname)
+--         return util.find_package_json_ancestor(fname)
+--             or util.find_node_modules_ancestor(fname)
+--             or util.find_git_ancestor(fname)
+--       end,
+--       single_file_support = true,
+--       settings = {}
+--     },
+--   }
+-- else
+--   print("The tjs_langauge_server is found in official config")
+-- end
+--
+-- lspconfig.tjs_langauge_server.setup {
+--   on_attach = custom_attach,
+--   capabilities = require("user.lsp.handlers").capabilities,
+-- }
 
 -- tjs-language-server end
 
@@ -74,8 +74,6 @@ if not configs.rome_langauge_server then
       end,
       single_file_support = true,
       settings = {
---  "rome.analysis.enableCodeActions": true,
- -- "rome.analysis.enableDiagnostics": true
         ["rome"] = {
           analysis = {
             enableCodeActions = true,
@@ -104,7 +102,7 @@ lspconfig.rome_langauge_server.setup {
 local servers = { "jsonls", "sumneko_lua", "tsserver", "rust_analyzer", }
 
 lsp_installer.setup({
-	ensure_installed = servers,
+  ensure_installed = servers,
 })
 
 for _, server in pairs(servers) do
