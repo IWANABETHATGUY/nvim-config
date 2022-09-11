@@ -49,14 +49,13 @@ local rome_bin_name = 'nc'
 local rome_cmd = { rome_bin_name, '-U', '/tmp/rome-socket' }
 
 local rome_custom_attach = function(client)
-  if client.name == "rome_langauge_server" then
-    client.server_capabilities.document_formatting = true
-  end
-  print("Rome langauge server LSP started.");
+  client.server_capabilities.document_formatting = false
+  print("Rome langauge server LSP client.");
+
 end
 
-if not configs.rome_langauge_server then
-  configs.rome_langauge_server = {
+if not configs.rome_language_server then
+  configs.rome_language_server = {
     default_config = {
       cmd = rome_cmd,
       filetypes = {
@@ -87,10 +86,10 @@ if not configs.rome_langauge_server then
     }
   }
 else
-  print("The rome_langauge_server is found in official config")
+  print("The rome_language_server is found in official config")
 end
 
-lspconfig.rome_langauge_server.setup {
+lspconfig.rome_language_server.setup {
   on_attach = rome_custom_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
