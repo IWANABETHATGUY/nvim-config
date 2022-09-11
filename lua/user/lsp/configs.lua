@@ -12,8 +12,7 @@ local configs = require('lspconfig.configs')
 -- local tjs_bin_name = 'tjs-language-server'
 -- local cmd = { tjs_bin_name }
 --
--- local custom_attach = function(client)
---   print("Tjs langauge server LSP started.");
+-- local custom_attach = function(client) print("Tjs langauge server LSP started.");
 -- end
 --
 -- if not configs.tjs_langauge_server then
@@ -21,8 +20,7 @@ local configs = require('lspconfig.configs')
 --     default_config = {
 --       cmd = cmd,
 --       filetypes = {
---         'javascript',
---         'javascriptreact',
+--         'javascript', 'javascriptreact',
 --         'typescript',
 --         'typescriptreact',
 --       },
@@ -47,12 +45,12 @@ local configs = require('lspconfig.configs')
 -- tjs-language-server end
 
 -- rome-language-server
-local rome_bin_name = 'rome_lsp'
-local rome_cmd = { rome_bin_name }
+local rome_bin_name = 'nc'
+local rome_cmd = { rome_bin_name, '-U', '/tmp/rome-socket' }
 
 local rome_custom_attach = function(client)
   if client.name == "rome_langauge_server" then
-    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = true
   end
   print("Rome langauge server LSP started.");
 end
