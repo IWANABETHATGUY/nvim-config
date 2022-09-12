@@ -12,8 +12,7 @@ local configs = require('lspconfig.configs')
 -- local tjs_bin_name = 'tjs-language-server'
 -- local cmd = { tjs_bin_name }
 --
--- local custom_attach = function(client) print("Tjs langauge server LSP started.");
--- end
+-- local custom_attach = function(client) print("Tjs langauge server LSP started."); end
 --
 -- if not configs.tjs_langauge_server then
 --   configs.tjs_langauge_server = {
@@ -45,14 +44,42 @@ local configs = require('lspconfig.configs')
 -- tjs-language-server end
 
 -- rome-language-server
-local rome_bin_name = 'nc'
-local rome_cmd = { rome_bin_name, '-U', '/tmp/rome-socket' }
+
+function os.capture(cmd, raw)
+  local handle = assert(io.popen(cmd, 'r'))
+  local output = assert(handle:read('*a'))
+
+  handle:close()
+
+  if raw then
+    return output
+  end
+
+  output = string.gsub(
+    string.gsub(
+      string.gsub(output, '^%s+', ''),
+      '%s+$',
+      ''
+    ),
+    '[\n\r]+',
+    ' '
+  )
+
+  return output
+end
 
 local rome_custom_attach = function(client)
   client.server_capabilities.document_formatting = false
   print("Rome langauge server LSP client.");
 
 end
+
+-- This duplicate exec is just a workaruond, if don't execute at first,
+-- the nvim will stuck when you first init rome socket
+os.execute("~/.cargo/bin/rome __print_socket")
+local rome_socket = os.capture("~/.cargo/bin/rome __print_socket", false)
+local rome_bin_name = 'nc'
+local rome_cmd = { rome_bin_name, '-U', rome_socket }
 
 if not configs.rome_language_server then
   configs.rome_language_server = {
