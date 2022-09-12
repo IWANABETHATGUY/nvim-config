@@ -76,8 +76,8 @@ end
 
 -- This duplicate exec is just a workaruond, if don't execute at first,
 -- the nvim will stuck when you first init rome socket
-os.execute("~/.cargo/bin/rome __print_socket")
-local rome_socket = os.capture("~/.cargo/bin/rome __print_socket", false)
+os.execute("rome __print_socket") -- make sure rome has been in your PATH
+local rome_socket = os.capture("rome __print_socket", false)
 local rome_bin_name = 'nc'
 local rome_cmd = { rome_bin_name, '-U', rome_socket }
 
