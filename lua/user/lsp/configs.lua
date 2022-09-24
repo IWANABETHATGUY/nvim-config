@@ -123,7 +123,7 @@ lspconfig.rome_language_server.setup {
 
 -- rome-language-server end
 
-local servers = { "jsonls", "sumneko_lua", "tsserver", "rust_analyzer", }
+local servers = { "jsonls", "sumneko_lua", "tsserver", "rust_analyzer", "zls"}
 
 lsp_installer.setup({
   ensure_installed = servers,
