@@ -71,7 +71,6 @@ end
 local rome_custom_attach = function(client)
   client.server_capabilities.document_formatting = false
   print("Rome langauge server LSP client.");
-
 end
 
 -- This duplicate exec is just a workaruond, if don't execute at first,
@@ -121,9 +120,13 @@ lspconfig.rome_language_server.setup {
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
+lspconfig.zls.setup {
+  on_attach = require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
+}
 -- rome-language-server end
 
-local servers = { "jsonls", "sumneko_lua", "tsserver", "rust_analyzer", "zls", "clangd" }
+local servers = { "jsonls", "sumneko_lua", "tsserver", "rust_analyzer", "clangd" }
 
 lsp_installer.setup({
   ensure_installed = servers,
@@ -140,4 +143,3 @@ for _, server in pairs(servers) do
   end
   lspconfig[server].setup(opts)
 end
-

@@ -20,4 +20,4 @@ require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
