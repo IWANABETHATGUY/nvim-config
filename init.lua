@@ -19,5 +19,7 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
+require "user.lightbulb"
+require "user.leap"
 
 -- vim.lsp.set_log_level("debug")

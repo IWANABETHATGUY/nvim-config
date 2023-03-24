@@ -75,50 +75,50 @@ end
 
 -- This duplicate exec is just a workaruond, if don't execute at first,
 -- the nvim will stuck when you first init rome socket
-os.execute("rome __print_socket") -- make sure rome has been in your PATH
-local rome_socket = os.capture("rome __print_socket", false)
-local rome_bin_name = 'nc'
-local rome_cmd = { rome_bin_name, '-U', rome_socket }
+-- os.execute("rome __print_socket") -- make sure rome has been in your PATH
+-- local rome_socket = os.capture("rome __print_socket", false)
+-- local rome_bin_name = 'nc'
+-- local rome_cmd = { rome_bin_name, '-U', rome_socket }
 
-if not configs.rome_language_server then
-  configs.rome_language_server = {
-    default_config = {
-      cmd = rome_cmd,
-      filetypes = {
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-      },
-      root_dir = function(fname)
-        return util.find_package_json_ancestor(fname)
-            or util.find_node_modules_ancestor(fname)
-            or util.find_git_ancestor(fname)
-      end,
-      single_file_support = true,
-      settings = {
-        ["rome"] = {
-          analysis = {
-            enableCodeActions = true,
-            enableDiagnostics = true
-          }
-        }
-      }
-    },
-    init_options = {
-      languageFeatures = {
-        diagnostics = true,
-      },
-    }
-  }
-else
-  print("The rome_language_server is found in official config")
-end
+-- if not configs.rome_language_server then
+--   configs.rome_language_server = {
+--     default_config = {
+--       cmd = rome_cmd,
+--       filetypes = {
+--         'javascript',
+--         'javascriptreact',
+--         'typescript',
+--         'typescriptreact',
+--       },
+--       root_dir = function(fname)
+--         return util.find_package_json_ancestor(fname)
+--             or util.find_node_modules_ancestor(fname)
+--             or util.find_git_ancestor(fname)
+--       end,
+--       single_file_support = true,
+--       settings = {
+--         ["rome"] = {
+--           analysis = {
+--             enableCodeActions = true,
+--             enableDiagnostics = true
+--           }
+--         }
+--       }
+--     },
+--     init_options = {
+--       languageFeatures = {
+--         diagnostics = true,
+--       },
+--     }
+--   }
+-- else
+--   print("The rome_language_server is found in official config")
+-- end
 
-lspconfig.rome_language_server.setup {
-  on_attach = rome_custom_attach,
-  capabilities = require("user.lsp.handlers").capabilities,
-}
+-- lspconfig.rome_language_server.setup {
+--   on_attach = rome_custom_attach,
+--   capabilities = require("user.lsp.handlers").capabilities,
+-- }
 
 lspconfig.zls.setup {
   on_attach = require("user.lsp.handlers").on_attach,
