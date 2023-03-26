@@ -21,5 +21,6 @@ require "user.whichkey"
 require "user.autocommands"
 require "user.lightbulb"
 require "user.leap"
+require "user.goto-file"
 
 -- vim.lsp.set_log_level("debug")
