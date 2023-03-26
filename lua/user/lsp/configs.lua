@@ -124,6 +124,11 @@ lspconfig.zls.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
+
+lspconfig.taplo.setup {
+  on_attach = require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
+}
 -- rome-language-server end
 
 local servers = { "jsonls", "sumneko_lua", "tsserver", "rust_analyzer", "clangd" }

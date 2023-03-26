@@ -5,9 +5,20 @@ end
 
 local actions = require "telescope.actions"
 
+local buffer_previewer_maker = function(filepath, bufnr, opts)
+	opts = opts or {}
+	if opts.use_ft_detect == nil then
+		local ft = require("plenary.filetype").detect(filepath)
+		opts.use_ft_detect = false
+		require("telescope.previewers.utils").regex_highlighter(bufnr, ft)
+	end
+	require("telescope.previewers").buffer_previewer_maker(filepath, bufnr, opts)
+end
+
 telescope.setup {
   defaults = {
 
+		buffer_previewer_maker = buffer_previewer_maker,
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
