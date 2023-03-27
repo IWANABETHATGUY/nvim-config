@@ -131,7 +131,6 @@ return packer.startup(function(use)
   -- Put this at the end after all plugins
 
   -- Custom
-  use "/home/victor/.config/nvim/plugin/hello"
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
