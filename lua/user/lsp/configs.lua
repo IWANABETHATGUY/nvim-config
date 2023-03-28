@@ -4,74 +4,35 @@ if not status_ok then
 end
 
 local lspconfig = require("lspconfig")
-
-local util = require('lspconfig.util')
-local configs = require('lspconfig.configs')
-
--- tjs-language-server
--- local tjs_bin_name = 'tjs-language-server'
--- local cmd = { tjs_bin_name }
---
--- local custom_attach = function(client) print("Tjs langauge server LSP started."); end
---
--- if not configs.tjs_langauge_server then
---   configs.tjs_langauge_server = {
---     default_config = {
---       cmd = cmd,
---       filetypes = {
---         'javascript', 'javascriptreact',
---         'typescript',
---         'typescriptreact',
---       },
---       root_dir = function(fname)
---         return util.find_package_json_ancestor(fname)
---             or util.find_node_modules_ancestor(fname)
---             or util.find_git_ancestor(fname)
---       end,
---       single_file_support = true,
---       settings = {}
---     },
---   }
--- else
---   print("The tjs_langauge_server is found in official config")
--- end
---
--- lspconfig.tjs_langauge_server.setup {
---   on_attach = custom_attach,
---   capabilities = require("user.lsp.handlers").capabilities,
--- }
-
--- tjs-language-server end
-
 -- rome-language-server
 
-function os.capture(cmd, raw)
-  local handle = assert(io.popen(cmd, 'r'))
-  local output = assert(handle:read('*a'))
+-- function os.capture(cmd, raw)
+--   local handle = assert(io.popen(cmd, 'r'))
+--   local output = assert(handle:read('*a'))
+--
+--   handle:close()
+--
+--   if raw then
+--     return output
+--   end
+--
+--   output = string.gsub(
+--     string.gsub(
+--       string.gsub(output, '^%s+', ''),
+--       '%s+$',
+--       ''
+--     ),
+--     '[\n\r]+',
+--     ' '
+--   )
+--
+--   return output
+-- end
 
-  handle:close()
-
-  if raw then
-    return output
-  end
-
-  output = string.gsub(
-    string.gsub(
-      string.gsub(output, '^%s+', ''),
-      '%s+$',
-      ''
-    ),
-    '[\n\r]+',
-    ' '
-  )
-
-  return output
-end
-
-local rome_custom_attach = function(client)
-  client.server_capabilities.document_formatting = false
-  print("Rome langauge server LSP client.");
-end
+-- local rome_custom_attach = function(client)
+--   client.server_capabilities.document_formatting = false
+--   print("Rome langauge server LSP client.");
+-- end
 
 -- This duplicate exec is just a workaruond, if don't execute at first,
 -- the nvim will stuck when you first init rome socket
@@ -125,10 +86,10 @@ lspconfig.zls.setup {
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
-lspconfig.lua_ls.setup {
-  on_attach = require("user.lsp.handlers").on_attach,
-  capabilities = require("user.lsp.handlers").capabilities,
-}
+-- lspconfig.lua_ls.setup {
+--   on_attach =require("user.lsp.handlers").on_attach,
+--   capabilities = require("user.lsp.handlers").capabilities,
+-- }
 
 -- lua config
 local runtime_path = vim.split(package.path, ";")
@@ -160,7 +121,9 @@ lspconfig.sumneko_lua.setup({
     },
   },
 })
+
 -- lua config end
+
 lspconfig.taplo.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
