@@ -15,3 +15,7 @@ configs.setup({
 	},
 	indent = { enable = true, disable = { "python", "css" } },
 })
+
+require("nvim-treesitter.install").command_extra_args = {
+    curl = { "--proxy", "http://127.0.0.1:7890" },
+}
