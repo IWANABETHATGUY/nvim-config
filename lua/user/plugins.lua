@@ -2,8 +2,7 @@ local fn = vim.fn
 
 -- Automatically install packer
 -- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim" if fn.empty(fn.glob(install_path)) > 0 then
--- 	PACKER_BOOTSTRAP = fn.system({
--- 		"git",
+-- 	PACKER_BOOTSTRAP = fn.system({ "git",
 -- 		"clone",
 -- 		"--depth",
 -- 		"1",
@@ -108,7 +107,7 @@ return packer.startup(function(use)
   -- LSP
   use({ "neovim/nvim-lspconfig", commit = "148c99bd09b44cf3605151a06869f6b4d4c24455" })           -- enable LSP
   use({ "williamboman/nvim-lsp-installer", commit = "e9f13d7acaa60aff91c58b923002228668c8c9e6" }) -- simple to use language server installer
-  use({ "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" }) -- for formatters and linters
+  use({ "jose-elias-alvarez/null-ls.nvim" })                                                      -- for formatters and linters
   use {
     "folke/trouble.nvim",
     requires = "nvim-tree/nvim-web-devicons",
@@ -120,6 +119,7 @@ return packer.startup(function(use)
       }
     end
   }
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
   -- Telescope
   use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
 
@@ -137,6 +137,9 @@ return packer.startup(function(use)
   use({ "lewis6991/gitsigns.nvim" })
   use { "kdheepak/lazygit.nvim" }
 
+  -- rust
+  use { 'simrat39/rust-tools.nvim' }
+  use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
   -- use { "airblade/vim-gitgutter" }
 
   -- Automatically set up your configuration after cloning packer.nvim

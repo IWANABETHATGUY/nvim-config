@@ -128,7 +128,6 @@ lspconfig.taplo.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
--- rome-language-server end
 
 local servers = { "jsonls", "tsserver", "rust_analyzer", "clangd" }
 
