@@ -82,8 +82,10 @@ return packer.startup(function(use)
   use("folke/which-key.nvim")
 
   -- Colorschemes
-  use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
-  use("lunarvim/darkplus.nvim")
+  use({ "folke/tokyonight.nvim", branch = "main"  })
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  -- use("lunarvim/darkplus.nvim")
+
   use {
     "wsdjeg/vim-fetch"
   }
@@ -148,6 +150,7 @@ return packer.startup(function(use)
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+  -- use { 'christoomey/vim-tmux-navigator' }
 
   -- Custom
   if PACKER_BOOTSTRAP then

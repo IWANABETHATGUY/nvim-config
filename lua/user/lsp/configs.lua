@@ -129,7 +129,12 @@ lspconfig.taplo.setup {
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
-local servers = { "jsonls", "tsserver", "rust_analyzer", "clangd" }
+lspconfig.racket_langserver.setup {
+  on_attach = require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
+}
+
+local servers = { "jsonls", "tsserver", "rust_analyzer", "clangd", }
 
 lsp_installer.setup({
   ensure_installed = servers,
