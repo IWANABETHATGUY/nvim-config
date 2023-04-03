@@ -20,7 +20,7 @@ telescope.setup {
     buffer_previewer_maker = buffer_previewer_maker,
     prompt_prefix = " ",
     selection_caret = " ",
-    path_display = { "smart" },
+    path_display = { "truncate" },
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
@@ -72,10 +72,20 @@ telescope.setup {
       },
     },
   },
+  vimgrep_arguments = {
+    "rg",
+    "-L",
+    "--color=never",
+    "--no-heading",
+    "--with-filename",
+    "--line-number",
+    "--column",
+    "--smart-case",
+  },
   pickers = {
-    find_files = {
-      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
-    }
+    -- find_files = {
+    --   find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+    -- }
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
     --   picker_config_key = value,
