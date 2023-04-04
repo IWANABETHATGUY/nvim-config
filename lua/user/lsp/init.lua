@@ -6,7 +6,7 @@ end
 require "user.lsp.configs"
 require("user.lsp.handlers").setup()
 require("user.lsp.settings.tjs_language_server")
-require "user.lsp.null-ls"
+-- require "user.lsp.null-ls"
 -- require('lspconfig').tjs_language_server.setup()
 -- require('lspconfig').rust_analyzer.setup()
 
