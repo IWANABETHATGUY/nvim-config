@@ -152,6 +152,7 @@ return packer.startup(function(use)
   -- Put this at the end after all plugins
   -- use { 'christoomey/vim-tmux-navigator' }
 
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
   -- Custom
   if PACKER_BOOTSTRAP then
     require("packer").sync()
