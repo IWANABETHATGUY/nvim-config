@@ -133,8 +133,14 @@ lspconfig.racket_langserver.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
+lspconfig.denols.setup {
+  on_attach = require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  single_file_support = false
+}
 
-local servers = { "jsonls", "tsserver", "rust_analyzer", "clangd", }
+local servers = { "jsonls", "tsserver", "rust_analyzer", "clangd" }
 
 lsp_installer.setup({
   ensure_installed = servers,
