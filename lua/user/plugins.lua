@@ -82,9 +82,10 @@ return packer.startup(function(use)
   use("folke/which-key.nvim")
 
   -- Colorschemes
-  use({ "folke/tokyonight.nvim", branch = "main"  })
+  -- use({ "folke/tokyonight.nvim", branch = "main" })
   -- use { "catppuccin/nvim", as = "catppuccin" }
   -- use("lunarvim/darkplus.nvim")
+  use 'shaunsingh/nord.nvim'
 
   use {
     "wsdjeg/vim-fetch"
@@ -133,6 +134,7 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     commit = 'c1e0ce77ca542daa1f3aed6643dc1f377c3d72ca'
   }
+  use { "IndianBoy42/tree-sitter-just" }
 
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
@@ -152,7 +154,12 @@ return packer.startup(function(use)
   -- Put this at the end after all plugins
   -- use { 'christoomey/vim-tmux-navigator' }
 
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  })
   -- Custom
   if PACKER_BOOTSTRAP then
     require("packer").sync()

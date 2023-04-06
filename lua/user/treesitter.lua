@@ -1,12 +1,8 @@
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
-	return
+  return
 end
 
-
-require("nvim-treesitter.install").command_extra_args = {
-    -- curl = { "--proxy", "http://127.0.0.1:7890" },
-}
 
 require("nvim-treesitter.parsers").get_parser_configs().just = {
   install_info = {
@@ -16,23 +12,30 @@ require("nvim-treesitter.parsers").get_parser_configs().just = {
     use_makefile = true -- this may be necessary on MacOS (try if you see compiler errors)
   },
   maintainers = { "@IndianBoy42" },
+  filetype = "justfile"
 }
 
-require"nvim-treesitter.install".compilers = {"gcc", "clang"}
+require "nvim-treesitter.install".compilers = { "gcc", "clang" }
 
 configs.setup({
-	ensure_installed = "all", -- one of "all" or a list of languages
+  ensure_installed = "all",      -- one of "all" or a list of languages
   ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
-	highlight = {
-		enable = true, -- false will disable the whole extension
-		disable = { "css" }, -- list of language that will be disabled
-	},
-	autopairs = {
-		enable = true,
-	},
-	indent = { enable = true, disable = { "python", "css" } },
+  highlight = {
+    enable = true,               -- false will disable the whole extension
+    disable = { "css" },         -- list of language that will be disabled
+  },
+  autopairs = {
+    enable = true,
+  },
+  indent = { enable = true, disable = { "python", "css" } },
 })
 
 require("nvim-treesitter.install").command_extra_args = {
-    curl = { "--proxy", "http://127.0.0.1:7890" },
+  curl = { "--proxy", "http://127.0.0.1:7890" },
 }
+
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+
+-- TODO: this is just a workaround for justfile we could remove it once the grammar has been added to the nvim-treesitter
+-- require('tree-sitter-just').setup()
