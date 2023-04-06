@@ -1,2 +1,1 @@
-vim.cmd [[colorscheme nord]]
-require('nord').set()
+vim.cmd [[colorscheme nordfox]]

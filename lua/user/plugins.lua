@@ -85,7 +85,9 @@ return packer.startup(function(use)
   -- use({ "folke/tokyonight.nvim", branch = "main" })
   -- use { "catppuccin/nvim", as = "catppuccin" }
   -- use("lunarvim/darkplus.nvim")
-  use 'shaunsingh/nord.nvim'
+  -- use 'shaunsingh/nord.nvim'
+
+  use "EdenEast/nightfox.nvim" -- Packer
 
   use {
     "wsdjeg/vim-fetch"

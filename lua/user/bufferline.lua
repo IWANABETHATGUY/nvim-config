@@ -3,11 +3,6 @@ if not status_ok then
   return
 end
 
-local highlights = require("nord").bufferline.highlights({
-  italic = true,
-  bold = true,
-})
-
 bufferline.setup {
   options = {
     numbers = "none",                    -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
