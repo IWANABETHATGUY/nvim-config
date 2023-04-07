@@ -137,6 +137,7 @@ return packer.startup(function(use)
     commit = 'c1e0ce77ca542daa1f3aed6643dc1f377c3d72ca'
   }
   use { "IndianBoy42/tree-sitter-just" }
+  use 'j-hui/fidget.nvim'
 
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
