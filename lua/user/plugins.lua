@@ -133,6 +133,8 @@ return packer.startup(function(use)
   })
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- Repalce tool
+  use "nvim-pack/nvim-spectre"
   -- Treesitter
   -- use({
   -- 	"nvim-treesitter/nvim-treesitter",
