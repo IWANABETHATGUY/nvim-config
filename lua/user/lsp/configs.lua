@@ -145,7 +145,7 @@ lspconfig.denols.setup {
 --   capabilities = require("user.lsp.handlers").capabilities,
 -- }
 
-local servers = { "jsonls", "rust_analyzer", "clangd", "tsserver", "marksman" }
+local servers = { "jsonls", "clangd", "tsserver", }
 
 lsp_installer.setup({
   ensure_installed = servers,

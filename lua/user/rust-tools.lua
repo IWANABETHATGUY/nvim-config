@@ -9,18 +9,13 @@ rt.setup({
   },
   server = {
     on_attach = handler.on_attach,
+    capabilities = handler.capabilities,
     settings = {
       ["rust-analyzer"] = {
-        assist = {
-          importGranularity = "module",
-          importPrefix = "self",
-        },
-        cargo = {
-          loadOutDirsFromCheck = true
-        },
         procMacro = {
           enable = true
         },
+        checkOnSave = false,
         completion = {
           snippets = {
             custom = {
