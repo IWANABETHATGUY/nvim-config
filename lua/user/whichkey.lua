@@ -2,7 +2,6 @@ local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return
 end
-
 local setup = {
   plugins = {
     marks = true,       -- shows a list of your marks on ' and `
@@ -93,7 +92,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep {debounce = 500}<cr>", "Find Text" },
+  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep({debounce = 1000})<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   p = {
     name = "Packer",

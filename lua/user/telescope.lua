@@ -5,14 +5,18 @@ end
 
 local actions = require "telescope.actions"
 
-local buffer_previewer_maker = function(filepath, bufnr, opts)
+local new_maker = function(filepath, bufnr, opts)
   opts = opts or {}
-  if opts.use_ft_detect == nil then
-    local ft = require("plenary.filetype").detect(filepath, {})
-    opts.use_ft_detect = false
-    require("telescope.previewers.utils").regex_highlighter(bufnr, ft)
-  end
-  require("telescope.previewers").buffer_previewer_maker(filepath, bufnr, opts)
+
+  filepath = vim.fn.expand(filepath)
+  vim.loop.fs_stat(filepath, function(_, stat)
+    if not stat then return end
+    if stat.size > 1000000 then
+      return
+    else
+      previewers.buffer_previewer_maker(filepath, bufnr, opts)
+    end
+  end)
 end
 
 telescope.setup {
@@ -107,3 +111,4 @@ telescope.setup {
 
 
 require('telescope').load_extension('fzf')
+
