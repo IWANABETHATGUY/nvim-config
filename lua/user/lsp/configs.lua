@@ -4,123 +4,21 @@ if not status_ok then
 end
 
 local lspconfig = require("lspconfig")
--- rome-language-server
-
--- function os.capture(cmd, raw)
---   local handle = assert(io.popen(cmd, 'r'))
---   local output = assert(handle:read('*a'))
---
---   handle:close()
---
---   if raw then
---     return output
---   end
---
---   output = string.gsub(
---     string.gsub(
---       string.gsub(output, '^%s+', ''),
---       '%s+$',
---       ''
---     ),
---     '[\n\r]+',
---     ' '
---   )
---
---   return output
--- end
-
--- local rome_custom_attach = function(client)
---   client.server_capabilities.document_formatting = false
---   print("Rome langauge server LSP client.");
--- end
-
--- This duplicate exec is just a workaruond, if don't execute at first,
--- the nvim will stuck when you first init rome socket
--- os.execute("rome __print_socket") -- make sure rome has been in your PATH
--- local rome_socket = os.capture("rome __print_socket", false)
--- local rome_bin_name = 'nc'
--- local rome_cmd = { rome_bin_name, '-U', rome_socket }
-
--- if not configs.rome_language_server then
---   configs.rome_language_server = {
---     default_config = {
---       cmd = rome_cmd,
---       filetypes = {
---         'javascript',
---         'javascriptreact',
---         'typescript',
---         'typescriptreact',
---       },
---       root_dir = function(fname)
---         return util.find_package_json_ancestor(fname)
---             or util.find_node_modules_ancestor(fname)
---             or util.find_git_ancestor(fname)
---       end,
---       single_file_support = true,
---       settings = {
---         ["rome"] = {
---           analysis = {
---             enableCodeActions = true,
---             enableDiagnostics = true
---           }
---         }
---       }
---     },
---     init_options = {
---       languageFeatures = {
---         diagnostics = true,
---       },
---     }
---   }
--- else
---   print("The rome_language_server is found in official config")
--- end
-
--- lspconfig.rome_language_server.setup {
---   on_attach = rome_custom_attach,
---   capabilities = require("user.lsp.handlers").capabilities,
--- }
 
 lspconfig.zls.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
--- lspconfig.lua_ls.setup {
---   on_attach =require("user.lsp.handlers").on_attach,
---   capabilities = require("user.lsp.handlers").capabilities,
--- }
+lspconfig.lua_ls.setup {
+  on_attach =require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
+}
 
 -- lua config
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-
--- lspconfig.sumneko_lua.setup({
---   on_attach = require("user.lsp.handlers").on_attach,
---   settings = {
---     Lua = {
---       runtime = {
---         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---         version = "LuaJIT",
---         -- Setup your lua path
---         path = runtime_path,
---       },
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = { "vim" },
---       },
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = vim.api.nvim_get_runtime_file("", true),
---       },
---       -- Do not send telemetry data containing a randomized but unique identifier
---       telemetry = {
---         enable = false,
---       },
---     },
---   },
--- })
 
 -- lua config end
 
