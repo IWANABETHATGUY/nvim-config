@@ -3,9 +3,15 @@ local status_ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
 if status_ok then
   default_schemas = jsonls_settings.get_default_schemas()
 end
-
+-- https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json
 local schemas = {
   {
+    description = "Rome config",
+    fileMatch = { "rome.json" },
+    url = "https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json",
+  },
+  {
+
     description = "TypeScript compiler configuration file",
     fileMatch = {
       "tsconfig.json",

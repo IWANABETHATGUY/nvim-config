@@ -4,7 +4,8 @@ local util = require('lspconfig.util')
 local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
 
-local custom_attach = function(client) print("Tjs langauge server LSP started."); end
+local custom_attach = function(client) 
+end
 
 configs.tjs_langauge_server = {
   default_config = {
