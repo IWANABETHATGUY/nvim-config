@@ -129,10 +129,11 @@ return packer.startup(function(use)
   -- Telescope
   use({
     "nvim-telescope/telescope.nvim",
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = { { 'nvim-lua/plenary.nvim' },{ "nvim-telescope/telescope-live-grep-args.nvim" }  }
   })
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'nvim-telescope/telescope-live-grep-args.nvim'}
   -- Repalce tool
   use "nvim-pack/nvim-spectre"
   -- Treesitter

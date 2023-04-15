@@ -92,7 +92,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>lua require('telescope.builtin').live_grep({debounce = 1000})<cr>", "Find Text" },
+  ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({debounce = 800})<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   p = {
     name = "Packer",
