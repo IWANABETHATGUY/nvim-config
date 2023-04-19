@@ -12,7 +12,7 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
   update_focused_file = {
-    enable = true,
+    enable = false,
     update_root = false,
   },
   renderer = {
@@ -54,7 +54,7 @@ nvim_tree.setup {
     },
   },
   view = {
-    width = 30,
+    width = 40,
     height = 30,
     side = "left",
     mappings = {

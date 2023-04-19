@@ -43,6 +43,8 @@ require("nvim-treesitter.install").command_extra_args = {
 
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt["foldenable"] = false
+vim.opt["foldlevel"] = 99
 
 -- TODO: this is just a workaround for justfile we could remove it once the grammar has been added to the nvim-treesitter
 -- require('tree-sitter-just').setup()
