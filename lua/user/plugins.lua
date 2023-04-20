@@ -166,6 +166,8 @@ return packer.startup(function(use)
   -- rust
   use { 'simrat39/rust-tools.nvim' }
   use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
+
+  use {'chentoast/marks.nvim'}
   -- use { "airblade/vim-gitgutter" }
 
   -- Automatically set up your configuration after cloning packer.nvim
