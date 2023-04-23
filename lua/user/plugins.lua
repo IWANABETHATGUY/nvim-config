@@ -163,6 +163,8 @@ return packer.startup(function(use)
     requires = 'nvim-lua/plenary.nvim',
   }
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  -- use { 'github/copilot.vim' }
+
   -- rust
   use { 'simrat39/rust-tools.nvim' }
   use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
