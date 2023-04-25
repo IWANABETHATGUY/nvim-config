@@ -11,6 +11,8 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
+  enable = true,
+  timeout = 400, -- (in ms)
   update_focused_file = {
     enable = false,
     update_root = false,
