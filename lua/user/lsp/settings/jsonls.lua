@@ -6,12 +6,16 @@ end
 -- https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json
 local schemas = {
   {
+    description = "rspack config test json",
+    fileMatch = { "test.config.json" },
+    url = "https://raw.githubusercontent.com/web-infra-dev/rspack/main/crates/rspack_testing/test.config.scheme.json"
+  },
+  {
     description = "Rome config",
     fileMatch = { "rome.json" },
     url = "https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json",
   },
   {
-
     description = "TypeScript compiler configuration file",
     fileMatch = {
       "tsconfig.json",
@@ -104,7 +108,8 @@ local schemas = {
     url = "https://json.schemastore.org/commands.json",
   },
   {
-    description = "AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment.",
+    description =
+    "AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment.",
     fileMatch = {
       "*.cf.json",
       "cloudformation.json",
@@ -112,7 +117,8 @@ local schemas = {
     url = "https://raw.githubusercontent.com/awslabs/goformation/v5.2.9/schema/cloudformation.schema.json",
   },
   {
-    description = "The AWS Serverless Application Model (AWS SAM, previously known as Project Flourish) extends AWS CloudFormation to provide a simplified way of defining the Amazon API Gateway APIs, AWS Lambda functions, and Amazon DynamoDB tables needed by your serverless application.",
+    description =
+    "The AWS Serverless Application Model (AWS SAM, previously known as Project Flourish) extends AWS CloudFormation to provide a simplified way of defining the Amazon API Gateway APIs, AWS Lambda functions, and Amazon DynamoDB tables needed by your serverless application.",
     fileMatch = {
       "serverless.template",
       "*.sam.json",
