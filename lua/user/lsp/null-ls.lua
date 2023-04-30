@@ -7,5 +7,6 @@ end
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.rome,
+    null_ls.builtins.formatting.ocamlformat
   },
 })

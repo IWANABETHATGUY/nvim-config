@@ -76,6 +76,14 @@ local opts = {
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true,  -- use `nowait` when creating keymaps
 }
+local visual_opts = {
+  mode = "v",     -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true,  -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true,  -- use `nowait` when creating keymaps
+}
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
@@ -184,3 +192,9 @@ local mappings = {
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register({
+  l = {
+    a = { "<cmd>CodeActionMenu<cr>", "code actions", },
+  },
+
+}, visual_opts)

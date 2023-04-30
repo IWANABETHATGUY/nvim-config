@@ -49,7 +49,8 @@ keymap("i", "jk", "<ESC>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-keymap("v", "<leader>la", ":CodeActionMenu<CR>", opts)
+-- keymap("v", "<leader>la", "vim.lsp.buf.code_action", opts)
+
 keymap("v", "gl", '<cmd>lua require"gitlinker".get_buf_range_url("v", {})<cr>', opts)
 
 -- Move text up and down
