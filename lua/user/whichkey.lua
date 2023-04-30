@@ -1,7 +1,6 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
-  return
-end
+  return end
 local setup = {
   plugins = {
     marks = true,       -- shows a list of your marks on ' and `
@@ -157,6 +156,7 @@ local mappings = {
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    R = { "<cmd>Telescope restart_ls<cr>", "Restart language server" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",

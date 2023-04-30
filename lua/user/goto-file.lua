@@ -44,14 +44,9 @@ function M.get_register_and_eval()
   --   api.nvim_command("wincmd p")
   -- end
 
-  -- fterm.close()
-  -- local register = vim.fn.getreg('"')
-  -- vim.cmd(string.format("e %s", register))
-  local original_bufnr = vim.api.nvim_get_current_buf()
-  local buf_clients = vim.lsp.get_active_clients { bufnr = original_bufnr }
-  for _, client in pairs(buf_clients) do
-    print(client.name)
-  end
+  fterm.close()
+  local register = vim.fn.getreg('"')
+  vim.cmd(string.format("e %s", register))
 end
 
 vim.api.nvim_set_keymap("n", "ge", ":lua require('user.goto-file').get_register_and_eval()<CR>", opts)

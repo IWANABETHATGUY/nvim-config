@@ -189,6 +189,7 @@ return packer.startup(function(use)
   use {
     'mfussenegger/nvim-dap'
   }
+  use '~/.config/nvim/lua/user/restart_ls'
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   -- Custom
   if PACKER_BOOTSTRAP then
