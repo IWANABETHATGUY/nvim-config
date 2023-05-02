@@ -183,13 +183,15 @@ return packer.startup(function(use)
     ft = { "markdown" },
   })
 
+  use "jubnzv/virtual-types.nvim"
   -- Debug
 
 
   use {
     'mfussenegger/nvim-dap'
   }
-  use '~/.config/nvim/lua/user/restart_ls'
+  use { '~/.config/nvim/lua/user/restart_ls' }
+  use { '~/Documents/nvim/file-position-matcher', run = "./install.sh" }
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
   -- Custom
   if PACKER_BOOTSTRAP then

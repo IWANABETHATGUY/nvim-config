@@ -1,5 +1,23 @@
 local fterm = require('FTerm')
 local opts = { noremap = true, silent = true }
+
+function RenameWithQuickfix(a)
+  vim.lsp.buf_request_all(0, "tjs-language-server/slice-jumper", a, function(result)
+    -- You can uncomment this to see what the result looks like.
+
+    local ret = ""
+    for k, v in pairs(result) do
+      for kk, vv in pairs(v) do
+        ret = vv.position
+      end
+    end
+    print(ret)
+    -- print(vim.inspect(result))
+    -- print(method)
+    -- print(vim.inspect(result.result))
+  end)
+end
+
 local M = {}
 function M.get_register_and_eval()
   -- local current_word = vim.call('expand', '<cword>')
@@ -44,9 +62,17 @@ function M.get_register_and_eval()
   --   api.nvim_command("wincmd p")
   -- end
 
+  local current_line = vim.api.nvim_get_current_line()
+
   fterm.close()
-  local register = vim.fn.getreg('"')
-  vim.cmd(string.format("e %s", register))
+  local matcher = require('matcher')
+  local res = matcher.add(current_line)
+  -- local register = vim.fn.getreg('"')
+  if res ~= nil then
+    vim.cmd(string.format("e %s", res))
+  else
+    print(current_line)
+  end
 end
 
 vim.api.nvim_set_keymap("n", "ge", ":lua require('user.goto-file').get_register_and_eval()<CR>", opts)
