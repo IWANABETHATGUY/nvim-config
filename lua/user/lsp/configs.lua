@@ -28,7 +28,10 @@ lspconfig.racket_langserver.setup {
 }
 
 lspconfig.ocamllsp.setup {
-  on_attach = require("user.lsp.handlers").on_attach,
+  on_attach = function(client, bufnr)
+    require('virtualtypes').on_attach(client, bufnr)
+    require("user.lsp.handlers").on_attach(client, bufnr)
+  end,
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
@@ -44,7 +47,7 @@ lspconfig.denols.setup {
 --   capabilities = require("user.lsp.handlers").capabilities,
 -- }
 
-local servers = { "jsonls", "clangd", "tsserver", "ocamllsp" }
+local servers = { "jsonls", "clangd", "tsserver" }
 require("mason-lspconfig").setup {
   ensure_installed = servers
 }

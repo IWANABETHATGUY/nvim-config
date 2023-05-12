@@ -129,6 +129,9 @@ return packer.startup(function(use)
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
+        auto_preview = false,
+        auto_jump = {},
+        auto_fold = true
       }
     end
   }
@@ -143,14 +146,9 @@ return packer.startup(function(use)
   -- Repalce tool
   use "nvim-pack/nvim-spectre"
   -- Treesitter
-  -- use({
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	commit = "518e27589c0463af15463c9d675c65e464efc2fe",
-  -- })
   use {
-    'nvim-treesitter/nvim-treesitter',
-    commit = 'c1e0ce77ca542daa1f3aed6643dc1f377c3d72ca'
-  }
+     'nvim-treesitter/nvim-treesitter',
+   }
   use { "IndianBoy42/tree-sitter-just" }
   use 'j-hui/fidget.nvim'
 

@@ -1,23 +1,6 @@
 local fterm = require('FTerm')
 local opts = { noremap = true, silent = true }
 
-function RenameWithQuickfix(a)
-  vim.lsp.buf_request_all(0, "tjs-language-server/slice-jumper", a, function(result)
-    -- You can uncomment this to see what the result looks like.
-
-    local ret = ""
-    for k, v in pairs(result) do
-      for kk, vv in pairs(v) do
-        ret = vv.position
-      end
-    end
-    print(ret)
-    -- print(vim.inspect(result))
-    -- print(method)
-    -- print(vim.inspect(result.result))
-  end)
-end
-
 local M = {}
 function M.get_register_and_eval()
   -- local current_word = vim.call('expand', '<cword>')
