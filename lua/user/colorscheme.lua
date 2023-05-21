@@ -50,7 +50,7 @@ require('nightfox').setup({
   specs = {},
   groups = {
     nordfox = {
-      LspInlayHint = { fg = "red" },
+      LspInlayHint = { fg = "palette.red" },
     }
   },
 })
