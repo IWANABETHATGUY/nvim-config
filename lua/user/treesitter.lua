@@ -37,9 +37,9 @@ configs.setup({
   indent = { enable = true, disable = { "python", "css" } },
 })
 
-require("nvim-treesitter.install").command_extra_args = {
-  curl = { "--proxy", "http://127.0.0.1:7890" },
-}
+-- require("nvim-treesitter.install").command_extra_args = {
+--   curl = { "--proxy", "http://127.0.0.1:7890" },
+-- }
 
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
