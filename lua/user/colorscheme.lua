@@ -59,5 +59,5 @@ require('nightfox').setup({
 vim.cmd [[colorscheme nordfox]]
 
 
-vim.cmd("hi LspInlayHint guifg=#cccccc")
+vim.cmd("hi LspInlayHint guifg=#83b260")
 
