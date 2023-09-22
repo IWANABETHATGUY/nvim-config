@@ -69,7 +69,10 @@ rt.setup({
   tools = {
     hover_actions = {
       auto_focus = true
-    }
+    },
+    inlay_hints  = {
+      auto = false
+    },
   },
   server = {
     on_attach = handler.on_attach,

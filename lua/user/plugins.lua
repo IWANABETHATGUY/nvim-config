@@ -111,7 +111,11 @@ return packer.startup(function(use)
   use({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }) -- a bunch of snippets to use
 
   -- LSP
-  use({ "neovim/nvim-lspconfig" }) -- enable LSP
+  use({ "neovim/nvim-lspconfig", 
+    opts = {
+      inlay_hints = { enabled = true },
+    } 
+  }) -- enable LSP
   -- use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
   use {
     "williamboman/mason-lspconfig.nvim",
