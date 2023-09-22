@@ -98,7 +98,7 @@ local mappings = {
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>RustHoverAction<CR>", "RustHoverAction" },
+  ["h"] = { "<cmd>lua require('rust-tools').hover_actions.hover_actions()<CR>", "RustHoverAction" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
