@@ -199,6 +199,7 @@ which_key.register(mappings, opts)
 which_key.register({
   l = {
     a = { "<cmd>CodeActionMenu<cr>", "code actions", },
+    f = { "<cmd>lua vim.lsp.buf.format{async=false}<cr>", "Format" },
   },
 
 }, visual_opts)
