@@ -86,6 +86,7 @@ local visual_opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+  ["r"] = { "<cmd>Neotree reveal<cr>", "Neotree reveal" },
   ["b"] = {
     b = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -94,7 +95,7 @@ local mappings = {
     p = {"<cmd>BufferPin<cr>", "Pin/Unpin"},
     f = {"<cmd>BufferFirst<cr>", "Go to first buffer"}
   },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },

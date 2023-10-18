@@ -58,6 +58,8 @@ return packer.startup(function(use)
   use({
     'ggandor/leap.nvim'
   })
+
+  use {'github/copilot.vim', branch = 'release' }
   use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
   use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" })  -- Useful lua functions used by lots of plugins
   use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" })  -- Autopairs, integrates with both cmp and treesitter
@@ -65,11 +67,13 @@ return packer.startup(function(use)
   use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
   use({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" })
   use {
-    'kyazdani42/nvim-tree.lua',
-    -- requires = {
-    -- 	'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    -- },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
   }
   use({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" })
   use 'romgrk/barbar.nvim'
