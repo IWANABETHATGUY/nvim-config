@@ -158,7 +158,15 @@ return packer.startup(function(use)
      'nvim-treesitter/nvim-treesitter',
    }
   use { "IndianBoy42/tree-sitter-just" }
-  use 'j-hui/fidget.nvim'
+  use {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function()
+      require("fidget").setup {
+        -- options
+      }
+    end,
+  }
 
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
