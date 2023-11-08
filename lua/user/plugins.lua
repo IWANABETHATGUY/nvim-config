@@ -183,6 +183,8 @@ return packer.startup(function(use)
   use { 'simrat39/rust-tools.nvim' }
   use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
 
+
+  use {'ThePrimeagen/harpoon', requires = "nvim-lua/plenary.nvim"}
   use { 'chentoast/marks.nvim' }
   -- use { "airblade/vim-gitgutter" }
 
