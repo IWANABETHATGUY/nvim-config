@@ -8,3 +8,7 @@ end, {
 vim.api.nvim_create_user_command('HarpoonMarks', function() 
   vim.cmd.Telescope('harpoon', 'marks')
 end, {})
+
+vim.api.nvim_create_user_command('NeotreeReveal', function() 
+  vim.cmd.Neotree('reveal')
+end, {})
