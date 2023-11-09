@@ -4,3 +4,7 @@ vim.api.nvim_create_user_command('RustFlyCheck', function()
 end, {
   ["bang"] = true
 })
+
+vim.api.nvim_create_user_command('HarpoonMarks', function() 
+  vim.cmd.Telescope('harpoon', 'marks')
+end, {})
