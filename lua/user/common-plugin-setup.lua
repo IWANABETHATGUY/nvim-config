@@ -92,3 +92,16 @@ require'marks'.setup {
   mappings = {
   }
 }
+
+-- workspaces
+
+require("workspaces").setup({
+    hooks = {
+        open = { 
+          "Telescope find_files" , 
+          "Telescope live_grep_args",
+          -- "Neotree toggle",
+          "HarpoonMarks"
+        },
+    }
+})

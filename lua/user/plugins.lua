@@ -50,6 +50,9 @@ return packer.startup(function(use)
     'kosayoda/nvim-lightbulb',
     requires = 'antoinemadec/FixCursorHold.nvim',
   }
+  use {
+    "natecraddock/workspaces.nvim"
+  }
   use({
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
