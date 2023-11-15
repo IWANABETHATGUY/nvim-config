@@ -105,11 +105,6 @@ require("workspaces").setup({
     mru_sort = true,
     hooks = {
         open = { 
-          "GotoLinkedFile",
-          "Telescope find_files" ,
-          "Telescope live_grep_args",
-          -- "Neotree toggle",
-          "HarpoonMarks"
         },
     }
 })
