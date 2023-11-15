@@ -96,9 +96,17 @@ require'marks'.setup {
 -- workspaces
 
 require("workspaces").setup({
+    cd_type = "global",
+
+    -- sort the list of workspaces by name after loading from the workspaces path.
+    sort = true,
+
+    -- sort by recent use rather than by name. requires sort to be true
+    mru_sort = true,
     hooks = {
         open = { 
-          "Telescope find_files" , 
+          "GotoLinkedFile",
+          "Telescope find_files" ,
           "Telescope live_grep_args",
           -- "Neotree toggle",
           "HarpoonMarks"

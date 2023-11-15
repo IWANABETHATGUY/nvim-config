@@ -52,12 +52,22 @@ function M.get_register_and_eval()
   local res = matcher.add(current_line)
   -- local register = vim.fn.getreg('"')
   if res ~= nil then
+    local workspaces = require('workspaces')
+    local ws_path = require('workspaces.util').path
+    local current_ws = workspaces.path()
+    if current_ws ~= nil then
+      res = vim.fn.resolve(current_ws .. "/" .. res)
+    end
     vim.cmd(string.format("e %s", res))
   else
     print(current_line)
   end
 end
 
-vim.api.nvim_set_keymap("n", "ge", ":lua require('user.goto-file').get_register_and_eval()<CR>", opts)
+vim.api.nvim_set_keymap("n", "ge", ":GotoLinkedFile<CR>", opts)
+
+vim.api.nvim_create_user_command('GotoLinkedFile', function() 
+  vim.cmd(":lua require('user.goto-file').get_register_and_eval()")
+end, {})
 
 return M;
