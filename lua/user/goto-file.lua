@@ -50,15 +50,22 @@ function M.get_register_and_eval()
   fterm.close()
   local matcher = require('matcher')
   local res = matcher.add(current_line)
-  -- local register = vim.fn.getreg('"')
   if res ~= nil then
-    local workspaces = require('workspaces')
-    local ws_path = require('workspaces.util').path
-    local current_ws = workspaces.path()
-    if current_ws ~= nil then
-      res = vim.fn.resolve(current_ws .. "/" .. res)
+    lines = {}
+    for s in res:gmatch("[^\r\n]+") do
+        table.insert(lines, s)
     end
-    vim.cmd(string.format("e %s", res))
+    if #lines == 1 then
+      vim.cmd(string.format("e %s", lines[1]))
+      return
+    end
+    vim.ui.select(lines, {
+        prompt = "Select a path",
+      }, function(item, _)
+        if item ~= nil then
+          vim.cmd(string.format("e %s", item))
+        end
+      end)
   else
     print(current_line)
   end

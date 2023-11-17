@@ -96,6 +96,8 @@ return packer.startup(function(use)
   -- use("lunarvim/darkplus.nvim")
   -- use 'shaunsingh/nord.nvim'
 
+
+  use {'stevearc/dressing.nvim'}
   use "EdenEast/nightfox.nvim" -- Packer
 
   use {
