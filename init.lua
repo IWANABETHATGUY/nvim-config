@@ -27,7 +27,7 @@ require "user.dap"
 require "user.custom-command"
 require "user.barbar"
 require "user.telescope"
-
+require "user.snip"
 
 
 

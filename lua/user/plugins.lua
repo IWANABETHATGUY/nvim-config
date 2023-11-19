@@ -116,7 +116,13 @@ return packer.startup(function(use)
   use({ "hrsh7th/cmp-nvim-lua" })
 
   -- snippets
-  use({ "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" })             --snippet engine
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    branch = "master", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
   use({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }) -- a bunch of snippets to use
 
   -- LSP
@@ -160,8 +166,10 @@ return packer.startup(function(use)
   use "nvim-pack/nvim-spectre"
   -- Treesitter
   use {
-     'nvim-treesitter/nvim-treesitter',
-   }
+    'nvim-treesitter/nvim-treesitter',
+  }
+
+  use 'nvim-treesitter/playground'
   use { "IndianBoy42/tree-sitter-just" }
   use {
     'j-hui/fidget.nvim',
@@ -192,10 +200,6 @@ return packer.startup(function(use)
   use {'ThePrimeagen/harpoon', requires = "nvim-lua/plenary.nvim"}
   use { 'chentoast/marks.nvim' }
   -- use { "airblade/vim-gitgutter" }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  -- use { 'christoomey/vim-tmux-navigator' }
 
   use({
     "iamcco/markdown-preview.nvim",

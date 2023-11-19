@@ -49,7 +49,7 @@ function M.get_register_and_eval()
 
   fterm.close()
   local matcher = require('matcher')
-  local res = matcher.add(current_line)
+  local res = matcher.add(current_line, vim.loop.cwd())
   if res ~= nil then
     lines = {}
     for s in res:gmatch("[^\r\n]+") do

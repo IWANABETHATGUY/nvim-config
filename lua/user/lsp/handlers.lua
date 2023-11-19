@@ -88,7 +88,26 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint(bufnr, true)
+    local inlay_hints_group = vim.api.nvim_create_augroup('InlayHints', { clear = false })
+
+    -- Initial inlay hint display.
+    local mode = vim.api.nvim_get_mode().mode
+    vim.lsp.inlay_hint.enable(buf, mode == 'n' or mode == 'v')
+
+    vim.api.nvim_create_autocmd('InsertEnter', {
+      group = inlay_hints_group,
+      buffer = buf,
+      callback = function()
+        vim.lsp.inlay_hint.enable(buf, false)
+      end,
+    })
+    vim.api.nvim_create_autocmd('InsertLeave', {
+      group = inlay_hints_group,
+      buffer = buf,
+      callback = function()
+        vim.lsp.inlay_hint.enable(buf, true)
+      end,
+    })
   end
   -- setup code_lens
   -- if client.resolved_capabilities.code_lens then
