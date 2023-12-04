@@ -62,7 +62,7 @@ return packer.startup(function(use)
     'ggandor/leap.nvim'
   })
 
-  use {'github/copilot.vim', branch = 'release' }
+  -- use {'github/copilot.vim', branch = 'release' }
   use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
   use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" })  -- Useful lua functions used by lots of plugins
   use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" })  -- Autopairs, integrates with both cmp and treesitter
@@ -86,7 +86,8 @@ return packer.startup(function(use)
   use "numToStr/FTerm.nvim"
   -- use({ "ahmedkhalf/project.nvim", commit = "541115e762764bc44d7d3bf501b6e367842d3d4f" })
   use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
-  -- use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
+
+  use "lukas-reineke/indent-blankline.nvim"
   use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
   use("folke/which-key.nvim")
 
