@@ -93,7 +93,7 @@ local mappings = {
       "Buffers",
     },
     p = {"<cmd>BufferPin<cr>", "Pin/Unpin"},
-    f = {"<cmd>BufferFirst<cr>", "Go to first buffer"}
+    f = {"<cmd>BufferFirst<cr>", "Go to first buffer"},
     o = {"<cmd>BufferOrderByBufferNumber<cr>", "BufferOrderByBufferNumber"}
   },
   ["e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
