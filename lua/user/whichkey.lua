@@ -86,7 +86,6 @@ local visual_opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["r"] = { "<cmd>Neotree reveal<cr>", "Neotree reveal" },
   ["b"] = {
     b = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",

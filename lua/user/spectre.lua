@@ -12,7 +12,7 @@ require('spectre').setup({
   },
   mapping            = {
     ['toggle_line'] = {
-      map = "dd",
+      map = "tl",
       cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
       desc = "toggle current item"
     },
@@ -22,7 +22,7 @@ require('spectre').setup({
       desc = "goto current file"
     },
     ['run_current_replace'] = {
-      map = "<leader>rc",
+      map = "<leader>rr",
       cmd = "<cmd>lua require('spectre.actions').run_current_replace()<CR>",
       desc = "replace current line"
     },
@@ -35,6 +35,11 @@ require('spectre').setup({
       map = "ti",
       cmd = "<cmd>lua require('spectre').change_options('ignore-case')<CR>",
       desc = "toggle ignore case"
+    },
+    ['replace_cmd'] = {
+      map = "<leader>rcmd",
+      cmd = "<cmd>lua require('spectre.actions').replace_cmd()<CR>",
+      desc = "input replace command"
     },
     ['toggle_ignore_hidden'] = {
       map = "th",
