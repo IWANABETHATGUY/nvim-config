@@ -27,31 +27,31 @@ configs.tjs_langauge_server = {
         ["templateMapList"] = {
           {
             ["snippetKey"] = "time",
-            ["functionName"] = "console.time"
+            ["code"] = "console.time($)"
           },
           {
             ["snippetKey"] = "jsons",
-            ["functionName"] = "JSON.stringify"
+            ["code"] = "JSON.stringify($)"
           },
           {
             ["snippetKey"] = "jsonp",
-            ["functionName"] = "JSON.parse"
+            ["code"] = "JSON.parse($)"
           },
           {
             ["snippetKey"] = "log",
-            ["functionName"] = "console.log"
+            ["code"] = "console.log('$: ', $)"
           },
           {
             ["snippetKey"] = "error",
-            ["functionName"] = "console.error"
+            ["code"] = "console.error('$: ', $)"
           },
           {
             ["snippetKey"] = "warn",
-            ["functionName"] = "console.warn",
+            ["code"] = "console.warn('$: ', $)",
           },
           {
             ["snippetKey"] = "req",
-            ["functionName"] = "require",
+            ["code"] = "require($)",
           }
         }
       }

@@ -1,13 +1,13 @@
--- oxc language server
+-- oxc_language_server
 
 local util = require('lspconfig.util')
 local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
 
 
-configs.oxc_ls = {
+configs.oxc_language_server = {
   default_config = {
-    cmd = { 'oxc_vscode' },
+    cmd = { 'oxc_language_server' },
     filetypes = {
       'javascript',
       'javascriptreact',
@@ -29,9 +29,9 @@ configs.oxc_ls = {
 
 
 
-lspconfig.oxc_ls.setup {
-  on_attach = require("user.lsp.handlers").on_attach,
-  capabilities = require("user.lsp.handlers").capabilities,
+lspconfig.oxc_language_server.setup {
+  -- on_attach = require("user.lsp.handlers").on_attach,
+  -- capabilities = require("user.lsp.handlers").capabilities,
 }
 
--- tjs-language-server end
+-- oxc_language_server end
