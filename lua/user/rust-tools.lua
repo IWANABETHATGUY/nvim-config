@@ -87,10 +87,13 @@ rt.setup({
         cargo = {
           loadOutDirsFromCheck = false
         },
-        procMacro = {
-          enable = true
-        },
         checkOnSave = false,
+        procMacro = {
+          enable = true,
+          ignored = {
+            ['napi-derive'] = { 'napi' },
+          },
+        },
         completion = {
           snippets = {
             custom = {
