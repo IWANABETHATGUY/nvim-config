@@ -84,6 +84,7 @@ rt.setup({
           importGranularity = "module",
           importPrefix = "self",
         },
+        numThreads = 16,
         cargo = {
           loadOutDirsFromCheck = false
         },
