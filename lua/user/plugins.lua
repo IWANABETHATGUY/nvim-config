@@ -168,6 +168,6 @@ require("lazy").setup({
     'mfussenegger/nvim-dap'
   },
   --  { '~/.config/nvim/lua/r/restart_ls' },
-  --  { '~/Documents/nvim/file-position-matcher', run = "./install.sh" },
+   { dir = '~/Documents/nvim/file-position-matcher', build = "./install.sh", lazy = false },
    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 })
