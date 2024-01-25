@@ -48,6 +48,7 @@ lspconfig.denols.setup {
 -- }
 
 local servers = { "jsonls", "clangd", "tsserver", "volar" }
+
 require("mason-lspconfig").setup {
   ensure_installed = servers
 }

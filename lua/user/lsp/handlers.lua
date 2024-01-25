@@ -109,20 +109,7 @@ M.on_attach = function(client, bufnr)
       end,
     })
   end
-  -- setup code_lens
-  -- if client.resolved_capabilities.code_lens then
-  --   local codelens = vim.api.nvim_create_augroup(
-  --     'LSPCodeLens',
-  --     { clear = true }
-  --   )
-  --   vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave', 'CursorHold' }, {
-  --     group = codelens,
-  --     callback = function()
-  --       vim.lsp.codelens.refresh()
-  --     end,
-  --     buffer = bufnr,
-  --   })
-  -- end
+
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end

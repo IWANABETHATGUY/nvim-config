@@ -1,6 +1,7 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return end
+
 local setup = {
   plugins = {
     marks = true,       -- shows a list of your marks on ' and `
@@ -99,7 +100,7 @@ local mappings = {
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>lua require('rust-tools').hover_actions.hover_actions()<CR>", "RustHoverAction" },
+  ["h"] = { "<cmd>:RustLsp hover actions<CR>", "RustHoverAction" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",

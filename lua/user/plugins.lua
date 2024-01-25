@@ -147,8 +147,12 @@ require("lazy").setup({
   --  { 'github/copilot.vim' }
 
   -- rust
-   { 'simrat39/rust-tools.nvim' },
-   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+  { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^3', -- Recommended
+    ft = { 'rust' },
+  },
 
 
    {'ThePrimeagen/harpoon', dependencies = {"nvim-lua/plenary.nvim"}},

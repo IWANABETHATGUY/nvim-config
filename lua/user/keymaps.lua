@@ -97,4 +97,16 @@ keymap('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 -- Pin/unpin buffer
 keymap('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 
+-- rust-analyzer
 
+local bufnr = vim.api.nvim_get_current_buf()
+vim.keymap.set(
+  "n", 
+  "<leader>a", 
+  function()
+    vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+    -- or vim.lsp.buf.codeAction() if you don't want grouping.
+  end,
+  { silent = true, buffer = bufnr }
+)
+ -- 

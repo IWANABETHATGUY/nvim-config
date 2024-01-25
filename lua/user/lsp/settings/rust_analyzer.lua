@@ -20,7 +20,7 @@ return {
               ["body"] = {
                 "println!(\"$0\", ${receiver});"
               },
-              ["description"] = "println!()",
+              ["description"] = "println!()"
               ["scope"] = "expr"
             },
             ["Arc::new"] = {
