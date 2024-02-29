@@ -42,12 +42,16 @@ lspconfig.denols.setup {
   single_file_support = false
 }
 
--- lspconfig.tsserver.setup {
---   on_attach = require("user.lsp.handlers").on_attach,
---   capabilities = require("user.lsp.handlers").capabilities,
--- }
+lspconfig.move_analyzer.setup {
+  on_attach = require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
+  root_dir = lspconfig.util.root_pattern("Move.toml"),
+  single_file_support = false,
+  cmd = { "sui-move-analyzer"}
+}
 
-local servers = { "jsonls", "clangd", "tsserver", "volar" }
+
+local servers = { "jsonls", "clangd", "tsserver", "volar", }
 
 require("mason-lspconfig").setup {
   ensure_installed = servers

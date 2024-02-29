@@ -124,7 +124,8 @@ require("lazy").setup({
   },
 
    'nvim-treesitter/playground',
-   { "IndianBoy42/tree-sitter-just" },
+  '0xmovses/move.vim',
+  { "IndianBoy42/tree-sitter-just" },
    {
     'j-hui/fidget.nvim',
     tag = 'legacy',
