@@ -39,15 +39,15 @@ configs.tjs_langauge_server = {
           },
           {
             ["snippetKey"] = "log",
-            ["code"] = "console.log('$$: ', $$)"
+            ["code"] = "console.log(`$$: `, $$)"
           },
           {
             ["snippetKey"] = "error",
-            ["code"] = "console.error('$$: ', $$)"
+            ["code"] = "console.error(`$$: `, $$)"
           },
           {
             ["snippetKey"] = "warn",
-            ["code"] = "console.warn('$$: ', $$)",
+            ["code"] = "console.warn(`$$: `, $$)",
           },
           {
             ["snippetKey"] = "req",
