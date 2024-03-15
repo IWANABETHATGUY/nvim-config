@@ -7,19 +7,14 @@ local lspconfig = require("lspconfig")
 local custom_attach = function(client) 
 end
 
-configs.tjs_langauge_server = {
+configs.sway_lsp = {
   default_config = {
-    cmd = { 'tjs-language-server' },
+    cmd = { 'forc-lsp' },
     filetypes = {
-      'javascript',
-      'javascriptreact',
-      'typescript',
-      'typescriptreact',
+      "sway"
     },
     root_dir = function(fname)
-      return util.find_package_json_ancestor(fname)
-          or util.find_node_modules_ancestor(fname)
-          or util.find_git_ancestor(fname)
+      return util.find_git_ancestor(fname)
     end,
     single_file_support = true,
     settings = {
@@ -28,8 +23,8 @@ configs.tjs_langauge_server = {
 }
 
 
-lspconfig.tjs_langauge_server.setup {
-  on_attach = custom_attach,
+lspconfig.sway_lsp.setup {
+  on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
 

@@ -126,6 +126,7 @@ require("lazy").setup({
    'nvim-treesitter/playground',
   '0xmovses/move.vim',
   { "IndianBoy42/tree-sitter-just" },
+  { "FuelLabs/tree-sitter-sway" },
    {
     'j-hui/fidget.nvim',
     tag = 'legacy',

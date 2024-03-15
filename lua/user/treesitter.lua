@@ -15,6 +15,17 @@ require("nvim-treesitter.parsers").get_parser_configs().just = {
   filetype = "justfile"
 }
 
+require("nvim-treesitter.parsers").get_parser_configs().sway = {
+  install_info = {
+    url = "https://github.com/FuelLabs/tree-sitter-sway.git", -- local path or git repo
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "master",
+    use_makefile = true -- this may be necessary on MacOS (try if you see compiler errors)
+  },
+  maintainers = { "@IndianBoy42" },
+  filetype = {"sway"}
+}
+
 require "nvim-treesitter.install".compilers = { "gcc", "clang" }
 
 configs.setup({
