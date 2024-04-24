@@ -41,6 +41,6 @@ require "user.custom-command"
 require "user.barbar"
 require "user.telescope"
 require "user.snip"
-
+require "user.rgflow"
 
 

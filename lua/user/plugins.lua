@@ -20,6 +20,9 @@ require("lazy").setup({
    {
     "natecraddock/workspaces.nvim"
   },
+  {
+    "mangelozzi/nvim-rgflow.lua"
+  },
   ({
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
