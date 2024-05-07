@@ -92,20 +92,20 @@ M.on_attach = function(client, bufnr)
 
     -- Initial inlay hint display.
     local mode = vim.api.nvim_get_mode().mode
-    vim.lsp.inlay_hint.enable(buf, mode == 'n' or mode == 'v')
+    vim.lsp.inlay_hint.enable(mode == 'n' or mode == 'v', {bufnr = bufnr} )
 
     vim.api.nvim_create_autocmd('InsertEnter', {
       group = inlay_hints_group,
-      buffer = buf,
+      buffer = bufnr,
       callback = function()
-        vim.lsp.inlay_hint.enable(buf, false)
+      vim.lsp.inlay_hint.enable(false , {bufnr = bufnr} )
       end,
     })
     vim.api.nvim_create_autocmd('InsertLeave', {
       group = inlay_hints_group,
-      buffer = buf,
+      buffer = bufnr,
       callback = function()
-        vim.lsp.inlay_hint.enable(buf, true)
+        vim.lsp.inlay_hint.enable( true, {bufnr = bufnr})
       end,
     })
   end

@@ -96,7 +96,11 @@ require("lazy").setup({
   ({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }), -- a bunch of snippets to 
 
   -- LSP
-  { "neovim/nvim-lspconfig"}, -- enable LSP
+  { 
+    "neovim/nvim-lspconfig",
+
+    inlay_hints = { enabled = true },
+  }, -- enable LSP
    {
     "williamboman/mason-lspconfig.nvim",
   },
@@ -155,14 +159,13 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
-    ft = { 'rust' },
+    version = '^4', -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
 
-
-   {'ThePrimeagen/harpoon', dependencies = {"nvim-lua/plenary.nvim"}},
-   { 'chentoast/marks.nvim' },
-
+  {'ThePrimeagen/harpoon', dependencies = {"nvim-lua/plenary.nvim"}},
+  { 'chentoast/marks.nvim' },
+  { "nvim-neotest/nvim-nio" },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
