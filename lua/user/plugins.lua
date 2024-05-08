@@ -23,10 +23,13 @@ require("lazy").setup({
   {
     "mangelozzi/nvim-rgflow.lua"
   },
-  ({
-    'weilbith/nvim-code-action-menu',
-    cmd = 'CodeActionMenu',
-  }),
+  {
+   "aznhe21/actions-preview.nvim",
+  },
+  -- ({
+  --   'weilbith/nvim-code-action-menu',
+  --   cmd = 'CodeActionMenu',
+  -- }),
 
   ({
     'ggandor/leap.nvim'
@@ -60,12 +63,6 @@ require("lazy").setup({
   ({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" }),
   ("folke/which-key.nvim"),
 
-  -- Colorschemes
-  -- ({ "folke/tokyonight.nvim", branch = "main" })
-  --  { "catppuccin/nvim", as = "catppuccin" }
-  -- ("lunarvim/darkplus.nvim")
-  --  'shaunsingh/nord.nvim'
-
 
    {'stevearc/dressing.nvim'},
    "EdenEast/nightfox.nvim", -- Packer
@@ -98,7 +95,6 @@ require("lazy").setup({
   -- LSP
   { 
     "neovim/nvim-lspconfig",
-
     inlay_hints = { enabled = true },
   }, -- enable LSP
    {
@@ -123,14 +119,11 @@ require("lazy").setup({
     config = function()
     end
   },
-  -- Repalce tool
-   "nvim-pack/nvim-spectre",
   -- Treesitter
    {
     'nvim-treesitter/nvim-treesitter',
   },
 
-   'nvim-treesitter/playground',
   '0xmovses/move.vim',
   { "IndianBoy42/tree-sitter-just" },
   { "FuelLabs/tree-sitter-sway" },
@@ -172,7 +165,7 @@ require("lazy").setup({
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   },
-   "jubnzv/virtual-types.nvim",
+   -- "jubnzv/virtual-types.nvim",
   -- Debug
 
 

@@ -140,7 +140,7 @@ local mappings = {
   },
   l = {
     name = "LSP",
-    a = { "<cmd>CodeActionMenu<cr>", "Code Action Menu" },
+    a = { "<cmd>lua require 'actions-preview'.code_actions()<cr>", "Code Action Menu" },
     d = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",
@@ -201,7 +201,7 @@ which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register({
   l = {
-    a = { "<cmd>CodeActionMenu<cr>", "code actions", },
+    a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "code actions", },
     f = { "<cmd>lua vim.lsp.buf.format{async=false}<cr>", "Format" },
   },
 
