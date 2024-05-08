@@ -51,7 +51,7 @@ function M.get_register_and_eval()
   local matcher = require('matcher')
   local res = matcher.add(current_line, vim.loop.cwd())
   if res ~= nil then
-    lines = {}
+    local lines = {}
     for s in res:gmatch("[^\r\n]+") do
         table.insert(lines, s)
     end
@@ -73,7 +73,7 @@ end
 
 vim.api.nvim_set_keymap("n", "ge", ":GotoLinkedFile<CR>", opts)
 
-vim.api.nvim_create_user_command('GotoLinkedFile', function() 
+vim.api.nvim_create_user_command('GotoLinkedFile', function()
   vim.cmd(":lua require('user.goto-file').get_register_and_eval()")
 end, {})
 
