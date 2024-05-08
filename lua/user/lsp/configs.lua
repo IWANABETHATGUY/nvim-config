@@ -51,7 +51,9 @@ lspconfig.move_analyzer.setup {
 }
 
 
-local servers = { "jsonls", "clangd", "tsserver", "volar", }
+lspconfig.ruff_lsp.setup {}
+
+local servers = { "jsonls", "clangd", "tsserver", "volar", "pyright"}
 
 require("mason-lspconfig").setup {
   ensure_installed = servers
