@@ -195,6 +195,10 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+  r = {
+    name = "Replace",
+    g = { "<cmd>lua require('rgflow').open_blank()<cr>", "rgflow" },
+  }
 }
 
 which_key.setup(setup)

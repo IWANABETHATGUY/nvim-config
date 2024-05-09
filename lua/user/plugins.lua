@@ -1,11 +1,9 @@
-local fn = vim.fn
-
 -- Install your plugins here
 require("lazy").setup({
   -- My plugins here
   {
     "kylechui/nvim-surround",
-    version = "*",     -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
@@ -17,6 +15,7 @@ require("lazy").setup({
     'kosayoda/nvim-lightbulb',
     dependencies = { 'antoinemadec/FixCursorHold.nvim' },
   },
+
   {
     "natecraddock/workspaces.nvim"
   },
@@ -47,7 +46,7 @@ require("lazy").setup({
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",   -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     }
@@ -64,7 +63,7 @@ require("lazy").setup({
 
 
   { 'stevearc/dressing.nvim' },
-  "EdenEast/nightfox.nvim",  -- Packer
+  "EdenEast/nightfox.nvim", -- Packer
 
   {
     "wsdjeg/vim-fetch"
