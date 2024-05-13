@@ -144,7 +144,7 @@ require("lazy").setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
   { 'sindrets/diffview.nvim',             dependencies = { 'nvim-lua/plenary.nvim' } },
-  --  { 'github/copilot.vim' }
+  { 'github/copilot.vim' },
 
   -- rust
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
