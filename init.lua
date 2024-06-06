@@ -42,5 +42,5 @@ require "user.barbar"
 require "user.telescope"
 require "user.snip"
 require "user.rgflow"
-
+require "user.copilot-config"
 

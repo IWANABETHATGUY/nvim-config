@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 
+
 lspconfig.zls.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
@@ -68,16 +69,12 @@ lspconfig.tsserver.setup {
       },
     },
   },
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 }
 
 lspconfig.volar.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
-  init_options = {
-    vue = {
-      hybridMode = false,
-    },
-  },
 }
 
 local servers = { "jsonls", "clangd", "pyright" }

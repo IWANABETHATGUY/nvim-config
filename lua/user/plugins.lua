@@ -34,7 +34,36 @@ require("lazy").setup({
     'ggandor/leap.nvim'
   }),
 
-  --  {'github/copilot.vim', branch = 'release' }
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        filetypes = {
+          rust = true,
+          javascript = true,
+          typescript = true,
+          vue = true,
+          python = true,
+          sh = function()
+            if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+              -- disable for .env files
+              return false
+            end
+            return true
+          end,
+        },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          debounce = 75,
+          keymap = {
+          },
+        },
+      })
+    end,
+  },
   ({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }), -- Have packer manage itself
   ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }),  -- ful lua functions d by lots of plugins
   ({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }),  -- Autopairs, integrates with both cmp and treesitter
@@ -144,7 +173,6 @@ require("lazy").setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
   { 'sindrets/diffview.nvim',             dependencies = { 'nvim-lua/plenary.nvim' } },
-  { 'github/copilot.vim' },
 
   -- rust
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
