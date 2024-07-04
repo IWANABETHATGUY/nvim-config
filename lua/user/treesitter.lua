@@ -29,12 +29,15 @@ require("nvim-treesitter.parsers").get_parser_configs().sway = {
 require "nvim-treesitter.install".compilers = { "gcc", "clang" }
 
 configs.setup({
-  ensure_installed = "all",      -- one of "all" or a list of languages
+  ensure_installed = {"typescript", "rust", "javascript", "python"},      -- one of "all" or a list of languages
   ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,               -- false will disable the whole extension
     -- disable = { "css" },         -- list of language that will be disabled
-    disable = function(_, buf)
+    disable = function(lang, buf)
+      if lang == "html" then
+        return true
+      end
       local max_filesize = 1024 * 1024 -- 100 KB
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
       if ok and stats and stats.size > max_filesize then
@@ -65,10 +68,6 @@ configs.setup({
     },
   }
 })
-
--- require("nvim-treesitter.install").command_extra_args = {
---   curl = { "--proxy", "http://127.0.0.1:7890" },
--- }
 
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
