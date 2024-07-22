@@ -174,7 +174,6 @@ require("lazy").setup({
   },
   { 'sindrets/diffview.nvim',             dependencies = { 'nvim-lua/plenary.nvim' } },
 
-  -- rust
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
