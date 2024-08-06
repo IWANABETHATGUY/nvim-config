@@ -1,5 +1,3 @@
--- tjs language server
-
 local util = require('lspconfig.util')
 local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
@@ -32,4 +30,3 @@ lspconfig.markdown.setup {
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
--- tjs-language-server end

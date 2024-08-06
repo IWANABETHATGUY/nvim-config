@@ -5,7 +5,7 @@ require("user.lsp.settings.tjs_language_server")
 require("user.lsp.settings.sway")
 -- require("user.lsp.settings.oxc_ls")
 require("user.lsp.null-ls")
-require("user.lsp.settings.markdown")
+-- require("user.lsp.settings.markdown")
 
 
 
