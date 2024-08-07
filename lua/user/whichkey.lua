@@ -1,6 +1,7 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
-  return end
+  return
+end
 
 local setup = {
   plugins = {
@@ -35,7 +36,7 @@ local setup = {
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
-    group = "+",      -- symbol prepended to a group
+    group = "+", -- symbol prepended to a group
   },
   popup_mappings = {
     scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -86,21 +87,29 @@ local visual_opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+  ["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "harpoon mark" },
   ["b"] = {
     b = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
       "Buffers",
     },
-    p = {"<cmd>BufferPin<cr>", "Pin/Unpin"},
-    f = {"<cmd>BufferFirst<cr>", "Go to first buffer"},
-    o = {"<cmd>BufferOrderByBufferNumber<cr>", "BufferOrderByBufferNumber"}
+    p = { "<cmd>BufferPin<cr>", "Pin/Unpin" },
+    f = { "<cmd>BufferFirst<cr>", "Go to first buffer" },
+    o = { "<cmd>BufferOrderByBufferNumber<cr>", "BufferOrderByBufferNumber" }
   },
   ["e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>:RustLsp hover actions<CR>", "RustHoverAction" },
+  ["h"] = {
+    h = {
+      "<cmd>:RustLsp hover actions<CR>", "RustHoverAction"
+    },
+    p = {
+      "<cmd>:HarpoonMarks<CR>",
+      "HarpoonMarks"
+    }
+  },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
@@ -115,7 +124,6 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-  m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "harpoon mark" },
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
