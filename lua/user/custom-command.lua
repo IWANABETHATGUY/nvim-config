@@ -5,10 +5,27 @@ end, {
   ["bang"] = true
 })
 
-vim.api.nvim_create_user_command('HarpoonMarks', function() 
+vim.api.nvim_create_user_command('HarpoonMarks', function()
   vim.cmd.Telescope('harpoon', 'marks')
 end, {})
 
-vim.api.nvim_create_user_command('NeotreeReveal', function() 
+vim.api.nvim_create_user_command('NeotreeReveal', function()
   vim.cmd.Neotree('reveal')
 end, {})
+
+vim.api.nvim_create_user_command('DiffviewToggle', function()
+  diffview_toggle()
+end, {})
+
+
+diffview_toggle = function()
+  local lib = require("diffview.lib")
+  local view = lib.get_current_view()
+  if view then
+    -- Current tabpage is a Diffview; close it
+    vim.cmd.DiffviewClose()
+  else
+    -- No open Diffview exists: open a new one
+    vim.cmd.DiffviewOpen()
+  end
+end
