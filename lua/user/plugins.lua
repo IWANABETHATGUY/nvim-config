@@ -25,11 +25,17 @@ require("lazy").setup({
   {
     "aznhe21/actions-preview.nvim",
   },
-  -- ({
-  --   'weilbith/nvim-code-action-menu',
-  --   cmd = 'CodeActionMenu',
-  -- }),
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
 
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim" -- optional
+    },
+    config = true
+  },
   ({
     'ggandor/leap.nvim'
   }),
