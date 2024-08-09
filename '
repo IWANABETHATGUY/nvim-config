@@ -44,7 +44,7 @@ require('nightfox').setup({
       -- diff = {
       --   add = "#498153",
       --   delete = "#b3e1bb",
-        -- change = "#c17d7e",
+      --   change = "yellow",
       --   -- delete = {
       --   --   fg = "#b51818",
       --   -- },
@@ -64,4 +64,3 @@ require('nightfox').setup({
 
 -- setup must be called before loading
 vim.cmd("colorscheme nordfox")
-vim.cmd("hi DiffText guifg=#83b260 guibg=NONE gui=NONE")
