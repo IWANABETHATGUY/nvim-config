@@ -17,6 +17,10 @@ vim.api.nvim_create_user_command('DiffviewToggle', function()
   diffview_toggle()
 end, {})
 
+vim.api.nvim_create_user_command('DiffCompareToMain', function()
+  vim.cmd(':DiffviewOpen origin/main...HEAD')
+end, {})
+
 
 diffview_toggle = function()
   local lib = require("diffview.lib")
