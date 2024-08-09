@@ -28,7 +28,7 @@ require("lazy").setup({
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed, not both.
@@ -86,9 +86,12 @@ require("lazy").setup({
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     }
   },
-  ({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" }),
+  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   'romgrk/barbar.nvim',
-  ({ "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" }),
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
 
   "numToStr/FTerm.nvim",
   ({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }),
@@ -98,7 +101,7 @@ require("lazy").setup({
 
 
   { 'stevearc/dressing.nvim' },
-  "EdenEast/nightfox.nvim", -- Packer
+  { "EdenEast/nightfox.nvim" }, -- Packer
 
   {
     "wsdjeg/vim-fetch"
@@ -157,7 +160,6 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
   },
 
-  '0xmovses/move.vim',
   { "IndianBoy42/tree-sitter-just" },
   { "FuelLabs/tree-sitter-sway" },
   {
@@ -172,8 +174,6 @@ require("lazy").setup({
 
   -- Git
   { "lewis6991/gitsigns.nvim" },
-  { "kdheepak/lazygit.nvim" },
-
   {
     'ruifm/gitlinker.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -196,9 +196,7 @@ require("lazy").setup({
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   },
-  -- "jubnzv/virtual-types.nvim",
   -- Debug
-
 
   {
     'mfussenegger/nvim-dap'

@@ -43,4 +43,5 @@ require "user.telescope"
 require "user.snip"
 require "user.rgflow"
 require "user.copilot-config"
+require "user.diffview"
 
