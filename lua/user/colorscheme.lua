@@ -18,16 +18,6 @@ require('nightfox').setup({
       },
     },
     styles = {
-      comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
-      conditionals = "NONE",
-      constants = "NONE",
-      functions = "NONE",
-      keywords = "NONE",
-      numbers = "NONE",
-      operators = "NONE",
-      strings = "NONE",
-      types = "NONE",
-      variables = "NONE",
     },
     inverse = {
       -- Inverse highlight for different types
@@ -38,12 +28,14 @@ require('nightfox').setup({
     modules = {
       -- List of various plugins and additional options
       fidget = true,
+      ['neogit'] = true,
+      barbar = true
     },
   },
   palettes = {
     nordfox = {
       -- -- comment is the definition of the comment color.
-      comment = "#83b260",
+      -- comment = "#83b260",
     },
 
   },
@@ -56,7 +48,7 @@ require('nightfox').setup({
 })
 
 -- setup must be called before loading
-vim.cmd [[colorscheme nordfox]]
+vim.cmd("colorscheme nordfox")
 
 
 vim.cmd("hi LspInlayHint guifg=#83b260")
