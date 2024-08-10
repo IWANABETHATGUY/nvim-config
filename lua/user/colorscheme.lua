@@ -53,21 +53,24 @@ require('nightfox').setup({
 
 -- setup must be called before loading
 vim.cmd("colorscheme nordfox")
-
-vim.cmd("highlight DiffAdd gui=none guifg=none guibg=#103235")
+vim.cmd("highlight DiffAdd gui=none guifg=none guibg=#517551")
 vim.cmd("highlight DiffChange gui=none guifg=none guibg=#272D43")
 vim.cmd("highlight DiffText gui=none guifg=none guibg=#394b70")
 vim.cmd("highlight DiffDelete gui=none guifg=none guibg=#3F2D3D")
-vim.cmd("highlight DiffviewDiffAddAsDelete guibg=#3f2d3d gui=none guifg=none")
-vim.cmd("highlight DiffviewDiffDelete gui=none guifg=#3B4252 guibg=none")
+vim.cmd("highlight DiffviewDiffDeleteDim gui=italic guifg=none guibg=none")
+vim.cmd("highlight DiffviewDiffAddAsDelete gui=none guifg=none guibg=red")
 
 -- Left panel
 -- "DiffChange:DiffAddAsDelete",
 -- "DiffText:DiffDeleteText",
-vim.cmd("highlight DiffAddAsDelete gui=none guifg=none guibg=#3F2D3D")
+
+-- delete section color
+vim.cmd("highlight DiffAddAsDelete gui=none guifg=none guibg=red")
+-- changed text color
 vim.cmd("highlight DiffDeleteText gui=none guifg=none guibg=#4B1818")
 --
 -- -- Right panel
 -- -- "DiffChange:DiffAdd",
 -- -- "DiffText:DiffAddText",
 vim.cmd("highlight DiffAddText gui=none guifg=none guibg=#1C5458")
+

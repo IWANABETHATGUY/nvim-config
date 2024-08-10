@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
+require "user.diffview"
 require "user.colorscheme"
 require "user.cmp"
 require "user.common-plugin-setup"
@@ -43,5 +44,4 @@ require "user.telescope"
 require "user.snip"
 require "user.rgflow"
 require "user.copilot-config"
-require "user.diffview"
 

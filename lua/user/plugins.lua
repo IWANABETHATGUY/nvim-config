@@ -39,6 +39,12 @@ require("lazy").setup({
   ({
     'ggandor/leap.nvim'
   }),
+  -- color picker
+  {
+    "uga-rosa/ccc.nvim",
+    branch = "0.7.2"
+  },
+
 
   {
     "zbirenbaum/copilot.lua",
