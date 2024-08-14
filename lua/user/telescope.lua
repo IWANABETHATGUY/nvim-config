@@ -22,7 +22,16 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 telescope.setup {
+
   defaults = {
+    symbol_width = 50,
+    layout_config = {
+      horizontal = {
+        width = 0.9,
+        height = 0.9,
+        results = 0.6,
+      },
+    },
     buffer_previewer_maker = new_maker,
     prompt_prefix = " ",
     selection_caret = " ",
@@ -90,9 +99,9 @@ telescope.setup {
     "--smart-case",
   },
   pickers = {
-    -- find_files = {
-    --   find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
-    -- }
+    find_files = {
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+    }
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
     --   picker_config_key = value,
