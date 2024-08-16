@@ -87,7 +87,7 @@ local visual_opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "harpoon mark" },
+  ["a"] = { "<cmd>Grapple tag<cr>", "Grapple add tag" },
   ["b"] = {
     b = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -105,10 +105,7 @@ local mappings = {
     h = {
       "<cmd>:RustLsp hover actions<CR>", "RustHoverAction"
     },
-    p = {
-      "<cmd>:HarpoonMarks<CR>",
-      "HarpoonMarks"
-    }
+    p = { "<cmd>Telescope grapple tags<cr>", " open tags window" }
   },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",

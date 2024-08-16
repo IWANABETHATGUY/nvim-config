@@ -192,9 +192,15 @@ require("lazy").setup({
     version = '^4', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
-
-  { 'ThePrimeagen/harpoon', dependencies = { "nvim-lua/plenary.nvim" } },
   { 'chentoast/marks.nvim' },
+  {
+    "cbochs/grapple.nvim",
+    opts = {
+      scope = "git",   -- also try out "git_branch"
+    },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = "Grapple"
+  },
   { "nvim-neotest/nvim-nio" },
   {
     "iamcco/markdown-preview.nvim",
