@@ -6,11 +6,6 @@ end
 -- https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json
 local schemas = {
   {
-    description = "rspack config test json",
-    fileMatch = { "test.config.json" },
-    url = "https://raw.githubusercontent.com/web-infra-dev/rspack/main/crates/rspack_testing/test.config.scheme.json"
-  },
-  {
     description = "Rome config",
     fileMatch = { "rome.json" },
     url = "https://raw.githubusercontent.com/rome/tools/main/npm/rome/configuration_schema.json",
