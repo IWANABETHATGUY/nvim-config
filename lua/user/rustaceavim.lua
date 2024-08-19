@@ -22,7 +22,7 @@ vim.g.rustaceanvim = {
         cargo = {
           loadOutDirsFromCheck = false
         },
-        checkOnSave = false,
+        checkOnSave = true,
         procMacro = {
           enable = true,
           ignored = {
