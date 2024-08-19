@@ -208,6 +208,9 @@ require("lazy").setup({
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
   },
+  {
+    "Marskey/telescope-sg"
+  },
   -- Debug
 
   {

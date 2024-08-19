@@ -22,7 +22,7 @@ vim.api.nvim_create_user_command('DiffviewToggle', function()
 end, {})
 
 vim.api.nvim_create_user_command('DiffCompareToMain', function()
-  vim.cmd('DiffviewOpen master... --imply-local')
+  vim.cmd('DiffviewOpen main... --imply-local')
 end, {})
 
 
