@@ -153,7 +153,7 @@ require("lazy").setup({
     "williamboman/mason.nvim",
     run = ":MasonUpdate"                   -- :MasonUpdate updates registry contents
   },
-  ({ "jose-elias-alvarez/null-ls.nvim" }), -- for formatters and linters
+  ({ "nvimtools/none-ls.nvim" }), -- for formatters and linters
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
