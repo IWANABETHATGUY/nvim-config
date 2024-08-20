@@ -15,7 +15,14 @@ require("lazy").setup({
     'kosayoda/nvim-lightbulb',
     dependencies = { 'antoinemadec/FixCursorHold.nvim' },
   },
-
+  {
+    'MagicDuck/grug-far.nvim',
+    config = function()
+      vim.g.maplocalleader = ','
+      require('grug-far').setup({
+      });
+    end
+  },
   {
     "natecraddock/workspaces.nvim"
   },
@@ -207,9 +214,6 @@ require("lazy").setup({
     run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
-  },
-  {
-    "Marskey/telescope-sg"
   },
   -- Debug
 
