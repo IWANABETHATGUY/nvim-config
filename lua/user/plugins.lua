@@ -151,7 +151,7 @@ require("lazy").setup({
   },
   {
     "williamboman/mason.nvim",
-    run = ":MasonUpdate"                   -- :MasonUpdate updates registry contents
+    run = ":MasonUpdate"          -- :MasonUpdate updates registry contents
   },
   ({ "nvimtools/none-ls.nvim" }), -- for formatters and linters
   {
@@ -196,14 +196,14 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
+    version = '^5', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
   { 'chentoast/marks.nvim' },
   {
     "cbochs/grapple.nvim",
     opts = {
-      scope = "git",   -- also try out "git_branch"
+      scope = "git", -- also try out "git_branch"
     },
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple"
