@@ -1,12 +1,4 @@
 
-vim.api.nvim_create_user_command('HarpoonMarks', function()
-  vim.cmd.Telescope('harpoon', 'marks')
-end, {})
-
-vim.api.nvim_create_user_command('HarpoonClearAll', function()
-  vim.cmd(':lua require("harpoon.mark").clear_all()')
-end, {})
-
 vim.api.nvim_create_user_command('NeotreeReveal', function()
   vim.cmd.Neotree('reveal')
 end, {})
@@ -17,6 +9,10 @@ end, {})
 
 vim.api.nvim_create_user_command('DiffCompareToMain', function()
   vim.cmd('DiffviewOpen main... --imply-local')
+end, {})
+
+vim.api.nvim_create_user_command('ResetGrapple', function()
+  vim.cmd('lua require("grapple").reset()')
 end, {})
 
 
