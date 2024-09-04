@@ -27,9 +27,6 @@ require("lazy").setup({
     "natecraddock/workspaces.nvim"
   },
   {
-    "mangelozzi/nvim-rgflow.lua"
-  },
-  {
     "aznhe21/actions-preview.nvim",
   },
   {
@@ -47,10 +44,10 @@ require("lazy").setup({
     'ggandor/leap.nvim'
   }),
   -- color picker
-  {
-    "uga-rosa/ccc.nvim",
-    branch = "0.7.2"
-  },
+  -- {
+  --   "uga-rosa/ccc.nvim",
+  --   branch = "0.7.2"
+  -- },
 
 
   {
@@ -83,9 +80,8 @@ require("lazy").setup({
       })
     end,
   },
-  ({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }), -- Have packer manage itself
-  ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }),  -- ful lua functions d by lots of plugins
-  ({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }),  -- Autopairs, integrates with both cmp and treesitter
+  ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
+  ({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }), -- Autopairs, integrates with both cmp and treesitter
   ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
   ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
   ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
@@ -109,10 +105,12 @@ require("lazy").setup({
   "numToStr/FTerm.nvim",
   ({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }),
   "lukas-reineke/indent-blankline.nvim",
-  ({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" }),
   ("folke/which-key.nvim"),
-
-
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+  },
   { 'stevearc/dressing.nvim' },
   { "EdenEast/nightfox.nvim" }, -- Packer
 
@@ -209,13 +207,8 @@ require("lazy").setup({
     cmd = "Grapple"
   },
   { "nvim-neotest/nvim-nio" },
-  {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" },
-  },
   -- Debug
+
 
   {
     'mfussenegger/nvim-dap'
