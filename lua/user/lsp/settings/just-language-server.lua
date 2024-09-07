@@ -5,7 +5,7 @@ local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
 
 
-configs.oxc_language_server = {
+configs.just_language_server = {
   default_config = {
     cmd = { 'just-language-server' },
     filetypes = {
@@ -17,7 +17,7 @@ configs.oxc_language_server = {
 
 
 
-lspconfig.oxc_language_server.setup {
+lspconfig.just_language_server.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }

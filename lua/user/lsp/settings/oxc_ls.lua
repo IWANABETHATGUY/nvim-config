@@ -1,6 +1,5 @@
 -- oxc_language_server
 
-local util = require('lspconfig.util')
 local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
 
@@ -14,15 +13,14 @@ configs.oxc_language_server = {
       'typescript',
       'typescriptreact',
     },
-    root_dir = function(fname)
-      return util.find_package_json_ancestor(fname)
-          or util.find_node_modules_ancestor(fname)
-          or util.find_git_ancestor(fname)
+    root_dir = function(_)
+      return root_pattern(".oxlintrc.json")
     end,
-    single_file_support = true,
+    single_file_support = false,
     settings = {
       ['enable'] = true,
-      ['run'] = 'onType'
+      ['run'] = 'onType',
+      ['config'] = '.oxlintrc.json'
     }
   },
 }
@@ -30,8 +28,8 @@ configs.oxc_language_server = {
 
 
 lspconfig.oxc_language_server.setup {
-  -- on_attach = require("user.lsp.handlers").on_attach,
-  -- capabilities = require("user.lsp.handlers").capabilities,
+  on_attach = require("user.lsp.handlers").on_attach,
+  capabilities = require("user.lsp.handlers").capabilities,
 }
 
 -- oxc_language_server end
