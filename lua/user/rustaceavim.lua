@@ -2,7 +2,7 @@ local handler = require("user.lsp.handlers")
 
 vim.g.rustaceanvim = {
   -- Plugin configuration
-  tools =  {
+  tools = {
     hover_actions = {
       auto_focus = true
     },
@@ -11,20 +11,16 @@ vim.g.rustaceanvim = {
   server = {
     on_attach = handler.on_attach,
     capabilities = handler.capabilities,
-    root_dir = rust_root_dir,
     settings = {
       ["rust-analyzer"] = {
-        assist = {
-          importGranularity = "module",
-          importPrefix = "self",
-        },
-        numThreads = 16,
-        cargo = {
-          loadOutDirsFromCheck = false
+        lru = {
+          capacity = 10,
         },
         checkOnSave = true,
         procMacro = {
-          enable = true,
+          attributes = {
+            enable = true,
+          },
           ignored = {
             ['napi-derive'] = { 'napi' },
           },
@@ -93,4 +89,3 @@ vim.g.rustaceanvim = {
   dap = {
   },
 }
-

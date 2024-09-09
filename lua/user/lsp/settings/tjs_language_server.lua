@@ -4,10 +4,10 @@ local util = require('lspconfig.util')
 local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
 
-local custom_attach = function(client) 
+local custom_attach = function(client)
 end
 
-configs.tjs_langauge_server = {
+configs.tjs_language_server = {
   default_config = {
     cmd = { 'tjs-language-server' },
     filetypes = {
@@ -60,7 +60,7 @@ configs.tjs_langauge_server = {
 }
 
 
-lspconfig.tjs_langauge_server.setup {
+lspconfig.tjs_language_server.setup {
   on_attach = custom_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }

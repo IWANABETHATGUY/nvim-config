@@ -194,7 +194,7 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
+    version = '5.2.3', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
   { 'chentoast/marks.nvim' },
