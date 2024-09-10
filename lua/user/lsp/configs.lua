@@ -71,7 +71,7 @@ local vue_language_server_path = mason_registry.get_package('vue-language-server
 lspconfig.ruff.setup {}
 
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
   init_options = {
