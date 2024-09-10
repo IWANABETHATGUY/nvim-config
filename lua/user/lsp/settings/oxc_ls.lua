@@ -2,6 +2,7 @@
 
 local configs = require('lspconfig.configs')
 local lspconfig = require("lspconfig")
+local util = require 'lspconfig.util'
 
 
 configs.oxc_language_server = {
@@ -13,9 +14,7 @@ configs.oxc_language_server = {
       'typescript',
       'typescriptreact',
     },
-    root_dir = function(_)
-      return root_pattern(".oxlintrc.json")
-    end,
+    root_dir = util.root_pattern(".oxlintrc.json"),
     single_file_support = false,
     settings = {
       ['enable'] = true,
