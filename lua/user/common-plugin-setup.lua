@@ -1,4 +1,5 @@
 require('leap').add_default_mappings()
+require('user.lsp.handlers')
 
 require "fidget".setup {
   text = {
@@ -273,3 +274,12 @@ require("dressing").setup({
   },
 })
 
+require('crates').setup({
+  lsp = {
+    enabled = true,
+    on_attach = require("user.lsp.handlers").on_attach,
+    actions = true,
+    completion = true,
+    hover = true,
+  },
+})

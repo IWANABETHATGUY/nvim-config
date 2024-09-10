@@ -121,6 +121,12 @@ require("lazy").setup({
     "mg979/vim-visual-multi"
   },
 
+  {
+    'saecki/crates.nvim',
+    tag = 'stable',
+    config = function()
+    end,
+  },
   -- cmp plugins
   ({ "hrsh7th/nvim-cmp" }),         -- The completion plugin
   ({ "hrsh7th/cmp-buffer" }),       -- buffer completions
@@ -195,7 +201,7 @@ require("lazy").setup({
   {
     'mrcjkb/rustaceanvim',
     version = '5.2.3', -- Recommended
-    lazy = false,   -- This plugin is already lazy
+    lazy = false,      -- This plugin is already lazy
   },
   { 'chentoast/marks.nvim' },
   {
@@ -208,7 +214,6 @@ require("lazy").setup({
   },
   { "nvim-neotest/nvim-nio" },
   -- Debug
-
 
   {
     'mfussenegger/nvim-dap'
