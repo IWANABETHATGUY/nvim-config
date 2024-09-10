@@ -16,11 +16,13 @@ vim.g.rustaceanvim = {
         lru = {
           capacity = 10,
         },
-        checkOnSave = true,
-        procMacro = {
-          attributes = {
+        cargo = {
+          buildScripts = {
             enable = true,
           },
+        },
+        procMacro = {
+          enable = true,
           ignored = {
             ['napi-derive'] = { 'napi' },
           },
@@ -80,12 +82,5 @@ vim.g.rustaceanvim = {
         },
       }
     },
-    -- on_attach = function(client, bufnr)
-    --   -- Hover actions
-    -- end,
-
-  },
-  -- DAP configuration
-  dap = {
   },
 }
