@@ -214,7 +214,7 @@ require("lazy").setup({
   },
   { "nvim-neotest/nvim-nio" },
   -- Debug
-
+  { 'voldikss/vim-translator' },
   {
     'mfussenegger/nvim-dap'
   },
