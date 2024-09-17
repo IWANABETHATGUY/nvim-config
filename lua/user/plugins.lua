@@ -199,6 +199,13 @@ require("lazy").setup({
 
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
+    'Wansmer/treesj',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+    config = function()
+      require('treesj').setup({ --[[ your config ]] })
+    end,
+  },
+  {
     'mrcjkb/rustaceanvim',
     version = '5.2.3', -- Recommended
     lazy = false,      -- This plugin is already lazy
