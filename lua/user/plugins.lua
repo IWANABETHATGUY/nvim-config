@@ -199,13 +199,6 @@ require("lazy").setup({
 
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
-    'Wansmer/treesj',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
-    config = function()
-      require('treesj').setup({ --[[ your config ]] })
-    end,
-  },
-  {
     'mrcjkb/rustaceanvim',
     version = '5.2.3', -- Recommended
     lazy = false,      -- This plugin is already lazy
@@ -218,6 +211,30 @@ require("lazy").setup({
     },
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple"
+  },
+  {
+    "johmsalas/text-case.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("textcase").setup({})
+      require("telescope").load_extension("textcase")
+    end,
+    keys = {
+      "ga", -- Default invocation prefix
+      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
+    },
+    cmd = {
+      -- NOTE: The Subs command name can be customized via the option "substitute_command_name"
+      "Subs",
+      "TextCaseOpenTelescope",
+      "TextCaseOpenTelescopeQuickChange",
+      "TextCaseOpenTelescopeLSPChange",
+      "TextCaseStartReplacingCommand",
+    },
+    -- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+    -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+    -- available after the first executing of it or after a keymap of text-case.nvim has been used.
+    lazy = false,
   },
   { "nvim-neotest/nvim-nio" },
   -- Debug

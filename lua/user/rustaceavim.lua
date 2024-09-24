@@ -13,9 +13,6 @@ vim.g.rustaceanvim = {
     capabilities = handler.capabilities,
     settings = {
       ["rust-analyzer"] = {
-        lru = {
-          capacity = 10,
-        },
         cargo = {
           buildScripts = {
             enable = true,
@@ -27,7 +24,7 @@ vim.g.rustaceanvim = {
             -- ['napi-derive'] = { 'napi' },
           },
         },
-        -- checkOnSave = true,
+        -- checkOnSave = false,
         completion = {
           snippets = {
             custom = {
