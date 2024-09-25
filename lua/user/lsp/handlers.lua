@@ -4,9 +4,9 @@ local M = {}
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -14,7 +14,6 @@ M.setup = function()
   end
 
   local config = {
-    -- disable virtual text
     virtual_text = true,
     -- show signs
     signs = {
@@ -62,7 +61,6 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":lua require('treesj').toggle()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -76,8 +74,6 @@ local function lsp_keymaps(bufnr)
     opts
   )
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 M.on_attach = function(client, bufnr)
@@ -93,20 +89,20 @@ M.on_attach = function(client, bufnr)
 
     -- Initial inlay hint display.
     local mode = vim.api.nvim_get_mode().mode
-    vim.lsp.inlay_hint.enable(mode == 'n' or mode == 'v', {bufnr = bufnr} )
+    vim.lsp.inlay_hint.enable(mode == 'n' or mode == 'v', { bufnr = bufnr })
 
     vim.api.nvim_create_autocmd('InsertEnter', {
       group = inlay_hints_group,
       buffer = bufnr,
       callback = function()
-      vim.lsp.inlay_hint.enable(false , {bufnr = bufnr} )
+        vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
       end,
     })
     vim.api.nvim_create_autocmd('InsertLeave', {
       group = inlay_hints_group,
       buffer = bufnr,
       callback = function()
-        vim.lsp.inlay_hint.enable( true, {bufnr = bufnr})
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end,
     })
   end
