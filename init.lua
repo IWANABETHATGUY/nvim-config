@@ -42,4 +42,5 @@ require "user.barbar"
 require "user.telescope"
 require "user.snip"
 require "user.copilot-config"
+require "user.typescript-tool"
 

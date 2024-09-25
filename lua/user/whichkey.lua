@@ -202,7 +202,6 @@ local mappings = {
   },
   r = {
     name = "Replace",
-    g = { "<cmd>lua require('rgflow').open_blank()<cr>", "rgflow" },
     r = { "<cmd>GrugFar <cr>", "GrugFar" }
   }
 }

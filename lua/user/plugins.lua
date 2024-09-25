@@ -159,6 +159,11 @@ require("lazy").setup({
   },
   ({ "nvimtools/none-ls.nvim" }), -- for formatters and linters
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
