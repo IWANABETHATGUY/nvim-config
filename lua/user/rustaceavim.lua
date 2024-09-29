@@ -21,7 +21,7 @@ vim.g.rustaceanvim = {
         procMacro = {
           enable = true,
           ignored = {
-            -- ['napi-derive'] = { 'napi' },
+            ['napi-derive'] = { 'napi' },
           },
         },
         -- checkOnSave = false,

@@ -283,3 +283,6 @@ require('crates').setup({
     hover = true,
   },
 })
+
+vim.g.translator_proxy_url = 'socks5://127.0.0.1:7890'
+
