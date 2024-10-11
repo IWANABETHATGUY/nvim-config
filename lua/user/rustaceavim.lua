@@ -7,6 +7,9 @@ vim.g.rustaceanvim = {
       auto_focus = true
     },
   },
+  dap = {
+    autoload_configurations = false
+  },
   -- LSP configuration
   server = {
     on_attach = handler.on_attach,
@@ -16,6 +19,13 @@ vim.g.rustaceanvim = {
         cargo = {
           buildScripts = {
             enable = true,
+          },
+        },
+        hover = {
+          actions = {
+            debug = {
+              enable = false
+            }
           },
         },
         procMacro = {
@@ -82,3 +92,5 @@ vim.g.rustaceanvim = {
     },
   },
 }
+
+vim.g.rustaceanvim.tools.test_executor = 'background'
