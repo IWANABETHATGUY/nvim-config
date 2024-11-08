@@ -11,10 +11,8 @@ require("lazy").setup({
       })
     end
   },
-  {
-    'kosayoda/nvim-lightbulb',
-    dependencies = { 'antoinemadec/FixCursorHold.nvim' },
-  },
+
+  { 'kosayoda/nvim-lightbulb' },
   {
     'MagicDuck/grug-far.nvim',
     config = function()
@@ -85,6 +83,9 @@ require("lazy").setup({
   ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
   ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
   ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+  },
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",

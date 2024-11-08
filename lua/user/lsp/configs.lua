@@ -99,7 +99,7 @@ lspconfig.volar.setup {
   capabilities = require("user.lsp.handlers").capabilities,
 }
 
-local servers = { "jsonls", "clangd", "pyright" }
+local servers = { "jsonls", "clangd", "pyright", "asm_lsp" }
 
 require("mason-lspconfig").setup {
   ensure_installed = servers

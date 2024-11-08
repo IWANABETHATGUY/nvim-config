@@ -286,3 +286,7 @@ require('crates').setup({
 
 vim.g.translator_proxy_url = 'socks5://127.0.0.1:7890'
 
+
+require("nvim-lightbulb").setup({
+  autocmd = { enabled = true }
+})

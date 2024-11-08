@@ -16,6 +16,9 @@ vim.g.rustaceanvim = {
     capabilities = handler.capabilities,
     settings = {
       ["rust-analyzer"] = {
+        lru = {
+          capacity = 24,
+        },
         cargo = {
           buildScripts = {
             enable = true,
