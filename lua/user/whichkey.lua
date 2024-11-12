@@ -204,6 +204,7 @@ local mappings = {
     name = "Replace",
     r = { "<cmd>GrugFar <cr>", "GrugFar" },
     c = { "<cmd>lua require('grug-far').open({ prefills = { paths = vim.fn.expand(\"%\") } }) <cr>", "GrugFar Current Buffer" },
+    w = { "<cmd>lua require('grug-far').open({ prefills = { paths = vim.fn.expand(\"%\"), search = vim.fn.expand(\"<cword>\") } }) <cr>", "GrugFar Current Word" },
   }
 }
 
