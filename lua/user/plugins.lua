@@ -79,16 +79,6 @@ require("lazy").setup({
     end,
   },
   ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
-  -- {
-  --   'windwp/nvim-autopairs',
-  --   event = "InsertEnter",
-  --   config = {
-  --     map_cr = true
-  --   }
-  --   -- config = true
-  --   -- use opts = {} for passing setup options
-  --   -- this is equivalent to setup({}) function
-  -- },
   ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
   ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
   ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
@@ -153,12 +143,17 @@ require("lazy").setup({
     -- install jsregexp (optional!:).
     run = "make install_jsregexp"
   }),
-
+  {
+    'mcauley-penney/visual-whitespace.nvim',
+    config = true
+  },
   {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
-    dependencies = 'rafamadriz/friendly-snippets',
+    -- dependencies = {
+    --   'rafamadriz/friendly-snippets',
+    -- },
 
     -- use a release tag to download pre-built binaries
     version = 'v0.*',
@@ -192,10 +187,31 @@ require("lazy").setup({
       nerd_font_variant = 'mono',
 
       -- experimental auto-brackets support
-      accept = { auto_brackets = { enabled = true } },
+      accept = {
+        auto_brackets = {
+          enabled = true,
+          default_brackets = { '(', ')', '[', ']' },
+          override_brackets_for_filetypes = {},
+          -- Overrides the default blocked filetypes
+          force_allow_filetypes = {},
+          blocked_filetypes = {},
+          -- Synchronously use the kind of the item to determine if brackets should be added
+          kind_resolution = {
+            enabled = true,
+            blocked_filetypes = { 'typescriptreact', 'javascriptreact', 'vue' },
+          },
+          -- Asynchronously use semantic token to determine if brackets should be added
+          semantic_token_resolution = {
+            enabled = true,
+            blocked_filetypes = {},
+            -- How long to wait for semantic tokens to return before assuming no brackets should be added
+            timeout_ms = 400,
+          },
+        },
+      },
 
       -- experimental signature help support
-      trigger = { signature_help = { enabled = true } }
+      trigger = { signature_help = { enabled = true } },
     },
     -- allows extending the enabled_providers array elsewhere in your config
     -- without having to redefining it
