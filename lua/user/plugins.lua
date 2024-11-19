@@ -79,7 +79,16 @@ require("lazy").setup({
     end,
   },
   ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
-  ({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }), -- Autopairs, integrates with both cmp and treesitter
+  -- {
+  --   'windwp/nvim-autopairs',
+  --   event = "InsertEnter",
+  --   config = {
+  --     map_cr = true
+  --   }
+  --   -- config = true
+  --   -- use opts = {} for passing setup options
+  --   -- this is equivalent to setup({}) function
+  -- },
   ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
   ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
   ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
@@ -129,12 +138,12 @@ require("lazy").setup({
     end,
   },
   -- cmp plugins
-  ({ "hrsh7th/nvim-cmp" }),         -- The completion plugin
-  ({ "hrsh7th/cmp-buffer" }),       -- buffer completions
-  ({ "hrsh7th/cmp-path" }),         -- path completions
-  ({ "saadparwaiz1/cmp_luasnip" }), -- snippet completions
-  ({ "hrsh7th/cmp-nvim-lsp" }),
-  ({ "hrsh7th/cmp-nvim-lua" }),
+  -- ({ "hrsh7th/nvim-cmp" }),         -- The completion plugin
+  -- ({ "hrsh7th/cmp-buffer" }), -- buffer completions
+  -- ({ "hrsh7th/cmp-path" }),   -- path completions
+  -- ({ "saadparwaiz1/cmp_luasnip" }), -- snippet completions
+  -- ({ "hrsh7th/cmp-nvim-lsp" }),
+  -- ({ "hrsh7th/cmp-nvim-lua" }),
 
   -- snippets
   ({
@@ -144,7 +153,61 @@ require("lazy").setup({
     -- install jsregexp (optional!:).
     run = "make install_jsregexp"
   }),
-  ({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }), -- a bunch of snippets to
+
+  {
+    'saghen/blink.cmp',
+    lazy = false, -- lazy loading handled internally
+    -- optional: provides snippets for the snippet source
+    dependencies = 'rafamadriz/friendly-snippets',
+
+    -- use a release tag to download pre-built binaries
+    version = 'v0.*',
+    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      -- 'default' for mappings similar to built-in completion
+      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      -- see the "default configuration" section below for full documentation on how to define
+      -- your own keymap.
+      keymap = {
+        preset = 'enter',
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+      },
+
+      highlight = {
+        -- sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- useful for when your theme doesn't support blink.cmp
+        -- will be removed in a future release, assuming themes add support
+        use_nvim_cmp_as_default = true,
+      },
+      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- adjusts spacing to ensure icons are aligned
+      nerd_font_variant = 'mono',
+
+      -- experimental auto-brackets support
+      accept = { auto_brackets = { enabled = true } },
+
+      -- experimental signature help support
+      trigger = { signature_help = { enabled = true } }
+    },
+    -- allows extending the enabled_providers array elsewhere in your config
+    -- without having to redefining it
+    opts_extend = { "sources.completion.enabled_providers" }
+  },
+
+  -- LSP servers and clients communicate what features they support through "capabilities".
+  --  By default, Neovim support a subset of the LSP specification.
+  --  With blink.cmp, Neovim has *more* capabilities which are communicated to the LSP servers.
+  --  Explanation from TJ: https://youtu.be/m8C0Cq9Uv9o?t=1275
+  --
+  -- This can vary by config, but in general for nvim-lspconfig:
 
   -- LSP
   {
@@ -196,9 +259,9 @@ require("lazy").setup({
     'ruifm/gitlinker.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
-  { 'sindrets/diffview.nvim',             dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
-  { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+  -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
     version = '5.2.3', -- Recommended
