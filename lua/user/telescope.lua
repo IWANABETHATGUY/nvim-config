@@ -22,7 +22,6 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 telescope.setup {
-
   defaults = {
     symbol_width = 50,
     layout_config = {
