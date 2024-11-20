@@ -43,3 +43,7 @@ require "user.telescope"
 require "user.snip"
 require "user.copilot-config"
 
+
+-- vim.lsp.set_log_level("trace")
+--
+-- require('vim.lsp.log').set_format_func(vim.inspect)
