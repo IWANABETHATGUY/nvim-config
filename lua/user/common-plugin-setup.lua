@@ -290,3 +290,65 @@ vim.g.translator_proxy_url = 'socks5://127.0.0.1:7890'
 require("nvim-lightbulb").setup({
   autocmd = { enabled = true }
 })
+
+require('blink.cmp').setup({
+  -- 'default' for mappings similar to built-in completion
+  -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+  -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+  -- see the "default configuration" section below for full documentation on how to define
+  -- your own keymap.
+  keymap = {
+    preset = 'enter',
+    ['<C-k>'] = { 'select_prev', 'fallback' },
+    ['<C-j>'] = { 'select_next', 'fallback' },
+  },
+
+  highlight = {
+    -- sets the fallback highlight groups to nvim-cmp's highlight groups
+    -- useful for when your theme doesn't support blink.cmp
+    -- will be removed in a future release, assuming themes add support
+    use_nvim_cmp_as_default = true,
+  },
+  -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+  -- adjusts spacing to ensure icons are aligned
+  nerd_font_variant = 'mono',
+
+  -- experimental auto-brackets support
+  accept = {
+    expand_snippet = function(snippet) require('luasnip').lsp_expand(snippet) end,
+    auto_brackets = {
+      enabled = false,
+    },
+  },
+  -- sources = {
+  --   completion = {
+  --     -- WARN: add the rest of your providers here, unless you're using `opts_extend`
+  --     -- and defining this outside of your primary `blink.cmp` config
+  --     -- see the default configuration for the default providers
+  --     enabled_providers = { 'luasnip' },
+  --   },
+  --   providers = {
+  --     luasnip = {
+  --       name = 'luasnip',
+  --       module = 'blink.compat.source',
+  --
+  --       score_offset = -3,
+  --
+  --       opts = {
+  --         use_show_condition = false,
+  --         show_autosnippets = true,
+  --       },
+  --     },
+  --   },
+  -- },
+
+  -- experimental signature help support
+  trigger = { signature_help = { enabled = true } },
+
+  windows = {
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 500,
+    },
+  }
+})
