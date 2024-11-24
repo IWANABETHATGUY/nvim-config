@@ -16,6 +16,11 @@ vim.api.nvim_create_user_command('ResetGrapple', function()
 end, {})
 
 
+vim.api.nvim_create_user_command('JumpToParentContext', function()
+  require("treesitter-context").go_to_context(vim.v.count1)
+end, {})
+
+
 diffview_toggle = function()
   local lib = require("diffview.lib")
   local view = lib.get_current_view()

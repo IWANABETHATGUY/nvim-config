@@ -217,14 +217,13 @@ require("lazy").setup({
 
   { "IndianBoy42/tree-sitter-just" },
   { "FuelLabs/tree-sitter-sway" },
+
   {
-    'j-hui/fidget.nvim',
-    tag = 'legacy',
-    config = function()
-      require("fidget").setup {
-        -- options
-      }
-    end,
+    "j-hui/fidget.nvim",
+    tag = "v1.0.0", -- Make sure to update this to something recent!
+    opts = {
+      -- options
+    },
   },
 
   -- Git
