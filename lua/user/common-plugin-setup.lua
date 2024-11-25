@@ -302,7 +302,11 @@ require('blink.cmp').setup({
     ['<C-k>'] = { 'select_prev', 'fallback' },
     ['<C-j>'] = { 'select_next', 'fallback' },
   },
-
+  fuzzy = {
+    use_typo_resistance = false,
+    use_proximity = false,
+    sorts = { 'label', 'kind', 'score', },
+  },
   highlight = {
     -- sets the fallback highlight groups to nvim-cmp's highlight groups
     -- useful for when your theme doesn't support blink.cmp

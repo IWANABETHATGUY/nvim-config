@@ -237,7 +237,7 @@ require("lazy").setup({
   -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
-    version = '5.2.3', -- Recommended
+    version = '5.15.1', -- Recommended
     lazy = false,      -- This plugin is already lazy
   },
   { 'chentoast/marks.nvim' },
@@ -272,6 +272,12 @@ require("lazy").setup({
     -- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
     -- available after the first executing of it or after a keymap of text-case.nvim has been used.
     lazy = false,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require('neoscroll').setup({})
+    end
   },
   { "nvim-neotest/nvim-nio" },
   -- Debug
