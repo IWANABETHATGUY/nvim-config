@@ -11,7 +11,14 @@ require("lazy").setup({
       })
     end
   },
-
+  -- {
+  --   -- used for A panel to view the logs from your LSP servers.
+  --   "mhanberg/output-panel.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("output_panel").setup()
+  --   end
+  -- },
   { 'kosayoda/nvim-lightbulb' },
   {
     'MagicDuck/grug-far.nvim',
@@ -26,17 +33,6 @@ require("lazy").setup({
   },
   {
     "aznhe21/actions-preview.nvim",
-  },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed, not both.
-      "nvim-telescope/telescope.nvim" -- optional
-    },
-    config = true
   },
   ({
     'ggandor/leap.nvim'
@@ -73,7 +69,7 @@ require("lazy").setup({
     end,
   },
   ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
-  ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
+  -- ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
   ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
   ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
   {
@@ -98,7 +94,22 @@ require("lazy").setup({
     }
   },
   { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
-  'romgrk/barbar.nvim',
+  {
+    {
+      'romgrk/barbar.nvim',
+      dependencies = {
+        'lewis6991/gitsigns.nvim',   -- OPTIONAL: for git status
+        'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+      },
+      init = function() vim.g.barbar_auto_setup = false end,
+      opts = {
+        -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+        -- animation = true,
+        -- insert_at_start = true,
+        -- …etc.
+      }
+    },
+  },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
@@ -114,7 +125,7 @@ require("lazy").setup({
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
   },
   { 'stevearc/dressing.nvim' },
-  { "EdenEast/nightfox.nvim" }, -- Packer
+  { "EdenEast/nightfox.nvim" },
 
   {
     "wsdjeg/vim-fetch"
@@ -238,7 +249,7 @@ require("lazy").setup({
   {
     'mrcjkb/rustaceanvim',
     version = '5.15.1', -- Recommended
-    lazy = false,      -- This plugin is already lazy
+    lazy = false,       -- This plugin is already lazy
   },
   { 'chentoast/marks.nvim' },
   {
