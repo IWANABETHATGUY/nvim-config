@@ -98,7 +98,7 @@ require("lazy").setup({
     {
       'romgrk/barbar.nvim',
       dependencies = {
-        'lewis6991/gitsigns.nvim',   -- OPTIONAL: for git status
+        'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
         'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
       },
       init = function() vim.g.barbar_auto_setup = false end,
@@ -240,8 +240,12 @@ require("lazy").setup({
   -- Git
   { "lewis6991/gitsigns.nvim" },
   {
-    'ruifm/gitlinker.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    opts = {},
+    keys = {
+      { "gl", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
+    },
   },
   { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 

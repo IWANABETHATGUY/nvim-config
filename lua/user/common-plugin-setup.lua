@@ -355,4 +355,21 @@ require('blink.cmp').setup({
       auto_show_delay_ms = 500,
     },
   }
-})
+});
+
+-- require("gitlinker").setup({
+--   router = {
+--     browse = {
+--
+--     }
+--     -- browse = {
+--     --   ["^ssh.github.com"] = "https://github.com/"
+--     --     .. "{_A.ORG}/"
+--     --     .. "{_A.REPO}/blob/"
+--     --     .. "{_A.REV}/"
+--     --     .. "{_A.FILE}"
+--     --     .. "?&lines={_A.LSTART}"
+--     --     .. "{_A.LEND > _A.LSTART and ('&lines-count=' .. _A.LEND - _A.LSTART + 1) or ''}",
+--     -- },
+--   },
+-- })
