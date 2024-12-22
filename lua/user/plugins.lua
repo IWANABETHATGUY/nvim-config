@@ -131,7 +131,12 @@ require("lazy").setup({
     "wsdjeg/vim-fetch"
   },
   {
-    "mg979/vim-visual-multi"
+    "mg979/vim-visual-multi",
+    init = function()
+      vim.g.VM_maps = {
+        ["I Return"] = "<S-CR>",
+      }
+    end
   },
 
   {
@@ -244,7 +249,7 @@ require("lazy").setup({
     cmd = "GitLink",
     opts = {},
     keys = {
-      { "gl", "<cmd>GitLink<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
+      { "gl", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
     },
   },
   { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
