@@ -292,11 +292,6 @@ require("nvim-lightbulb").setup({
 })
 
 require('blink.cmp').setup({
-  -- 'default' for mappings similar to built-in completion
-  -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-  -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-  -- see the "default configuration" section below for full documentation on how to define
-  -- your own keymap.
   keymap = {
     preset = 'enter',
     ['<C-k>'] = { 'select_prev', 'fallback' },
@@ -307,23 +302,35 @@ require('blink.cmp').setup({
     use_proximity = false,
     sorts = { 'label', 'kind', 'score', },
   },
-  highlight = {
-    -- sets the fallback highlight groups to nvim-cmp's highlight groups
-    -- useful for when your theme doesn't support blink.cmp
-    -- will be removed in a future release, assuming themes add support
-    use_nvim_cmp_as_default = true,
-  },
-  -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-  -- adjusts spacing to ensure icons are aligned
-  nerd_font_variant = 'mono',
+  completion = {
+    -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- adjusts spacing to ensure icons are aligned
 
-  -- experimental auto-brackets support
-  accept = {
-    expand_snippet = function(snippet) require('luasnip').lsp_expand(snippet) end,
-    auto_brackets = {
-      enabled = false,
+    -- experimental auto-brackets support
+    accept = {
+      -- expand_snippet = function(snippet) require('luasnip').lsp_expand(snippet) end,
+      auto_brackets = {
+        enabled = false,
+      },
+    },
+
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 500,
     },
   },
+  sources = {
+    -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    -- Disable cmdline completions
+    cmdline = {},
+  },
+  signature = { enabled = true }
+  -- 'default' for mappings similar to built-in completion
+  -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+  -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+  -- see the "default configuration" section below for full documentation on how to define
+  -- your own keymap.
   -- sources = {
   --   completion = {
   --     -- WARN: add the rest of your providers here, unless you're using `opts_extend`
@@ -347,29 +354,7 @@ require('blink.cmp').setup({
   -- },
 
   -- experimental signature help support
-  trigger = { signature_help = { enabled = true } },
+  -- trigger = { signature_help = { enabled = true } },
 
-  windows = {
-    documentation = {
-      auto_show = true,
-      auto_show_delay_ms = 500,
-    },
-  }
 });
 
--- require("gitlinker").setup({
---   router = {
---     browse = {
---
---     }
---     -- browse = {
---     --   ["^ssh.github.com"] = "https://github.com/"
---     --     .. "{_A.ORG}/"
---     --     .. "{_A.REPO}/blob/"
---     --     .. "{_A.REV}/"
---     --     .. "{_A.FILE}"
---     --     .. "?&lines={_A.LSTART}"
---     --     .. "{_A.LEND > _A.LSTART and ('&lines-count=' .. _A.LEND - _A.LSTART + 1) or ''}",
---     -- },
---   },
--- })
