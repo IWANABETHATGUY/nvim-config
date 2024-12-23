@@ -299,8 +299,9 @@ require('blink.cmp').setup({
   },
   fuzzy = {
     use_typo_resistance = false,
-    use_proximity = false,
-    sorts = { 'label', 'kind', 'score', },
+    use_frecency = true,
+    -- Proximity bonus boosts the score of items matching nearby words
+    use_proximity = true,
   },
   completion = {
     -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -357,4 +358,3 @@ require('blink.cmp').setup({
   -- trigger = { signature_help = { enabled = true } },
 
 });
-
