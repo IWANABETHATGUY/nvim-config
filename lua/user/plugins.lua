@@ -156,7 +156,18 @@ require("lazy").setup({
   -- snippets
   {
     'mcauley-penney/visual-whitespace.nvim',
-    config = true
+    config = {
+      highlight = { link = "Visual" },
+      space_char = '·',
+      tab_char = '→',
+      nl_char = '↲',
+      cr_char = '←',
+      enabled = true,
+      excluded = {
+        filetypes = {},
+        buftypes = { "terminal" },
+      }
+    }
   },
   {
     'saghen/blink.cmp',
