@@ -164,7 +164,7 @@ require("lazy").setup({
       cr_char = '←',
       enabled = true,
       excluded = {
-        filetypes = {},
+        filetypes = {"neo-tree"},
         buftypes = { "terminal" },
       }
     }
@@ -215,6 +215,9 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     inlay_hints = { enabled = true },
   }, -- enable LSP
+  {
+    "mvllow/modes.nvim",
+  }, 
   {
     "williamboman/mason-lspconfig.nvim",
   },
