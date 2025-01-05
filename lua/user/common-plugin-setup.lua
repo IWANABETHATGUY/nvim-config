@@ -298,8 +298,8 @@ require('blink.cmp').setup({
     ['<C-j>'] = { 'select_next', 'fallback' },
   },
   enabled = function()
-    -- return not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype)
-    return vim.bo.buftype ~= "nofile"
+    return not vim.tbl_contains({ "nofile", "prompt" }, vim.bo.buftype)
+    -- return vim.bo.buftype ~= "nofile"
         and vim.b.completion ~= false
   end,
   fuzzy = {
@@ -330,22 +330,6 @@ require('blink.cmp').setup({
     default = { 'lsp', 'path', 'snippets', 'buffer' },
     -- Disable cmdline completions
     cmdline = {},
-    providers = {
-      buffer = {
-        name = 'Buffer',
-        module = 'blink.cmp.sources.buffer',
-        opts = {
-          -- default to all visible buffers
-          get_bufnrs = function()
-            return vim
-                .iter(vim.api.nvim_list_wins())
-                :map(function(win) return vim.api.nvim_win_get_buf(win) end)
-                :filter(function(buf) return vim.bo[buf].buftype ~= 'nofile' end)
-                :totable()
-          end,
-        }
-      },
-    }
   },
   signature = { enabled = true }
   -- 'default' for mappings similar to built-in completion
