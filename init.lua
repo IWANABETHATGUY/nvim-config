@@ -42,6 +42,7 @@ require "user.barbar"
 require "user.telescope"
 require "user.snip"
 require "user.copilot-config"
+require "user.flutter-tools"
 
 
 -- vim.lsp.set_log_level("trace")

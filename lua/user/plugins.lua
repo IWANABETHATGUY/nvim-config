@@ -164,8 +164,8 @@ require("lazy").setup({
       cr_char = '←',
       enabled = true,
       excluded = {
-        filetypes = {"neo-tree"},
-        buftypes = { "terminal" },
+        filetypes = { "neo-tree" },
+        buftypes = { "terminal", "nofile" },
       }
     }
   },
@@ -217,7 +217,7 @@ require("lazy").setup({
   }, -- enable LSP
   {
     "mvllow/modes.nvim",
-  }, 
+  },
   {
     "williamboman/mason-lspconfig.nvim",
   },
@@ -282,6 +282,15 @@ require("lazy").setup({
     },
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple"
+  },
+  {
+    'nvim-flutter/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+    },
+    config = true,
   },
   {
     "johmsalas/text-case.nvim",

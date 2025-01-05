@@ -297,6 +297,11 @@ require('blink.cmp').setup({
     ['<C-k>'] = { 'select_prev', 'fallback' },
     ['<C-j>'] = { 'select_next', 'fallback' },
   },
+  enabled = function()
+    -- return not vim.tbl_contains({ "lua", "markdown" }, vim.bo.filetype)
+    return vim.bo.buftype ~= "nofile"
+        and vim.b.completion ~= false
+  end,
   fuzzy = {
     use_typo_resistance = false,
     use_frecency = true,
@@ -325,6 +330,22 @@ require('blink.cmp').setup({
     default = { 'lsp', 'path', 'snippets', 'buffer' },
     -- Disable cmdline completions
     cmdline = {},
+    providers = {
+      buffer = {
+        name = 'Buffer',
+        module = 'blink.cmp.sources.buffer',
+        opts = {
+          -- default to all visible buffers
+          get_bufnrs = function()
+            return vim
+                .iter(vim.api.nvim_list_wins())
+                :map(function(win) return vim.api.nvim_win_get_buf(win) end)
+                :filter(function(buf) return vim.bo[buf].buftype ~= 'nofile' end)
+                :totable()
+          end,
+        }
+      },
+    }
   },
   signature = { enabled = true }
   -- 'default' for mappings similar to built-in completion
@@ -360,28 +381,28 @@ require('blink.cmp').setup({
 });
 
 require('modes').setup({
-	colors = {
-		bg = "", -- Optional bg param, defaults to Normal hl group
-		copy = "#f5c359",
-		delete = "#c75c6a",
-		insert = "#78ccc5",
-		visual = "#9745be",
-	},
+  colors = {
+    bg = "", -- Optional bg param, defaults to Normal hl group
+    copy = "#f5c359",
+    delete = "#c75c6a",
+    insert = "#78ccc5",
+    visual = "#9745be",
+  },
 
-	-- Set opacity for cursorline and number background
-	line_opacity = 0.15,
+  -- Set opacity for cursorline and number background
+  line_opacity = 0.15,
 
-	-- Enable cursor highlights
-	set_cursor = true,
+  -- Enable cursor highlights
+  set_cursor = true,
 
-	-- Enable cursorline initially, and disable cursorline for inactive windows
-	-- or ignored filetypes
-	set_cursorline = true,
+  -- Enable cursorline initially, and disable cursorline for inactive windows
+  -- or ignored filetypes
+  set_cursorline = true,
 
-	-- Enable line number highlights to match cursorline
-	set_number = true,
+  -- Enable line number highlights to match cursorline
+  set_number = true,
 
-	-- Disable modes highlights in specified filetypes
-	-- Please PR commonly ignored filetypes
-	ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
+  -- Disable modes highlights in specified filetypes
+  -- Please PR commonly ignored filetypes
+  ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
 })
