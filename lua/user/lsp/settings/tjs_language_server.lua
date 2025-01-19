@@ -13,8 +13,10 @@ configs.tjs_language_server = {
     filetypes = {
       'javascript',
       'javascriptreact',
+      'javascript.jsx',
       'typescript',
       'typescriptreact',
+      'typescript.tsx',
     },
     root_dir = function(fname)
       return util.find_package_json_ancestor(fname)
