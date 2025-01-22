@@ -216,5 +216,6 @@ which_key.register({
     a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "code actions", },
     f = { "<cmd>lua vim.lsp.buf.format{async=false}<cr>", "Format" },
   },
+  t = {"<cmd>TranslateSelect<cr>", "TranslateSelect"}
 
 }, visual_opts)

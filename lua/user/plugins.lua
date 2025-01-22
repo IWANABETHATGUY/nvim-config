@@ -288,7 +288,7 @@ require("lazy").setup({
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true,
   },
@@ -323,8 +323,9 @@ require("lazy").setup({
     end
   },
   { "nvim-neotest/nvim-nio" },
+  { "niuiic/translate.nvim" },
+  { "niuiic/omega.nvim",    build = "cd rs && cargo build --release" },
   -- Debug
-  { 'voldikss/vim-translator', },
   {
     'mfussenegger/nvim-dap'
   },
