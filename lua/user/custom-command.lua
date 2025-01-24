@@ -1,23 +1,23 @@
 local function trans_to_zh()
-	require("translate").translate({
-		get_command = function(input)
-			return {
-				"deepseek-trans",
-				input,
-			}
-		end,
-        -- input | clipboard | selection
-		input = "selection",
-        -- open_float | notify | copy | insert | replace
-		output = { "open_float" },
-		resolve_result = function(result)
-			if result.code ~= 0 then
-				return nil
-			end
+  require("translate").translate({
+    get_command = function(input)
+      return {
+        "deepseek-trans",
+        input,
+      }
+    end,
+    -- input | clipboard | selection
+    input = "selection",
+    -- open_float | notify | copy | insert | replace
+    output = { "open_float" },
+    resolve_result = function(result)
+      if result.code ~= 0 then
+        return nil
+      end
 
-			return string.match(result.stdout, "(.*)\n")
-		end,
-	})
+      return string.match(result.stdout, "(.*)\n")
+    end,
+  })
 end
 
 vim.api.nvim_create_user_command('NeotreeReveal', function()
@@ -44,7 +44,7 @@ end, {})
 
 vim.api.nvim_create_user_command('TranslateSelect', function()
   trans_to_zh()
-end, {})
+end, { range = true })
 
 
 diffview_toggle = function()
@@ -58,5 +58,3 @@ diffview_toggle = function()
     vim.cmd.DiffviewOpen()
   end
 end
-
-
