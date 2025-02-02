@@ -109,8 +109,14 @@ local mappings = {
     p = { "<cmd>Telescope grapple tags<cr>", " open tags window" }
   },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Find files",
+    f = {
+      "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "Find files",
+    },
+    g = {
+      "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "Find files",
+    }
   },
   ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({debounce = 800})<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
