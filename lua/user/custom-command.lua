@@ -2,8 +2,9 @@ local function trans_to_zh()
   require("translate").translate({
     get_command = function(input)
       return {
-        "deepseek-trans",
+        "trans",
         input,
+        "gemini"
       }
     end,
     -- input | clipboard | selection
