@@ -34,8 +34,8 @@ local function trans_to_zh()
   })
 end
 
-vim.api.nvim_create_user_command('Telescope hierarchy', function()
-  vim.cmd.Telescope('hierarchy')
+vim.api.nvim_create_user_command('NeotreeReveal', function()
+  vim.cmd.Neotree('reveal')
 end, {})
 
 vim.api.nvim_create_user_command('DiffviewToggle', function()
