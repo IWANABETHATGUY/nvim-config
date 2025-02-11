@@ -1,6 +1,6 @@
-local lib = require("diffview.lib")
 
 local diffview_toggle = function()
+  local lib = require("diffview.lib")
   local view = lib.get_current_view()
   if view then
     -- Current tabpage is a Diffview; close it
@@ -34,8 +34,8 @@ local function trans_to_zh()
   })
 end
 
-vim.api.nvim_create_user_command('NeotreeReveal', function()
-  vim.cmd.Neotree('reveal')
+vim.api.nvim_create_user_command('Telescope hierarchy', function()
+  vim.cmd.Telescope('hierarchy')
 end, {})
 
 vim.api.nvim_create_user_command('DiffviewToggle', function()

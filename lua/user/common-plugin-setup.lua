@@ -390,3 +390,5 @@ require('modes').setup({
   -- Please PR commonly ignored filetypes
   ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
 })
+
+

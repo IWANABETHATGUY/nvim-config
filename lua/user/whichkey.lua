@@ -157,6 +157,16 @@ local mappings = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",
     },
+    h = {
+      i = {
+        "<cmd>Telescope hierarchy incoming_calls<cr>",
+        "LSP: Search hierarchy incoming"
+      },
+      o = {
+        "<cmd>Telescope hierarchy outgoing_calls<cr>",
+        "LSP: Search hierarchy outcoming"
+      },
+    },
     w = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
@@ -222,6 +232,6 @@ which_key.register({
     a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "code actions", },
     f = { "<cmd>lua vim.lsp.buf.format{async=false}<cr>", "Format" },
   },
-  t = {"<cmd>TranslateSelect<cr>", "TranslateSelect"}
+  t = { "<cmd>TranslateSelect<cr>", "TranslateSelect" }
 
 }, visual_opts)
