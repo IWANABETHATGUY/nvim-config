@@ -141,7 +141,7 @@ require("lazy").setup({
 
   {
     'saecki/crates.nvim',
-    tag = 'stable',
+    branch = 'main',
     config = function()
     end,
   },
