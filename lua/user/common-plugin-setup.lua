@@ -302,12 +302,7 @@ require('blink.cmp').setup({
     -- return vim.bo.buftype ~= "nofile"
         and vim.b.completion ~= false
   end,
-  fuzzy = {
-    use_typo_resistance = false,
-    use_frecency = true,
-    -- Proximity bonus boosts the score of items matching nearby words
-    use_proximity = true,
-  },
+  fuzzy = { implementation = 'prefer_rust_with_warning' },
   completion = {
     -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
     -- adjusts spacing to ensure icons are aligned
@@ -325,11 +320,13 @@ require('blink.cmp').setup({
       auto_show_delay_ms = 500,
     },
   },
+  cmdline = {
+    -- Disable cmdline completions
+    enabled = false,
+  },
   sources = {
     -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
     default = { 'lsp', 'path', 'snippets', 'buffer' },
-    -- Disable cmdline completions
-    cmdline = {},
   },
   signature = { enabled = true }
   -- 'default' for mappings similar to built-in completion
