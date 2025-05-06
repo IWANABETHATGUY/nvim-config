@@ -7,7 +7,10 @@ local lspconfig = require("lspconfig")
 
 configs.just_language_server = {
   default_config = {
-    cmd = { 'just-language-server' },
+    cmd = { 'just-lsp' },
+    root_dir = function(fname)
+      return util.find_git_ancestor(fname)
+    end,
     filetypes = {
       'just',
     },
