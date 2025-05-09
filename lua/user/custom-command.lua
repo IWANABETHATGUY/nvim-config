@@ -1,14 +1,10 @@
 
 local diffview_toggle = function()
-  local lib = require("diffview.lib")
-  local view = lib.get_current_view()
-  if view then
-    -- Current tabpage is a Diffview; close it
-    vim.cmd.DiffviewClose()
-  else
-    -- No open Diffview exists: open a new one
-    vim.cmd.DiffviewOpen()
-  end
+    if next(require('diffview.lib').views) == nil then
+      vim.cmd('DiffviewOpen')
+    else
+      vim.cmd('DiffviewClose')
+    end
 end
 
 local function trans_to_zh()
