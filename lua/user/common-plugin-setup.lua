@@ -296,10 +296,29 @@ require('blink.cmp').setup({
     preset = 'enter',
     ['<C-k>'] = { 'select_prev', 'fallback' },
     ['<C-j>'] = { 'select_next', 'fallback' },
+
+    ["<M-l>"] = {
+      function(cmp)
+        if vim.b[vim.api.nvim_get_current_buf()].nes_state then
+          cmp.hide()
+          return (
+            require("copilot-lsp.nes").apply_pending_nes()
+            and require("copilot-lsp.nes").walk_cursor_end_edit()
+          )
+        end
+        if cmp.snippet_active() then
+          return cmp.accept()
+        else
+          return cmp.select_and_accept()
+        end
+      end,
+      "snippet_forward",
+      "fallback",
+    },
   },
   enabled = function()
     return not vim.tbl_contains({ "nofile", "prompt" }, vim.bo.buftype)
-    -- return vim.bo.buftype ~= "nofile"
+        -- return vim.bo.buftype ~= "nofile"
         and vim.b.completion ~= false
   end,
   fuzzy = { implementation = 'prefer_rust_with_warning' },
@@ -326,9 +345,17 @@ require('blink.cmp').setup({
   },
   sources = {
     -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lsp', 'path', 'snippets', 'buffer', "copilot" },
+    providers = {
+      copilot = {
+        name = "copilot",
+        module = "blink-copilot",
+        score_offset = 100,
+        async = true,
+      },
+    },
   },
-  signature = { enabled = true }
+  signature = { enabled = true },
   -- 'default' for mappings similar to built-in completion
   -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
   -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -387,5 +414,3 @@ require('modes').setup({
   -- Please PR commonly ignored filetypes
   ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
 })
-
-

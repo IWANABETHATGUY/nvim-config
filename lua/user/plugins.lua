@@ -37,12 +37,12 @@ require("lazy").setup({
   ({
     'ggandor/leap.nvim'
   }),
-
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
+      vim.g.copilot_proxy = "http://127.0.0.1:7890"
       require("copilot").setup({
         filetypes = {
           rust = true,
@@ -58,6 +58,7 @@ require("lazy").setup({
             return true
           end,
         },
+        panel = { enabled = false },
         suggestion = {
           enabled = true,
           auto_trigger = true,
@@ -173,6 +174,7 @@ require("lazy").setup({
         build = "make install_jsregexp"
 
       },
+      "fang2hou/blink-copilot"
     },
     lazy = false, -- lazy loading handled internally
     -- use a release tag to download pre-built binaries
