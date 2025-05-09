@@ -145,13 +145,6 @@ require("lazy").setup({
     config = function()
     end,
   },
-  -- cmp plugins
-  -- ({ "hrsh7th/nvim-cmp" }),         -- The completion plugin
-  -- ({ "hrsh7th/cmp-buffer" }), -- buffer completions
-  -- ({ "hrsh7th/cmp-path" }),   -- path completions
-  -- ({ "saadparwaiz1/cmp_luasnip" }), -- snippet completions
-  -- ({ "hrsh7th/cmp-nvim-lsp" }),
-  -- ({ "hrsh7th/cmp-nvim-lua" }),
 
   -- snippets
   {
@@ -183,7 +176,7 @@ require("lazy").setup({
     },
     lazy = false, -- lazy loading handled internally
     -- use a release tag to download pre-built binaries
-    version = '0.13.0',
+    version = '1.2.0',
     -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
@@ -263,8 +256,6 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
   },
 
-  { "IndianBoy42/tree-sitter-just" },
-
   {
     "j-hui/fidget.nvim",
     tag = "v1.0.0", -- Make sure to update this to something recent!
@@ -288,7 +279,7 @@ require("lazy").setup({
   -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   {
     'mrcjkb/rustaceanvim',
-    version = '5.23.1', -- Recommended
+    version = '6.0.10', -- Recommended
     lazy = false,       -- This plugin is already lazy
   },
   { 'chentoast/marks.nvim' },

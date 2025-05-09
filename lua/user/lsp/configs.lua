@@ -66,30 +66,30 @@ lspconfig.move_analyzer.setup {
 
 lspconfig.ruff.setup {}
 
-local mason_registry = require('mason-registry')
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
-    '/node_modules/@vue/language-server'
+-- local mason_registry = require('mason-registry')
+-- local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+--     '/node_modules/@vue/language-server'
 
 lspconfig.vtsls.setup {
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-  settings = {
-    vtsls = {
-      -- autoUseWorkspaceTsdk = true,
-      tsserver = {
-        globalPlugins = {
-          {
-            name = '@vue/typescript-plugin',
-            location = vue_language_server_path,
-            languages = { 'vue' },
-            configNamespace = "typescript",
-            enableForWorkspaceTypeScriptVersions = true,
-          },
-        },
-      },
-    },
-  },
+  -- settings = {
+  --   vtsls = {
+  --     -- autoUseWorkspaceTsdk = true,
+  --     tsserver = {
+  --       globalPlugins = {
+  --         -- {
+  --         --   name = '@vue/typescript-plugin',
+  --         --   location = vue_language_server_path,
+  --         --   languages = { 'vue' },
+  --         --   configNamespace = "typescript",
+  --         --   enableForWorkspaceTypeScriptVersions = true,
+  --         -- },
+  --       },
+  --     },
+  --   },
+  -- },
 }
 
 
