@@ -89,7 +89,12 @@ lspconfig.volar.setup {
 local servers = { "jsonls", "clangd", "pyright", "asm_lsp" }
 
 require("mason-lspconfig").setup {
-  ensure_installed = servers
+  ensure_installed = servers,
+  automatic_enable = {
+    exclude = {
+      "vtsls"
+    }
+  }
 }
 
 for _, server in pairs(servers) do
