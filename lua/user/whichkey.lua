@@ -103,9 +103,6 @@ local mappings = {
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
   ["h"] = {
-    h = {
-      "<cmd>:RustLsp hover actions<CR>", "RustHoverAction"
-    },
     p = { "<cmd>Telescope grapple tags<cr>", " open tags window" }
   },
   ["f"] = {
