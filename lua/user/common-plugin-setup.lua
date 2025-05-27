@@ -296,25 +296,6 @@ require('blink.cmp').setup({
     preset = 'enter',
     ['<C-k>'] = { 'select_prev', 'fallback' },
     ['<C-j>'] = { 'select_next', 'fallback' },
-
-    ["<M-l>"] = {
-      function(cmp)
-        if vim.b[vim.api.nvim_get_current_buf()].nes_state then
-          cmp.hide()
-          return (
-            require("copilot-lsp.nes").apply_pending_nes()
-            and require("copilot-lsp.nes").walk_cursor_end_edit()
-          )
-        end
-        if cmp.snippet_active() then
-          return cmp.accept()
-        else
-          return cmp.select_and_accept()
-        end
-      end,
-      "snippet_forward",
-      "fallback",
-    },
   },
   enabled = function()
     return not vim.tbl_contains({ "nofile", "prompt" }, vim.bo.buftype)
@@ -345,14 +326,8 @@ require('blink.cmp').setup({
   },
   sources = {
     -- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
-    default = { 'lsp', 'path', 'snippets', 'buffer', "copilot" },
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
     providers = {
-      copilot = {
-        name = "copilot",
-        module = "blink-copilot",
-        score_offset = 100,
-        async = true,
-      },
     },
   },
   signature = { enabled = true },
