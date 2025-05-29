@@ -7,25 +7,33 @@ local diffview_toggle = function()
     end
 end
 
-local function trans_to_zh()
+local function trans_to_zh(kind, output)
   require("translate").translate({
     get_command = function(input)
       return {
         "trans",
         input,
-        "gemini"
+        "gemini",
+        kind
       }
     end,
     -- input | clipboard | selection
     input = "selection",
     -- open_float | notify | copy | insert | replace
-    output = { "open_float" },
+    output = { output },
     resolve_result = function(result)
       if result.code ~= 0 then
         return nil
       end
 
-      return string.match(result.stdout, "(.*)\n")
+      local ret = string.match(result.stdout, "(.*)\n")
+      if kind == "wording" then
+        require('notify')(ret, "info", {
+          title = "gemini wording"
+        })
+      end
+
+      return ret
     end,
   })
 end
@@ -53,7 +61,10 @@ end, {})
 
 
 vim.api.nvim_create_user_command('TranslateSelect', function()
-  trans_to_zh()
+  trans_to_zh("translate", "open_float")
 end, { range = true })
 
+vim.api.nvim_create_user_command('PolishSelect', function()
+  trans_to_zh("wording", "copy")
+end, { range = true })
 
