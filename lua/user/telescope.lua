@@ -100,6 +100,17 @@ telescope.setup {
   pickers = {
     find_files = {
       find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }
+    },
+    buffers = {
+      mappings = {
+        i = {
+          ["<c-d>"] = actions.delete_buffer,
+        },
+        n = {
+          ["dd"] = actions.delete_buffer,
+          ["<C-a>"] = actions.select_all,
+        },
+      },
     }
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
