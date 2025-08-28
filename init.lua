@@ -42,7 +42,6 @@ require "user.barbar"
 require "user.telescope"
 require "user.snip"
 require "user.flutter-tools"
-require "user.bufferlist"
 
 
 -- vim.lsp.set_log_level("trace")

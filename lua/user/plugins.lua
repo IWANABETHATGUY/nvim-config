@@ -29,17 +29,6 @@ require("lazy").setup({
         end
     },
     {
-        "EL-MASTOR/bufferlist.nvim",
-        lazy = true,
-        dependencies = "nvim-tree/nvim-web-devicons",
-        cmd = "BufferList",
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
-    },
-    {
         "natecraddock/workspaces.nvim"
     },
     {
@@ -109,7 +98,7 @@ require("lazy").setup({
     {
         'romgrk/barbar.nvim',
         dependencies = {
-            'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
             'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         },
         init = function() vim.g.barbar_auto_setup = false end,
@@ -221,7 +210,7 @@ require("lazy").setup({
     },
     {
         "williamboman/mason.nvim",
-        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        run = ":MasonUpdate",     -- :MasonUpdate updates registry contents
         version = "2.0.0"
     },
     ({ "nvimtools/none-ls.nvim" }), -- for formatters and linters
@@ -293,7 +282,7 @@ require("lazy").setup({
     {
         'mrcjkb/rustaceanvim',
         version = '6.2.0', -- Recommended
-        lazy = false,      -- This plugin is already lazy
+        lazy = false,  -- This plugin is already lazy
     },
     {
         "LintaoAmons/bookmarks.nvim",

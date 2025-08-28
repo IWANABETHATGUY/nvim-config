@@ -90,8 +90,8 @@ local mappings = {
   ["a"] = { "<cmd>Grapple tag<cr>", "Grapple add tag" },
   ["b"] = {
     b = {
-      ":BufferList<CR>",
-      "BufferList",
+      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "Buffers",
     },
     p = { "<cmd>BufferPin<cr>", "Pin/Unpin" },
     f = { "<cmd>BufferGotoPinned 1<cr>", "Go to first pinned buffer" },
