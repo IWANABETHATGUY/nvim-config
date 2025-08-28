@@ -94,7 +94,7 @@ local mappings = {
       "BufferList",
     },
     p = { "<cmd>BufferPin<cr>", "Pin/Unpin" },
-    f = { "<cmd>BufferFirst<cr>", "Go to first buffer" },
+    f = { "<cmd>BufferGotoPinned 1<cr>", "Go to first pinned buffer" },
     o = { "<cmd>BufferOrderByBufferNumber<cr>", "BufferOrderByBufferNumber" },
     c = { "<cmd>BufferCloseAllButCurrentOrPinned<cr>", "BufferCloseAllButCurrentOrPinned" }
   },
