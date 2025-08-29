@@ -107,7 +107,7 @@ telescope.setup {
           ["<c-d>"] = actions.delete_buffer,
         },
         n = {
-          ["dd"] = actions.delete_buffer,
+          ["<c-d>"] = actions.delete_buffer,
           ["<C-a>"] = actions.select_all,
         },
       },
