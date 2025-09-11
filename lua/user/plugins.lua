@@ -176,7 +176,7 @@ require("lazy").setup({
         },
         lazy = false, -- lazy loading handled internally
         -- use a release tag to download pre-built binaries
-        version = '1.2.0',
+        version = '1.4.0',
         -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
         -- build = 'cargo build --release',
         -- If you use nix, you can build from source using latest nightly rust with:
