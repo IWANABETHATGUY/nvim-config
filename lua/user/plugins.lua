@@ -11,14 +11,6 @@ require("lazy").setup({
             })
         end
     },
-    -- {
-    --   -- used for A panel to view the logs from your LSP servers.
-    --   "mhanberg/output-panel.nvim",
-    --   event = "VeryLazy",
-    --   config = function()
-    --     require("output_panel").setup()
-    --   end
-    -- },
     { 'kosayoda/nvim-lightbulb' },
     {
         'MagicDuck/grug-far.nvim',
@@ -70,7 +62,6 @@ require("lazy").setup({
         end,
     },
     ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
-    -- ({ "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }),
     ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
     ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
     -- {
@@ -98,7 +89,7 @@ require("lazy").setup({
     {
         'romgrk/barbar.nvim',
         dependencies = {
-            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+            'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
             'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         },
         init = function() vim.g.barbar_auto_setup = false end,
@@ -113,8 +104,10 @@ require("lazy").setup({
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
-
-    "numToStr/FTerm.nvim",
+    {
+        { 'akinsho/toggleterm.nvim', version = "*", opts = { --[[ things you want to change go here]] } }
+    },
+    -- "numToStr/FTerm.nvim",
     ({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }),
     "lukas-reineke/indent-blankline.nvim",
     ("folke/which-key.nvim"),
@@ -210,7 +203,7 @@ require("lazy").setup({
     },
     {
         "williamboman/mason.nvim",
-        run = ":MasonUpdate",     -- :MasonUpdate updates registry contents
+        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
         version = "2.0.0"
     },
     ({ "nvimtools/none-ls.nvim" }), -- for formatters and linters
@@ -282,7 +275,7 @@ require("lazy").setup({
     {
         'mrcjkb/rustaceanvim',
         version = '6.2.0', -- Recommended
-        lazy = false,  -- This plugin is already lazy
+        lazy = false,      -- This plugin is already lazy
     },
     {
         "LintaoAmons/bookmarks.nvim",
@@ -292,11 +285,11 @@ require("lazy").setup({
         dependencies = {
             { "kkharji/sqlite.lua" },
             { "nvim-telescope/telescope.nvim" }, -- currently has only telescopes supported, but PRs for other pickers are welcome
-            { "stevearc/dressing.nvim" }, -- optional: better UI
-            { "GeorgesAlkhouri/nvim-aider" } -- optional: for Aider integration
+            { "stevearc/dressing.nvim" },        -- optional: better UI
+            { "GeorgesAlkhouri/nvim-aider" }     -- optional: for Aider integration
         },
         config = function()
-            local opts = {}          -- check the "./lua/bookmarks/default-config.lua" file for all the options
+            local opts = {}                  -- check the "./lua/bookmarks/default-config.lua" file for all the options
             require("bookmarks").setup(opts) -- you must call setup to init sqlite db
         end,
     },
@@ -347,12 +340,6 @@ require("lazy").setup({
             require('notify').setup({
                 -- your configuration options here
             })
-        end
-    },
-    {
-        "karb94/neoscroll.nvim",
-        config = function()
-            require('neoscroll').setup({})
         end
     },
     { "nvim-neotest/nvim-nio" },

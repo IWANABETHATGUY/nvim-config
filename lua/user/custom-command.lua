@@ -1,4 +1,3 @@
-
 local diffview_toggle = function()
     if require('diffview.lib').get_current_view() == nil then
       vim.cmd('DiffviewOpen')
@@ -52,11 +51,6 @@ end, {})
 
 vim.api.nvim_create_user_command('ResetGrapple', function()
   vim.cmd('lua require("grapple").reset()')
-end, {})
-
-
-vim.api.nvim_create_user_command('JumpToParentContext', function()
-  require("treesitter-context").go_to_context(vim.v.count1)
 end, {})
 
 
