@@ -111,8 +111,8 @@ local mappings = {
       "Find files",
     },
     f = {
-      "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "Find files",
+      "<cmd>lua require('fff').find_in_git_root()<cr>",
+      "Find git files",
     }
   },
   ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({debounce = 800})<cr>", "Find Text" },

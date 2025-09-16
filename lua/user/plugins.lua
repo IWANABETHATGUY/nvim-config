@@ -30,6 +30,33 @@ require("lazy").setup({
         'ggandor/leap.nvim'
     }),
     {
+        'dmtrKovalenko/fff.nvim',
+        build = 'cargo build --release',
+        -- or if you are using nixos
+        -- build = "nix run .#release",
+        opts = { -- (optional)
+            lazy_sync = true,
+
+            prompt = '>',
+            debug = {
+                enabled = false,    -- we expect your collaboration at least during the beta
+                show_scores = false -- to help us optimize the scoring system, feel free to share your scores!
+            },
+            preview = {
+                chunk_size = 4096
+            },
+            keymaps = {
+                close = { '<Esc>', '<C-c>' },
+                move_up = { '<Up>', '<C-k>' },
+                move_down = { '<Down>', '<C-j>' },
+            }
+        },
+
+        -- No need to lazy-load with lazy.nvim.
+        -- This plugin initializes itself lazily.
+        lazy = false,
+    },
+    {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",

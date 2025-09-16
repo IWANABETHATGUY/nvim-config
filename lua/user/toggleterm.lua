@@ -53,13 +53,11 @@ function _G.toggle_fullscreen_term()
     if termid ~= 0 then
         local cur_term = term.get(termid)
         if buffer_sizes[termid] == 20 then
-            cur_term:close()
-            cur_term:open(40, 'horizontal')
+            cur_term:resize(40)
             buffer_sizes[termid] = 40;
         else
-            cur_term:close()
-            cur_term:open(20, 'horizontal')
-            buffer_sizes[termid] = 20
+            cur_term:resize(20)
+            buffer_sizes[termid] = 20;
         end
     end
 end
