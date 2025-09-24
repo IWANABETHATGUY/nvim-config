@@ -1,7 +1,5 @@
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
-
-lspconfig.zls.setup {
+vim.lsp.config.zls = {
+    cmd = { 'zls' },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
 }
@@ -14,17 +12,20 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 -- lua config end
 
-lspconfig.taplo.setup {
+vim.lsp.config.taplo = {
+    cmd = { 'taplo', 'lsp', 'stdio' },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
 }
 
-lspconfig.racket_langserver.setup {
+vim.lsp.config.racket_langserver = {
+    cmd = { 'racket', '--lib', 'racket-langserver' },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
 }
 
-lspconfig.ocamllsp.setup {
+vim.lsp.config.ocamllsp = {
+    cmd = { 'ocamllsp' },
     on_attach = function(client, bufnr)
         require('virtualtypes').on_attach(client, bufnr)
         require("user.lsp.handlers").on_attach(client, bufnr)
@@ -32,19 +33,20 @@ lspconfig.ocamllsp.setup {
     capabilities = require("user.lsp.handlers").capabilities,
 }
 
-lspconfig.denols.setup {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
-    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-    single_file_support = false
-}
+-- vim.lsp.config.denols = {
+--     cmd = { 'deno', 'lsp' },
+--     on_attach = require("user.lsp.handlers").on_attach,
+--     capabilities = require("user.lsp.handlers").capabilities,
+--     root_markers = { "deno.json", "deno.jsonc" },
+--     single_file_support = false
+-- }
 
-lspconfig.move_analyzer.setup {
+vim.lsp.config.move_analyzer = {
+    cmd = { "sui-move-analyzer" },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
-    root_dir = lspconfig.util.root_pattern("Move.toml"),
-    single_file_support = false,
-    cmd = { "sui-move-analyzer" }
+    root_markers = { "Move.toml" },
+    single_file_support = false
 }
 
 
@@ -65,22 +67,24 @@ lspconfig.move_analyzer.setup {
 --     on_attach = require("user.lsp.handlers").on_attach,
 --     capabilities = require("user.lsp.handlers").capabilities,
 -- }
-vim.lsp.config('emmylua_ls', {
-  capabilities = require("user.lsp.handlers").capabilities,
-  on_attach = require("user.lsp.handlers").on_attach,
-})
+vim.lsp.config.emmylua_ls = {
+    cmd = { 'emmylua-language-server' },
+    capabilities = require("user.lsp.handlers").capabilities,
+    on_attach = require("user.lsp.handlers").on_attach,
+}
 
-vim.lsp.enable('emmylua_ls')
 
-
-lspconfig.ruff.setup {}
+vim.lsp.config.ruff = {
+    cmd = { 'ruff', 'server' }
+}
 
 -- lspconfig.copilot_ls.setup {}
 
 local vue_language_server_path = vim.fn.expand('$MASON') ..
     '/packages/vue-language-server/node_modules/@vue/language-server'
 
-lspconfig.vtsls.setup {
+vim.lsp.config.vtsls = {
+    cmd = { 'vtsls', '--stdio' },
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -120,14 +124,38 @@ require("mason-lspconfig").setup {
     }
 }
 
+-- Default command configurations for servers handled by mason
+local default_cmds = {
+    jsonls = { 'vscode-json-language-server', '--stdio' },
+    clangd = { 'clangd' },
+    pyright = { 'pyright-langserver', '--stdio' },
+    asm_lsp = { 'asm-lsp' },
+}
+
 for _, server in pairs(servers) do
     local opts = {
         on_attach = require("user.lsp.handlers").on_attach,
         capabilities = require("user.lsp.handlers").capabilities,
     }
+
+    -- Add default cmd if available
+    if default_cmds[server] then
+        opts.cmd = default_cmds[server]
+    end
+
     local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
     if has_custom_opts then
         opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
     end
-    lspconfig[server].setup(opts)
+
+    if server ~= "emmylua_ls" then
+        vim.lsp.config[server] = opts
+    end
 end
+
+-- Enable all configured LSP servers
+vim.lsp.enable({
+    'zls', 'taplo', 'racket_langserver', 'ocamllsp',
+    'move_analyzer', 'emmylua_ls', 'ruff', 'vtsls',
+    'jsonls', 'clangd', 'pyright', 'asm_lsp'
+})
