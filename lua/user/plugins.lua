@@ -21,6 +21,10 @@ require("lazy").setup({
         end
     },
     {
+        "vuki656/package-info.nvim",
+        requires = "MunifTanjim/nui.nvim",
+    },
+    {
         "natecraddock/workspaces.nvim"
     },
     {
@@ -60,6 +64,9 @@ require("lazy").setup({
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
+        requires = {
+          "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+        },
         config = function()
             vim.g.copilot_proxy = "http://127.0.0.1:7890"
             require("copilot").setup({
@@ -102,15 +109,17 @@ require("lazy").setup({
             --Config goes here
         },
     },
-    {
+     {
+      {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
+        commit = "e195a10c5bfa74ccdeeb4541053cf6130712bfe3",
         dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        }
+          "nvim-lua/plenary.nvim",
+          "MunifTanjim/nui.nvim",
+          "nvim-tree/nvim-web-devicons", -- optional, but recommended
+        },
+        lazy = false, -- neo-tree will lazily load itself
+      }
     },
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
     {
@@ -119,13 +128,6 @@ require("lazy").setup({
             'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
             'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         },
-        init = function() vim.g.barbar_auto_setup = false end,
-        opts = {
-            -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-            -- animation = true,
-            -- insert_at_start = true,
-            -- …etc.
-        }
     },
     {
         'nvim-lualine/lualine.nvim',

@@ -1,6 +1,6 @@
 vim.g.barbar_auto_setup = false -- disable auto-setup
 
-require'barbar'.setup {
+require('barbar').setup {
   -- Enable/disable animations
   animation = false,
 

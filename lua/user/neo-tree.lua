@@ -46,6 +46,9 @@ require("neo-tree").setup({
       }
     },
     filesystem = {
-      bind_to_cwd = false
+      bind_to_cwd = false,
+      filtered_items = {
+        hide_gitignored = false,
+      }
     }
 })
