@@ -22,7 +22,11 @@ require("lazy").setup({
     },
     {
         "vuki656/package-info.nvim",
+        dir = "~/Documents/github/package-info.nvim",
         requires = "MunifTanjim/nui.nvim",
+        config = function()
+            vim.g.package_info_proxy = "http://127.0.0.1:7890"
+        end
     },
     {
         "natecraddock/workspaces.nvim"
@@ -112,7 +116,7 @@ require("lazy").setup({
      {
       {
         "nvim-neo-tree/neo-tree.nvim",
-        commit = "e195a10c5bfa74ccdeeb4541053cf6130712bfe3",
+        branch = "v3.x",
         dependencies = {
           "nvim-lua/plenary.nvim",
           "MunifTanjim/nui.nvim",
