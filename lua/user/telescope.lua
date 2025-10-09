@@ -24,11 +24,11 @@ end
 telescope.setup {
   defaults = {
     symbol_width = 50,
+    layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
         width = 0.9,
         height = 0.9,
-        results = 0.6,
       },
     },
     buffer_previewer_maker = new_maker,
