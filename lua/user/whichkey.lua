@@ -111,7 +111,7 @@ local mappings = {
       "Find files",
     },
     f = {
-      "<cmd>lua require('fff').find_in_git_root()<cr>",
+       "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
       "Find git files",
     }
   },
@@ -232,6 +232,9 @@ which_key.register({
   l = {
     a = { "<cmd>lua require('actions-preview').code_actions()<cr>", "code actions", },
     f = { "<cmd>lua vim.lsp.buf.format{async=false}<cr>", "Format" },
+  },
+  g = {
+    l = { "<cmd>CopyFilePathAndRange<cr>", "CopyFilePathAndRange" },
   },
   t = { 
     t = {"<cmd>TranslateSelect<cr>", "TranslateSelect" },

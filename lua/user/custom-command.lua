@@ -37,6 +37,32 @@ local function trans_to_zh(kind, output)
     })
 end
 
+-- ~/.config/nvim/lua/copy-file-line.lua
+
+local M = {}
+
+function M.copy_file_with_lines(opts)
+  local start_line = opts.line1
+  local end_line = opts.line2
+  local relative_path = vim.fn.expand('%:~:.')
+  
+  if relative_path == '' then
+    vim.notify('File not saved!', vim.log.levels.WARN)
+    return
+  end
+
+  local start_pos = vim.fn.getpos("v")
+  local end_pos = vim.fn.getcurpos()
+  start_line = start_pos[2]
+  end_line = end_pos[2]
+  
+  local result = string.format('%s#L%d-L%d', relative_path, start_line, end_line)
+  
+  vim.fn.setreg('+', result)
+  
+  vim.notify('Copied: ' .. result, vim.log.levels.INFO)
+end
+
 vim.api.nvim_create_user_command('NeotreeReveal', function()
     vim.cmd.Neotree('reveal')
 end, {})
@@ -53,6 +79,12 @@ vim.api.nvim_create_user_command('ResetGrapple', function()
     vim.cmd('lua require("grapple").reset()')
 end, {})
 
+vim.api.nvim_create_user_command('CopyFilePathAndRange', function(opts)
+  M.copy_file_with_lines(opts)
+end, {
+    range = true
+})
+
 
 vim.api.nvim_create_user_command('TranslateSelect', function()
     trans_to_zh("translate", "open_float")
@@ -61,3 +93,6 @@ end, { range = true })
 vim.api.nvim_create_user_command('PolishSelect', function()
     trans_to_zh("wording", "copy")
 end, { range = true })
+
+
+return M

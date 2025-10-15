@@ -25,7 +25,7 @@ require("lazy").setup({
         dir = "~/Documents/github/package-info.nvim",
         requires = "MunifTanjim/nui.nvim",
         config = function()
-            vim.g.package_info_proxy = "http://127.0.0.1:7890"
+            -- vim.g.package_info_proxy = "http://127.0.0.1:7890"
         end
     },
     {
@@ -37,33 +37,6 @@ require("lazy").setup({
     ({
         'ggandor/leap.nvim'
     }),
-    {
-        'dmtrKovalenko/fff.nvim',
-        build = 'cargo build --release',
-        -- or if you are using nixos
-        -- build = "nix run .#release",
-        opts = { -- (optional)
-            lazy_sync = true,
-
-            prompt = '>',
-            debug = {
-                enabled = false,    -- we expect your collaboration at least during the beta
-                show_scores = false -- to help us optimize the scoring system, feel free to share your scores!
-            },
-            preview = {
-                chunk_size = 4096
-            },
-            keymaps = {
-                close = { '<Esc>', '<C-c>' },
-                move_up = { '<Up>', '<C-k>' },
-                move_down = { '<Down>', '<C-j>' },
-            }
-        },
-
-        -- No need to lazy-load with lazy.nvim.
-        -- This plugin initializes itself lazily.
-        lazy = false,
-    },
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
@@ -101,7 +74,6 @@ require("lazy").setup({
     },
     ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
     ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
-    ({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }),
     -- {
     --   'nvim-treesitter/nvim-treesitter-context',
     -- },
