@@ -1,8 +1,13 @@
 local diffview_toggle = function()
-    if next(require('diffview.lib').views) == nil then
-        vim.cmd('DiffviewOpen')
-    else
+    local lib = require('diffview.lib')
+    local view = lib.get_current_view()
+
+    if view then
+        -- Diffview is open, close it
         vim.cmd('DiffviewClose')
+    else
+        -- Diffview is not open, open it
+        vim.cmd('DiffviewOpen')
     end
 end
 
