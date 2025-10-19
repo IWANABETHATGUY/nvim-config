@@ -356,4 +356,31 @@ require("lazy").setup({
     --  { '~/.config/nvim/lua/r/restart_ls' },
     { dir = '~/Documents/nvim/file-position-matcher', build = "./install.sh",                    lazy = false },
     { "rcarriga/nvim-dap-ui",                         dependencies = { "mfussenegger/nvim-dap" } },
+
+    -- Formatting
+    {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                javascript = { "biome" },
+                typescript = { "biome" },
+                javascriptreact = { "biome" },
+                typescriptreact = { "biome" },
+                json = { "biome" },
+                jsonc = { "biome" },
+                css = { "biome" },
+                html = { "biome" },
+                astro = { "biome" },
+                svelte = { "biome" },
+                vue = { "biome" },
+            },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_fallback = true,
+            },
+        },
+        config = function(_, opts)
+            require("conform").setup(opts)
+        end,
+    },
 })
