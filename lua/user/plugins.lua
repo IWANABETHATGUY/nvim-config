@@ -21,14 +21,6 @@ require("lazy").setup({
         end
     },
     {
-        "vuki656/package-info.nvim",
-        dir = "~/Documents/github/package-info.nvim",
-        requires = "MunifTanjim/nui.nvim",
-        config = function()
-            -- vim.g.package_info_proxy = "http://127.0.0.1:7890"
-        end
-    },
-    {
         "natecraddock/workspaces.nvim"
     },
     {

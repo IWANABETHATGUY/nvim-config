@@ -112,7 +112,6 @@ M.on_attach = function(client, bufnr)
       end,
     })
   end
-
   lsp_keymaps(client, bufnr)
   lsp_highlight_document(client)
 end
