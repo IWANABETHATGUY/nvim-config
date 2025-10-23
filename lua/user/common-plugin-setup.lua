@@ -353,5 +353,3 @@ require('modes').setup({
   ignore = { 'NvimTree', 'TelescopePrompt' }
 })
 
--- Setup for package-info
-require('package-info').setup()
