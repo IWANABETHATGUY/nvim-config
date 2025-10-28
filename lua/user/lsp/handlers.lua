@@ -85,10 +85,10 @@ end
 M.on_attach = function(client, bufnr)
   -- vim.notify(client.name .. " starting...")
   -- TODO: refactor this into a method that checks if string in list
-  if client.name == "tsserver" then
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end
+  -- if client.name == "vtsls" then
+  --   client.server_capabilities.documentFormattingProvider = false
+  --   client.server_capabilities.documentRangeFormattingProvider = false
+  -- end
 
   if client.server_capabilities.inlayHintProvider then
     local inlay_hints_group = vim.api.nvim_create_augroup('InlayHints', { clear = false })

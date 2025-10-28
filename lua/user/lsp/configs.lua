@@ -83,6 +83,8 @@ vim.lsp.config.ruff = {
 local vue_language_server_path = vim.fn.expand('$MASON') ..
     '/packages/vue-language-server/node_modules/@vue/language-server'
 
+
+vim.lsp.config('vue_ls', {})
 vim.lsp.config.vtsls = {
     cmd = { 'vtsls', '--stdio' },
     on_attach = require("user.lsp.handlers").on_attach,
@@ -156,6 +158,6 @@ end
 -- Enable all configured LSP servers
 vim.lsp.enable({
     'zls', 'taplo', 'racket_langserver', 'ocamllsp',
-    'move_analyzer', 'emmylua_ls', 'ruff', 'vtsls',
+    'move_analyzer', 'emmylua_ls', 'ruff', 'vtsls', 'vue_ls',
     'jsonls', 'clangd', 'pyright', 'asm_lsp'
 })

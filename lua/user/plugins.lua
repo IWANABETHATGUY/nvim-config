@@ -190,7 +190,6 @@ require("lazy").setup({
     {
         "neovim/nvim-lspconfig",
         inlay_hints = { enabled = true },
-        version = "2.1.0"
     }, -- enable LSP
     {
         "mvllow/modes.nvim",
