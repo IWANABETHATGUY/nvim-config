@@ -99,4 +99,10 @@ end, { silent = true })
 -- Bookmark
 vim.keymap.set({ "n", "v" }, "ma", "<cmd>BookmarksMark<cr>", { desc = "Mark current line into active BookmarkList." })
 vim.keymap.set({ "n", "v" }, "mo", "<cmd>BookmarksGoto<cr>", { desc = "Go to bookmark at current active BookmarkList" })
---
+
+-- treewarker
+-- movement
+vim.keymap.set({ 'n', 'v' }, '<M-k>', '<cmd>Treewalker Up<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<M-j>', '<cmd>Treewalker Down<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<M-h>', '<cmd>Treewalker Left<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<M-l>', '<cmd>Treewalker Right<cr>', { silent = true })

@@ -194,6 +194,12 @@ require("lazy").setup({
     {
         "mvllow/modes.nvim",
     },
+    { 'nvim-focus/focus.nvim', version = '*' },
+    {
+      'aaronik/treewalker.nvim',
+
+      -- optional (see below for detailed options)
+    },
     {
         "williamboman/mason-lspconfig.nvim",
     },

@@ -353,3 +353,6 @@ require('modes').setup({
   ignore = { 'NvimTree', 'TelescopePrompt' }
 })
 
+
+
+require("focus").setup()
