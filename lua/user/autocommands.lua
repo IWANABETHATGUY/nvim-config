@@ -52,6 +52,7 @@ local ignore_filetypes = {
   "TelescopePrompt",
   "snacks_picker_list",
   "snacks_picker_input",
+  "DiffviewFiles"
 }
 
 vim.api.nvim_create_autocmd("FileType", {
