@@ -1,3 +1,4 @@
+local fterm = require('FTerm')
 local opts = { noremap = true, silent = true }
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
@@ -41,7 +42,7 @@ local M = {}
 function M.get_register_and_eval()
   local current_line = vim.api.nvim_get_current_line()
 
-  vim.cmd("ToggleTerm")
+  fterm.close()
   local matcher = require('matcher')
   local ret = matcher.add(current_line, vim.loop.cwd())
   if ret ~= nil then

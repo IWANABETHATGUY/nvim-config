@@ -1,4 +1,5 @@
 {
+  "FTerm.nvim": { "branch": "master", "commit": "d1320892cc2ebab472935242d9d992a2c9570180" },
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "actions-preview.nvim": { "branch": "master", "commit": "cb938c25edaac38d362555f19244a9cb85d561e8" },
   "barbar.nvim": { "branch": "master", "commit": "fb4369940a07dda35fa4d7f54cf4a36aa00440e6" },
@@ -51,7 +52,6 @@
   "telescope-live-grep-args.nvim": { "branch": "master", "commit": "8ad632f793fd437865f99af5684f78300dac93fb" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "text-case.nvim": { "branch": "main", "commit": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457" },
-  "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "translate.nvim": { "branch": "main", "commit": "cfa97d5718815dc2950e2a6c3899ed3883ef8765" },
   "treewalker.nvim": { "branch": "main", "commit": "a3d49df835304763f0bf8247eb6964076c978a69" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "6a51446c2c8f09a7c207d2dc2aaa5bbbda36e093" },

@@ -66,3 +66,41 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Disable focus autoresize for FileType",
 })
+
+
+ 
+    -- Auto-enter normal mode when closing terminal
+    vim.api.nvim_create_autocmd("TermClose", {
+      pattern = "*",
+      callback = function()
+        -- Exit terminal mode to normal mode
+        vim.cmd('stopinsert')
+      end,
+    })
+    
+    -- Save and restore cursor position
+    local cursor_pos = nil
+    
+    vim.api.nvim_create_autocmd("TermOpen", {
+      pattern = "*",
+      callback = function()
+        -- Save cursor position before opening terminal
+        cursor_pos = vim.api.nvim_win_get_cursor(0)
+      end,
+    })
+    
+    vim.api.nvim_create_autocmd("TermClose", {
+      pattern = "*",
+      callback = function()
+        -- Restore cursor position after closing terminal
+        if cursor_pos then
+          vim.schedule(function()
+            local ok = pcall(vim.api.nvim_win_set_cursor, 0, cursor_pos)
+            if not ok then
+              -- If setting cursor fails, just go to normal mode
+              vim.cmd('stopinsert')
+            end
+          end)
+        end
+      end,
+    })

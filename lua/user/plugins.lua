@@ -101,10 +101,7 @@ require("lazy").setup({
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
-    {
-        { 'akinsho/toggleterm.nvim', version = "*", opts = { --[[ things you want to change go here]] } }
-    },
-    -- "numToStr/FTerm.nvim",
+  {"numToStr/FTerm.nvim", dir = '~/Documents/github/FTerm.nvim',},
     ({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }),
     "lukas-reineke/indent-blankline.nvim",
     ("folke/which-key.nvim"),
