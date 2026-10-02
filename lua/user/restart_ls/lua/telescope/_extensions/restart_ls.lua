@@ -14,7 +14,7 @@ return require("telescope").register_extension {
       local make_finder = function()
         local res = {}
         local original_bufnr = vim.api.nvim_get_current_buf()
-        local buf_clients = vim.lsp.get_active_clients { bufnr = original_bufnr }
+        local buf_clients = vim.lsp.get_clients { bufnr = original_bufnr }
         for _, client in pairs(buf_clients) do
           table.insert(res, client.name)
         end

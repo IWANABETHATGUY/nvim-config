@@ -74,15 +74,12 @@ require("flutter-tools").setup {
     auto_open = false    -- if true this will open the outline automatically when it is first populated
   },
   lsp = {
-    color = { -- show the derived colours for dart variables
-      enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-      background = false, -- highlight the background
-      background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-      foreground = false, -- highlight the foreground
-      virtual_text = true, -- show the highlight using virtual text
-      virtual_text_str = "■", -- the virtual text character to highlight
-    },
-    on_attach = require("user.lsp.handlers").on_attach,
+    -- `lsp.color` is deprecated on Nvim 0.12+; document colors are built in (vim.lsp.document_color)
+    -- and on by default, so opt out here to keep dart colors disabled as before.
+    on_attach = function(client, bufnr)
+      vim.lsp.document_color.enable(false, { bufnr = bufnr })
+      require("user.lsp.handlers").on_attach(client, bufnr)
+    end,
     capabilities = require("user.lsp.handlers").capabilities,
     --- OR you can specify a function to deactivate or change or control how the config is created
     -- capabilities = function(config)

@@ -1,25 +1,22 @@
 local M = {}
 
 -- TODO: backfill this to template
+-- Float options for hover / signature help (replaces the removed `vim.lsp.with` handler overrides)
+M.float_opts = { border = "rounded", max_width = 60 }
+
 M.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
-
   local config = {
     virtual_text = {
       enabled = true,
     },
-    -- show signs
+    -- show signs (`sign_define` no longer configures diagnostic signs in Nvim 0.12)
     signs = {
-      active = signs,
+      text = {
+        [vim.diagnostic.severity.ERROR] = "",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.INFO] = "",
+      },
     },
     update_in_insert = true,
     underline = true,
@@ -28,23 +25,13 @@ M.setup = function()
       focusable = true,
       style = "minimal",
       border = "rounded",
-      source = "always",
+      source = true,
       header = "",
       prefix = "",
     },
   }
 
   vim.diagnostic.config(config)
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-    width = 60,
-  })
-
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-    width = 60,
-  })
 end
 
 local function lsp_highlight_document(client)
@@ -64,14 +51,14 @@ local function lsp_keymaps(client, bufnr)
   if client.name == "rust-analyzer" then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>RustLsp hover actions<CR>", opts)
   else
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    vim.keymap.set("n", "gh", function() vim.lsp.buf.hover(M.float_opts) end, { buffer = bufnr, silent = true })
   end
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.signature_help(M.float_opts) end, { buffer = bufnr, silent = true })
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.jump({ count = -1, float = true })<CR>', opts)
   vim.api.nvim_buf_set_keymap(
     bufnr,
     "n",
@@ -79,7 +66,7 @@ local function lsp_keymaps(client, bufnr)
     '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
     opts
   )
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>', opts)
 end
 
 M.on_attach = function(client, bufnr)

@@ -44,7 +44,7 @@ function M.get_register_and_eval()
 
   fterm.close()
   local matcher = require('matcher')
-  local ret = matcher.add(current_line, vim.loop.cwd())
+  local ret = matcher.add(current_line, vim.uv.cwd())
   if ret ~= nil then
     if #ret == 1 then
       local item = ret[1]

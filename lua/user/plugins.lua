@@ -102,7 +102,6 @@ require("lazy").setup({
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
   {"numToStr/FTerm.nvim", dir = '~/Documents/github/FTerm.nvim',},
-    ({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" }),
     "lukas-reineke/indent-blankline.nvim",
     ("folke/which-key.nvim"),
     {

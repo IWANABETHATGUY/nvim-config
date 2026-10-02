@@ -46,7 +46,7 @@ vim.lsp.config.move_analyzer = {
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
     root_markers = { "Move.toml" },
-    single_file_support = false
+    workspace_required = true,
 }
 
 
@@ -68,7 +68,7 @@ vim.lsp.config.move_analyzer = {
 --     capabilities = require("user.lsp.handlers").capabilities,
 -- }
 vim.lsp.config.emmylua_ls = {
-    cmd = { 'emmylua-language-server' },
+    cmd = { 'emmylua_ls' },
     capabilities = require("user.lsp.handlers").capabilities,
     on_attach = require("user.lsp.handlers").on_attach,
 }

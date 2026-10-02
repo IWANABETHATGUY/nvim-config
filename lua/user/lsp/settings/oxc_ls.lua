@@ -1,34 +1,24 @@
 -- oxc_language_server
 
-local configs = require('lspconfig.configs')
-local lspconfig = require("lspconfig")
-local util = require 'lspconfig.util'
-
-
-configs.oxc_language_server = {
-  default_config = {
-    cmd = { 'oxc_language_server' },
-    filetypes = {
-      'javascript',
-      'javascriptreact',
-      'typescript',
-      'typescriptreact',
-    },
-    root_dir = util.root_pattern(".oxlintrc.json"),
-    single_file_support = false,
-    settings = {
-      ['enable'] = true,
-      ['run'] = 'onType',
-      ['config'] = '.oxlintrc.json'
-    }
+vim.lsp.config.oxc_language_server = {
+  cmd = { 'oxc_language_server' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
   },
-}
-
-
-
-lspconfig.oxc_language_server.setup {
+  root_markers = { '.oxlintrc.json' },
+  workspace_required = true,
+  settings = {
+    ['enable'] = true,
+    ['run'] = 'onType',
+    ['config'] = '.oxlintrc.json'
+  },
   on_attach = require("user.lsp.handlers").on_attach,
   capabilities = require("user.lsp.handlers").capabilities,
 }
+
+vim.lsp.enable('oxc_language_server')
 
 -- oxc_language_server end

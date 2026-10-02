@@ -172,15 +172,15 @@ local mappings = {
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+      "<cmd>lua vim.diagnostic.jump({ count = 1, float = true })<CR>",
       "Next Diagnostic",
     },
     k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+      "<cmd>lua vim.diagnostic.jump({ count = -1, float = true })<cr>",
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     R = { "<cmd>Telescope restart_ls<cr>", "Restart language server" },
     s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols({symbol_width = 70})<cr>", "Document Symbols" },
