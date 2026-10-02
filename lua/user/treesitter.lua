@@ -1,65 +1,37 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+-- nvim-treesitter `main` branch: it only installs parsers/queries; highlighting,
+-- folding and indentation are enabled per buffer below via Neovim's own APIs.
+local status_ok, ts = pcall(require, "nvim-treesitter")
 if not status_ok then
   return
 end
 
+ts.install({ "typescript", "rust", "javascript", "python" })
 
-require("nvim-treesitter.parsers").get_parser_configs().just = {
-  install_info = {
-    url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
-    files = { "src/parser.c", "src/scanner.cc" },
-    branch = "main",
-    use_makefile = true -- this may be necessary on MacOS (try if you see compiler errors)
-  },
-  maintainers = { "@IndianBoy42" },
-  filetype = "justfile"
-}
+local highlight_disabled = { html = true }
+local indent_disabled = { python = true, css = true }
+local max_filesize = 1024 * 1024 -- 1 MB
 
-require "nvim-treesitter.install".compilers = { "gcc", "clang" }
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true }),
+  callback = function(args)
+    local buf = args.buf
+    local lang = vim.treesitter.language.get_lang(args.match)
+    if not lang or highlight_disabled[lang] or not vim.treesitter.language.add(lang) then
+      return
+    end
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+    if ok and stats and stats.size > max_filesize then
+      return
+    end
 
-configs.setup({
-  ensure_installed = {"typescript", "rust", "javascript", "python"},      -- one of "all" or a list of languages
-  ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,               -- false will disable the whole extension
-    -- disable = { "css" },         -- list of language that will be disabled
-    disable = function(lang, buf)
-      if lang == "html" then
-        return true
-      end
-      local max_filesize = 1024 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
-  },
-  autopairs = {
-    enable = true,
-  },
-  indent = { enable = true, disable = { "python", "css" } },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
-    },
-  }
+    vim.treesitter.start(buf, lang)
+    if not indent_disabled[lang] and vim.treesitter.query.get(lang, "indents") then
+      vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
 })
 
 vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt["foldenable"] = false
 vim.opt["foldlevel"] = 99
-

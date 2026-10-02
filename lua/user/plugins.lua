@@ -30,7 +30,6 @@ require("lazy").setup({
         'ggandor/leap.nvim'
     }),
     ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
-    ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
     -- {
     --   'nvim-treesitter/nvim-treesitter-context',
     -- },
@@ -210,6 +209,9 @@ require("lazy").setup({
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main', -- `master` is frozen and incompatible with Nvim 0.12
+        lazy = false,    -- does not support lazy-loading
+        build = ':TSUpdate',
     },
 
     {
