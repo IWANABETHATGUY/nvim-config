@@ -78,8 +78,6 @@ vim.lsp.config.ruff = {
     cmd = { 'ruff', 'server' }
 }
 
--- lspconfig.copilot_ls.setup {}
-
 local vue_language_server_path = vim.fn.expand('$MASON') ..
     '/packages/vue-language-server/node_modules/@vue/language-server'
 

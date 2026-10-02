@@ -29,41 +29,6 @@ require("lazy").setup({
     ({
         'ggandor/leap.nvim'
     }),
-    {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        requires = {
-          "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-        },
-        config = function()
-            vim.g.copilot_proxy = "http://127.0.0.1:7890"
-            require("copilot").setup({
-                filetypes = {
-                    rust = true,
-                    javascript = true,
-                    typescript = true,
-                    vue = true,
-                    python = true,
-                    sh = function()
-                        if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
-                            -- disable for .env files
-                            return false
-                        end
-                        return true
-                    end,
-                },
-                panel = { enabled = false },
-                suggestion = {
-                    enabled = true,
-                    auto_trigger = true,
-                    debounce = 75,
-                    keymap = {
-                    },
-                },
-            })
-        end,
-    },
     ({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }), -- full lua functions d by lots of plugins
     ({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }),
     -- {
@@ -158,7 +123,6 @@ require("lazy").setup({
                 build = "make install_jsregexp"
 
             },
-            "fang2hou/blink-copilot"
         },
         lazy = false, -- lazy loading handled internally
         -- use a release tag to download pre-built binaries
