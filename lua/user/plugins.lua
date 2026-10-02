@@ -230,7 +230,7 @@ require("lazy").setup({
             { "gl", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
         },
     },
-    { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'dlyongemallo/diffview-plus.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
     -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     {
