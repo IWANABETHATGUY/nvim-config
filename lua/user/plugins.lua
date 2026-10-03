@@ -233,6 +233,7 @@ require("lazy").setup({
         },
     },
     { 'dlyongemallo/diffview-plus.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { "ChmaraX/herdr-nvim", opts = {} }, -- annotations for the herdr nvim sidebar (<leader>a…)
 
     -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     {

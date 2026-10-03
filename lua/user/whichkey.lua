@@ -87,7 +87,6 @@ local visual_opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Grapple tag<cr>", "Grapple add tag" },
   ["b"] = {
     b = {
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
