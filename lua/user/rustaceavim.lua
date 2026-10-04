@@ -12,6 +12,8 @@ vim.g.rustaceanvim = {
     },
     -- LSP configuration
     server = {
+        -- Don't start rust-analyzer automatically; use `:RustAnalyzer start` when needed
+        auto_attach = false,
         on_attach = handler.on_attach,
         capabilities = handler.capabilities,
         settings = {
