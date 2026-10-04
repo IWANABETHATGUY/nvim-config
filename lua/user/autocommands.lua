@@ -50,6 +50,8 @@ local ignore_filetypes = {
   "neo-tree-popup",
   "notify",
   "TelescopePrompt",
+  "fff_input",
+  "fff_list",
   "snacks_picker_list",
   "snacks_picker_input",
   "DiffviewFiles"

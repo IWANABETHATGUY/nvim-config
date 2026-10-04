@@ -38,7 +38,8 @@ require("lazy").setup({
         event = { 'InsertEnter', 'CmdlineEnter' },
         branch = 'v0.6', --recommended as each new version will have breaking changes
         opts = {
-            --Config goes here
+            -- don't auto-pair in picker prompts
+            extensions = { filetype = { nft = { 'TelescopePrompt', 'fff_input' } } },
         },
     },
      {
@@ -170,16 +171,30 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         dependencies = {
-            {
-                "nvim-telescope/telescope-live-grep-args.nvim",
-                -- This will not install any breaking changes.
-                -- For major updates, this must be adjusted manually.
-                version = "^1.0.0",
-            },
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
         },
         config = function()
         end
+    },
+    -- File finder and live grep; telescope still handles every other picker
+    {
+        'dmtrKovalenko/fff',
+        build = function()
+            -- downloads a prebuilt binary or falls back to cargo build
+            require("fff.download").download_or_build_binary()
+        end,
+        lazy = false, -- the plugin lazy-initialises itself
+        opts = {
+            -- match the telescope prompt mappings in user/telescope.lua
+            keymaps = {
+                close = { '<Esc>', '<C-c>' },
+                select_split = '<C-x>',
+                move_up = { '<Up>', '<C-k>' },
+                move_down = { '<Down>', '<C-j>' },
+                cycle_previous_query = '<C-p>',
+                cycle_forward_query = '<C-n>',
+            },
+        },
     },
     {
         "jmacadie/telescope-hierarchy.nvim",

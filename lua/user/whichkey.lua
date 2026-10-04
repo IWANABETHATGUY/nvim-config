@@ -105,17 +105,10 @@ local mappings = {
     p = { "<cmd>Telescope grapple tags<cr>", " open tags window" }
   },
   ["f"] = {
-    F = {
-      "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "Find files",
-    },
-    f = {
-       "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "Find git files",
-    }
+    F = { "<cmd>lua require('fff').find_files()<cr>", "Find files" },
+    f = { "<cmd>lua require('fff').find_files()<cr>", "Find files" },
   },
-  ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args({debounce = 800})<cr>", "Find Text" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["F"] = { "<cmd>lua require('fff').live_grep()<cr>", "Find Text" },
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -150,7 +143,7 @@ local mappings = {
     name = "LSP",
     a = { "<cmd>lua require 'actions-preview'.code_actions()<cr>", "Code Action Menu" },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
+      "<cmd>Telescope diagnostics bufnr=0<cr>",
       "Document Diagnostics",
     },
     h = {
@@ -164,7 +157,7 @@ local mappings = {
       },
     },
     w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+      "<cmd>Telescope diagnostics<cr>",
       "Workspace Diagnostics",
     },
     f = { "<cmd>lua vim.lsp.buf.format{async=false}<cr>", "Format" },
