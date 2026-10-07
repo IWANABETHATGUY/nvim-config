@@ -98,6 +98,7 @@ local mappings = {
     c = { "<cmd>BufferCloseAllButCurrentOrPinned<cr>", "BufferCloseAllButCurrentOrPinned" }
   },
   ["e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
+  ["E"] = { "<cmd>Neotree reveal<cr>", "Reveal in Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
