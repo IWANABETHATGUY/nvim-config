@@ -93,9 +93,6 @@ keymap('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 -- rust-analyzer
 
 
-vim.keymap.set("n", "[c", function()
-  vim.cmd.JumpToParentContext()
-end, { silent = true })
 -- Bookmark
 vim.keymap.set({ "n", "v" }, "ma", "<cmd>BookmarksMark<cr>", { desc = "Mark current line into active BookmarkList." })
 vim.keymap.set({ "n", "v" }, "mo", "<cmd>BookmarksGoto<cr>", { desc = "Go to bookmark at current active BookmarkList" })
