@@ -19,6 +19,17 @@ require("diffview").setup({
     },
   },
   hooks = {
+    -- focus.nvim golden-ratio-resizes a window on WinEnter before diffview has
+    -- set 'diff' on it, leaving the a/b panes uneven. Opt the diff windows out
+    -- of focus.nvim and re-equalize once diffview finishes laying them out.
+    diff_buf_win_enter = function(_, winid)
+      vim.w[winid].focus_disable = true
+      vim.schedule(function()
+        if vim.api.nvim_win_is_valid(winid) then
+          vim.api.nvim_win_call(winid, function() vim.cmd("wincmd =") end)
+        end
+      end)
+    end,
     view_opened = function(view)
       local utils = require("user.utils");
       -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
