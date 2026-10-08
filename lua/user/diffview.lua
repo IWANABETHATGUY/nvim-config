@@ -1,6 +1,19 @@
 -- diffview-plus.nvim (actively maintained fork of sindrets/diffview.nvim).
 -- Only non-default options are listed; see `:h diffview-config` and `:h diffview.changelog`.
 -- Default keymaps are used as-is (`g?` in any panel shows them).
+
+-- focus.nvim's global disable flag as it was before entering a diffview tab;
+-- nil while no diffview tab is current.
+local saved_focus_disable
+
+local function equalize(view)
+  vim.schedule(function()
+    if vim.api.nvim_get_current_tabpage() == view.tabpage then
+      vim.cmd("wincmd =")
+    end
+  end)
+end
+
 require("diffview").setup({
   enhanced_diff_hl = true, -- See |diffview-config-enhanced_diff_hl|
   view = {
@@ -19,17 +32,25 @@ require("diffview").setup({
     },
   },
   hooks = {
-    -- focus.nvim golden-ratio-resizes a window on WinEnter before diffview has
-    -- set 'diff' on it, leaving the a/b panes uneven. Opt the diff windows out
-    -- of focus.nvim and re-equalize once diffview finishes laying them out.
-    diff_buf_win_enter = function(_, winid)
-      vim.w[winid].focus_disable = true
-      vim.schedule(function()
-        if vim.api.nvim_win_is_valid(winid) then
-          vim.api.nvim_win_call(winid, function() vim.cmd("wincmd =") end)
-        end
-      end)
+    -- focus.nvim golden-ratio-resizes whichever window gains focus, leaving the
+    -- a/b panes uneven. Per-window opt-outs miss the empty side of an added or
+    -- deleted file (diffview opens it without firing diff_buf_win_enter), so
+    -- turn focus.nvim off while a diffview tab is current and re-equalize
+    -- after diffview lays out its windows.
+    view_enter = function(view)
+      if saved_focus_disable == nil then
+        saved_focus_disable = vim.g.focus_disable == true
+      end
+      vim.g.focus_disable = true
+      equalize(view)
     end,
+    view_leave = function()
+      if saved_focus_disable ~= nil then
+        vim.g.focus_disable = saved_focus_disable
+        saved_focus_disable = nil
+      end
+    end,
+    view_post_layout = equalize,
     view_opened = function(view)
       local utils = require("user.utils");
       -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
