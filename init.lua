@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
-require "user.diffview"
 require "user.colorscheme"
+require "user.codediff" -- after user.colorscheme: it copies the Diff* colors defined there
 require "user.cmp"
 require "user.common-plugin-setup"
 require "user.lsp"

@@ -1,13 +1,13 @@
-local diffview_toggle = function()
-    local lib = require('diffview.lib')
-    local view = lib.get_current_view()
+local codediff_toggle = function()
+    local codediff = require('user.codediff')
+    local tabpage = vim.api.nvim_get_current_tabpage()
 
-    if view then
-        -- Diffview is open, close it
-        vim.cmd('DiffviewClose')
+    if codediff.is_open(tabpage) then
+        -- CodeDiff is open in this tab, close it
+        codediff.close(tabpage)
     else
-        -- Diffview is not open, open it
-        vim.cmd('DiffviewOpen')
+        -- CodeDiff is not open, open it
+        vim.cmd('CodeDiff')
     end
 end
 
@@ -72,12 +72,14 @@ vim.api.nvim_create_user_command('NeotreeReveal', function()
     vim.cmd.Neotree('reveal')
 end, {})
 
-vim.api.nvim_create_user_command('DiffviewToggle', function()
-    diffview_toggle()
+vim.api.nvim_create_user_command('CodeDiffToggle', function()
+    codediff_toggle()
 end, {})
 
 vim.api.nvim_create_user_command('DiffCompareToMain', function()
-    vim.cmd('DiffviewOpen main... --imply-local')
+    -- Merge base of origin/main and HEAD vs the working tree. The local main
+    -- can lag far behind, because it is rarely checked out and pulled.
+    vim.cmd('CodeDiff origin/main...')
 end, {})
 
 vim.api.nvim_create_user_command('ResetGrapple', function()

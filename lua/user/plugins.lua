@@ -247,7 +247,7 @@ require("lazy").setup({
             { "gl", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
         },
     },
-    { 'dlyongemallo/diffview-plus.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'esmuellert/codediff.nvim' }, -- configured in user/codediff.lua
     { "ChmaraX/herdr-nvim", opts = {} }, -- annotations for the herdr nvim sidebar (<leader>a…)
 
     -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },

@@ -54,7 +54,8 @@ local ignore_filetypes = {
   "fff_list",
   "snacks_picker_list",
   "snacks_picker_input",
-  "DiffviewFiles"
+  "codediff-explorer",
+  "codediff-history"
 }
 
 vim.api.nvim_create_autocmd("FileType", {

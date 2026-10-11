@@ -57,20 +57,10 @@ vim.cmd("highlight DiffAdd gui=none guifg=none guibg=#517551")
 vim.cmd("highlight DiffChange gui=none guifg=none guibg=#272D43")
 vim.cmd("highlight DiffText gui=none guifg=none guibg=#394b70")
 vim.cmd("highlight DiffDelete gui=none guifg=none guibg=#3F2D3D")
-vim.cmd("highlight DiffviewDiffDeleteDim gui=italic guifg=none guibg=none")
-vim.cmd("highlight DiffviewDiffAddAsDelete gui=none guifg=none guibg=red")
 
--- Left panel
--- "DiffChange:DiffAddAsDelete",
--- "DiffText:DiffDeleteText",
-
--- delete section color
+-- codediff colors (see user/codediff.lua). Left panel: deleted lines and
+-- deleted text. Right panel: added lines use DiffAdd, added text below.
 vim.cmd("highlight DiffAddAsDelete gui=none guifg=none guibg=red")
--- changed text color
 vim.cmd("highlight DiffDeleteText gui=none guifg=none guibg=#4B1818")
---
--- -- Right panel
--- -- "DiffChange:DiffAdd",
--- -- "DiffText:DiffAddText",
 vim.cmd("highlight DiffAddText gui=none guifg=none guibg=#1C5458")
 
