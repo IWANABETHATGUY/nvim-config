@@ -165,7 +165,9 @@ require("mason-lspconfig").setup {
     automatic_enable = {
         exclude = {
             "vtsls",
-            "emmylua_ls"
+            "emmylua_ls",
+            -- Off by default; start it on demand with `:lsp enable tsc`
+            "tsc",
         }
     }
 }
@@ -199,9 +201,9 @@ for _, server in pairs(servers) do
     end
 end
 
--- Enable all configured LSP servers
+-- Enable all configured LSP servers except tsc, which starts on demand
 vim.lsp.enable({
     'zls', 'taplo', 'racket_langserver', 'ocamllsp',
-    'move_analyzer', 'emmylua_ls', 'ruff', 'tsc', 'vtsls', 'vue_ls',
+    'move_analyzer', 'emmylua_ls', 'ruff', 'vtsls', 'vue_ls',
     'jsonls', 'clangd', 'pyright', 'asm_lsp'
 })
