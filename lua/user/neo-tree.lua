@@ -37,12 +37,23 @@ require("neo-tree").setup({
           end
         end)
       end,
+      reveal_in_finder = function(state)
+        local filepath = state.tree:get_node():get_id()
+        vim.system({ "open", "-R", filepath }, {}, function(out)
+          if out.code ~= 0 then
+            vim.schedule(function()
+              vim.notify("Reveal in Finder failed: " .. (out.stderr or ""), vim.log.levels.ERROR)
+            end)
+          end
+        end)
+      end,
     },
     window = {
       mappings = {
         ["l"] = "open",
         ["h"] = "close_node",
-        ['Y'] = "copy_selector"
+        ['Y'] = "copy_selector",
+        ['O'] = "reveal_in_finder"
       }
     },
     filesystem = {
