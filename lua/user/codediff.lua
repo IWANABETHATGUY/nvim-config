@@ -62,8 +62,9 @@ require("codediff").setup({
   },
   explorer = {
     -- diffview's file panel showed a tree with per-file line counts.
+    -- Untracked (`??`) files get no counts unless count_untracked is set.
     view_mode = "tree",
-    line_stats = { enabled = true },
+    line_stats = { enabled = true, count_untracked = true },
   },
   -- diffview's default keys, kept next to the codediff defaults.
   keymaps = {
