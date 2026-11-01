@@ -124,6 +124,39 @@ end, {
   desc = "Live code review workspace for Neovim",
 })
 
+-- Each :CodeDiff opens a new tab, so tabs pile up and each one needs its own
+-- close. Keep one: when a new codediff tab opens, close the older ones. This
+-- runs after the new tab exists, so a failed :CodeDiff (bad revision) keeps
+-- the old tab. tabnew puts the new tab after the current one, so a :CodeDiff
+-- run in a codediff tab takes that tab's place.
+-- Tabs that stay open:
+-- - a merge with unsaved result buffers, so no merge work is hidden;
+-- - a session opened with --exit-on-close (git difftool/mergetool), which
+--   must quit Neovim when the user closes it.
+local function close_other_tabs(keep)
+  local lifecycle = require("codediff.ui.lifecycle")
+  local kept = 0
+  for tabpage in pairs(codediff_tabs) do
+    if tabpage ~= keep and vim.api.nvim_tabpage_is_valid(tabpage) then
+      local session = lifecycle.get_session(tabpage)
+      local result = session and session.result_bufnr
+      local unsaved = #lifecycle.get_unsaved_conflict_files(tabpage) > 0
+        or (result ~= nil and vim.api.nvim_buf_is_valid(result) and vim.bo[result].modified)
+      if unsaved or (session and session.exit_on_close) then
+        kept = kept + 1
+      else
+        M.close(tabpage)
+      end
+    end
+  end
+  if kept > 0 then
+    vim.notify(
+      ("CodeDiff: kept %d older tab(s) with unsaved merge results or --exit-on-close"):format(kept),
+      vim.log.levels.INFO
+    )
+  end
+end
+
 local group = vim.api.nvim_create_augroup("UserCodeDiff", { clear = true })
 vim.api.nvim_create_autocmd("User", {
   group = group,
@@ -133,6 +166,10 @@ vim.api.nvim_create_autocmd("User", {
     if vim.api.nvim_get_current_tabpage() == event.data.tabpage then
       enter(event.data.tabpage)
     end
+    -- Closing tabs inside the plugin's open path is not safe, so defer it.
+    vim.schedule(function()
+      close_other_tabs(event.data.tabpage)
+    end)
   end,
 })
 vim.api.nvim_create_autocmd("User", {
