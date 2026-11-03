@@ -6,6 +6,9 @@ local M = {}
 
 -- Tab pages that show a codediff session.
 local codediff_tabs = {}
+-- The codediff tab that opened or was current most recently, for
+-- :CodeDiffToggle; nil when that tab is closed.
+local last_tab
 -- focus.nvim's global disable flag and 'scrolljump' as they were before a
 -- codediff tab became current; nil while no codediff tab is current.
 local saved
@@ -163,6 +166,7 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "CodeDiffOpen",
   callback = function(event)
     codediff_tabs[event.data.tabpage] = true
+    last_tab = event.data.tabpage
     if vim.api.nvim_get_current_tabpage() == event.data.tabpage then
       enter(event.data.tabpage)
     end
@@ -177,6 +181,9 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "CodeDiffClose",
   callback = function(event)
     codediff_tabs[event.data.tabpage] = nil
+    if last_tab == event.data.tabpage then
+      last_tab = nil
+    end
     if vim.api.nvim_get_current_tabpage() == event.data.tabpage then
       leave()
     end
@@ -189,6 +196,7 @@ vim.api.nvim_create_autocmd("TabEnter", {
   callback = function()
     local tabpage = vim.api.nvim_get_current_tabpage()
     if codediff_tabs[tabpage] then
+      last_tab = tabpage
       enter(tabpage)
     end
   end,
@@ -202,9 +210,51 @@ vim.api.nvim_create_autocmd("TabLeave", {
   end,
 })
 
-function M.is_open(tabpage)
-  return codediff_tabs[tabpage] == true
+local function find_codediff_tab()
+  if last_tab and codediff_tabs[last_tab] and vim.api.nvim_tabpage_is_valid(last_tab) then
+    return last_tab
+  end
+  for tabpage in pairs(codediff_tabs) do
+    if vim.api.nvim_tabpage_is_valid(tabpage) then
+      return tabpage
+    end
+  end
 end
+
+-- `gf` in a codediff tab opens the file in the previous tab and keeps the
+-- codediff tab open. :CodeDiffToggle (<leader>go) moves between the two tabs:
+-- - in another tab, it goes to the codediff tab that opened or was current
+--   most recently;
+-- - in a codediff tab, it goes to the last tab you were in, like g<Tab>. When
+--   Neovim has no last tab (close_other_tabs closed it), it goes to the tab
+--   before this one, which is the tab that `gf` opens files in.
+-- It never opens or closes a diff, so the explorer selection and the cursor
+-- in each pane stay where you left them.
+function M.toggle()
+  if codediff_tabs[vim.api.nvim_get_current_tabpage()] then
+    local target = vim.fn.tabpagenr("#")
+    if target == 0 then
+      local current, count = vim.fn.tabpagenr(), vim.fn.tabpagenr("$")
+      if count == 1 then
+        vim.notify("CodeDiff: no other tab to go to", vim.log.levels.INFO)
+        return
+      end
+      target = current > 1 and current - 1 or current + 1
+    end
+    vim.cmd(target .. "tabnext")
+    return
+  end
+  local tabpage = find_codediff_tab()
+  if not tabpage then
+    vim.notify("CodeDiff: no diff view is open; run :CodeDiff to open one", vim.log.levels.INFO)
+    return
+  end
+  vim.api.nvim_set_current_tabpage(tabpage)
+end
+
+vim.api.nvim_create_user_command("CodeDiffToggle", function()
+  M.toggle()
+end, { desc = "Move between the CodeDiff tab and the last tab" })
 
 -- Closes a codediff tab like its `q` key does: codediff cleans up on
 -- TabClosed, and Neovim cannot close the last tab page.

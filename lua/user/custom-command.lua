@@ -1,16 +1,3 @@
-local codediff_toggle = function()
-    local codediff = require('user.codediff')
-    local tabpage = vim.api.nvim_get_current_tabpage()
-
-    if codediff.is_open(tabpage) then
-        -- CodeDiff is open in this tab, close it
-        codediff.close(tabpage)
-    else
-        -- CodeDiff is not open, open it
-        vim.cmd('CodeDiff')
-    end
-end
-
 local function trans_to_zh(kind, output)
     require("translate").translate({
         get_command = function(input)
@@ -70,10 +57,6 @@ end
 
 vim.api.nvim_create_user_command('NeotreeReveal', function()
     vim.cmd.Neotree('reveal')
-end, {})
-
-vim.api.nvim_create_user_command('CodeDiffToggle', function()
-    codediff_toggle()
 end, {})
 
 vim.api.nvim_create_user_command('DiffCompareToMain', function()

@@ -150,7 +150,7 @@ local mappings = {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
-    o = { "<cmd>CodeDiffToggle<cr>", "Toggle changed file" },
+    o = { "<cmd>CodeDiffToggle<cr>", "Toggle diff view" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
